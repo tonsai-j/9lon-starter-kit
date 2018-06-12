@@ -6,7 +6,7 @@ class contentOne extends LitElement {
     _render(){
         return html`
         <header-one></header-one>
-        <slot></slot>
+        <slot name="content"></slot>
         <footer-one></footer-one>
         `
     }

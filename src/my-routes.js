@@ -19,14 +19,21 @@ class MyRoutes extends LitElement {
                 display: block;
             }
         </style>
+        
         <content-one class="page" active?="${page === 'page-dashboard'}">
-            <page-dashboard active></page-dashboard>
+            <page-dashboard slot="content" active></page-dashboard>
         </content-one>
+        
         <content-two class="page" active?="${page === 'page-exporter'}">
-            <page-exporter active> </page-exporter>
-            <page-side class="page" active?="${page === 'page-dashboard/page-side'}"></page-side>
+            <page-exporter slot="content" active></page-exporter>
+        </content-two>
+        
+        <content-two class="page" active?="${page === 'page-dashboard/page-side'}">
+            <page-side slot="content" active></page-side>
         </content-two>
         `
+
+
     }
 }
 
