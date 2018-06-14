@@ -2,14 +2,24 @@ import { LitElement } from '@polymer/lit-element';
 import { store } from '../store/store'
 
 export class PageViewElement extends LitElement {
-
+  static get properties() {
+    return {
+      active: Boolean
+    }
+  }
   _shouldRender(props, changedProps, old) {
+    if ('active' in props) {
+      console.log('props',props);
+      
+      if (props.active) {
+        // console.log(props, changedProps, old);
 
-    if (props.active) {
-      this._pageActive(store.getState().myAppReducer.params)
+        this._pageActive(store.getState().myAppReducer.params)
+      }
+
+      return props.active;
     }
 
-    return props.active;
   }
 
   _redirect(href, nextParams) {
@@ -18,10 +28,6 @@ export class PageViewElement extends LitElement {
     }));
   }
 
-  static get properties() {
-    return {
-      active: Boolean
-    }
-  }
+
 
 }

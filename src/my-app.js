@@ -4,8 +4,10 @@ import { installRouter } from 'pwa-helpers/router.js';
 import { updateMetadata } from 'pwa-helpers/metadata.js';
 import { store } from './store/store.js';
 import { navigate } from './actions/my-app-action.js';
-
-
+// เอาข้อมูลจาก tag form  เอาข้อมูลกับมาเป้น object
+// http://jsfiddle.net/g7zp5sbL/1/
+// สอนการใช้ slot
+// https://www.youtube.com/watch?v=easo9fuIQuM
 import './my-routes.js'
 class MyApp extends connect(store)(LitElement) {
     static get properties() {

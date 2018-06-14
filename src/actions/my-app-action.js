@@ -2,7 +2,7 @@ export const UPDATE_PAGE = 'UPDATE_PAGE';
 
 export const navigate = (location) => (dispatch) => {
     console.log(location.pathname);
-    
+
     var path = window.decodeURIComponent(location.pathname)
     // if (path !== '/') {
     //     path = path.replace('page-', '')
@@ -35,7 +35,7 @@ const loadPage = (page, params) => async (dispatch) => {
             break;
         case 'page-dashboard/page-side':
             // console.log(1111111);
-            
+
             await import('../pages/page-dashboard/page-side.js');
             // Put code here that you want it to run every time when
             // navigate to view1 page and my-view1.js is loaded
@@ -43,6 +43,10 @@ const loadPage = (page, params) => async (dispatch) => {
         case 'page-exporter':
             await import('../pages/page-exporter/page-exporter.js');
             break;
+        case 'page-form':
+            await import('../pages/page-form/page-form.js');
+            break;
+           
         default:
             page = 'page-404';
             await import('../pages/page-404/page-404.js');

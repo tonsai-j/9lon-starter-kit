@@ -27,6 +27,10 @@ class MyRoutes extends LitElement {
         <content-two class="page" active?="${page === 'page-exporter'}">
             <page-exporter slot="content" active></page-exporter>
         </content-two>
+        <content-two class="page" active?="${page === 'page-form'}">
+            <page-form slot="content" active></page-form>
+        </content-two>
+        
         
         <content-two class="page" active?="${page === 'page-dashboard/page-side'}">
             <page-side slot="content" active></page-side>
