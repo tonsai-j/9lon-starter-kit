@@ -1,6 +1,7 @@
 import { LitElement, html } from "@polymer/lit-element";
 import './layout/noheader-nofooter-01/content-one'
 import './layout/onheader-nofooter-02/content-two'
+import './layout/onheader-nofooter-03/content-three'
 
 class MyRoutes extends LitElement {
     static get properties() {
@@ -30,6 +31,10 @@ class MyRoutes extends LitElement {
         <content-two class="page" active?="${page === 'page-form'}">
             <page-form slot="content" active></page-form>
         </content-two>
+
+        <content-three class="page" active?="${page === 'page-list-file'}">
+            <page-list-file slot="content" active></page-list-file>
+        </content-three>
         
         
         <content-two class="page" active?="${page === 'page-dashboard/page-side'}">

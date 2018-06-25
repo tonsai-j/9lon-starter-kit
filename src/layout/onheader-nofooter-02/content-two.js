@@ -2,10 +2,11 @@ import { LitElement, html } from "@polymer/lit-element";
 import '@polymer/app-layout/app-header/app-header'
 import '@polymer/app-layout/app-toolbar/app-toolbar'
 
-import { FlexboxGridLit } from './../../style/flexbox-grid-lit';
+import { FlexboxGridLit, FlexboxGridRemovePadding } from './../../style/flexbox-grid-lit';
 
 import './header-two'
 import './footer-two'
+import './nav-two'
 // {/* <header-two></header-two>
 // <slot></slot>
 // <footer-two></footer-two> */}
@@ -18,7 +19,8 @@ import './footer-two'
 class contentTwo extends LitElement {
     _render() {
         return html`
-         ${FlexboxGridLit}
+      
+         ${FlexboxGridLit} ${FlexboxGridRemovePadding}
         <style>
             app-header {
                 position: fixed;
@@ -35,7 +37,6 @@ class contentTwo extends LitElement {
         
             div.toolbar {
                 height: 64px;
-                padding: 0px 16px;
             }
         
             div#content {
@@ -62,26 +63,29 @@ class contentTwo extends LitElement {
             main {
                 flex: 1;
             }
+            
+            header{
+                z-index: 1
+            }
         </style>
         <div class="wrapper">
             <header>
                 <app-header fixed condenses effects="waterfall" shadow>
                     <div class="row toolbar">
-                        <div class="col-xs-9">
-                            <div class="box">offset</div>
-                            <nav>
-                                <a href="/html/">HTML</a> |
-                                <a href="/css/">CSS</a> |
-                                <a href="/js/">JavaScript</a> |
-                                <a href="/jquery/">jQuery</a>
-                            </nav>
+                        <div class="col-xs-12">
+                            <header-two></header-two>
                         </div>
                     </div>
                 </app-header>
             </header>
             <main>
-                <div id="content">
-                    <slot name="content"></slot>
+                <div id="content" class="row">
+                    <div class="col-xs-2">
+                        <nav-two></nav-two>
+                    </div>
+                    <div class="col-xs-10">
+                        <slot name="content"></slot>
+                    </div>
                 </div>
             </main>
             <footer>

@@ -46,7 +46,10 @@ const loadPage = (page, params) => async (dispatch) => {
         case 'page-form':
             await import('../pages/page-form/page-form.js');
             break;
-           
+        case 'page-list-file':
+            await import('../pages/page-list-file/page-list-file.js');
+            break;
+            
         default:
             page = 'page-404';
             await import('../pages/page-404/page-404.js');
