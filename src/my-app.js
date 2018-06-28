@@ -4,6 +4,8 @@ import { installRouter } from "pwa-helpers/router.js";
 import { updateMetadata } from "pwa-helpers/metadata.js";
 import { store } from "./store/store.js";
 import { navigate } from "./actions/my-app-action.js";
+
+import bulmaStyles from './style/bulma-styles'
 // เอาข้อมูลจาก tag form  เอาข้อมูลกับมาเป้น object
 // http://jsfiddle.net/g7zp5sbL/1/
 // สอนการใช้ slot
@@ -26,10 +28,11 @@ class MyApp extends connect(store)(LitElement) {
 
   _render({ _page, appTitle }) {
     return html`
-        <!-- <link rel="stylesheet" href="../../../style/"> -->
+     ${bulmaStyles()}
+    <!-- <link rel="stylesheet" href="../../../style/"> -->
     <!-- <link rel="stylesheet" href="../style/reset.css"> -->
-            <my-routes page="${_page}"></my-routes>
-        <a id="link" href="/" style="display:none;"></a>
+    <my-routes page="${_page}"></my-routes>
+    <a id="link" href="/" style="display:none;"></a>
         `;
   }
   // ทำงานครั้งแรก
