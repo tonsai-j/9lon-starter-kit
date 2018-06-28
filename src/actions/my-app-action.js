@@ -1,7 +1,7 @@
 export const UPDATE_PAGE = 'UPDATE_PAGE';
 
 export const navigate = (location) => (dispatch) => {
-    console.log(location.pathname);
+    // console.log(location.pathname);
 
     var path = window.decodeURIComponent(location.pathname)
     // if (path !== '/') {
@@ -59,7 +59,7 @@ const loadPage = (page, params) => async (dispatch) => {
 }
 
 const updatePage = (page, params) => {
-    console.log('page, params', page, params);
+    // console.log('page, params', page, params);
 
     return {
         type: UPDATE_PAGE,

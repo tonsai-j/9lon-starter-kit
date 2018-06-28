@@ -3,6 +3,7 @@ import '@polymer/app-layout/app-header/app-header'
 import '@polymer/app-layout/app-toolbar/app-toolbar'
 
 import { FlexboxGridLit, FlexboxGridRemovePadding } from './../../style/flexbox-grid-lit';
+import bulmaStyles from '../../style/bulma-styles'
 
 import './header-two'
 import './footer-two'
@@ -68,9 +69,12 @@ class contentTwo extends LitElement {
                 z-index: 1
             }
         </style>
+        <!-- <link rel="stylesheet" href="../../../style/reset.css"> -->
+        <!-- <link rel="stylesheet" href="../../../style/bulma.css"> -->
+        ${bulmaStyles()}
         <div class="wrapper">
             <header>
-                <app-header fixed condenses effects="waterfall" shadow>
+                <app-header fixed condenses effects="waterfall" >
                     <div class="row toolbar">
                         <div class="col-xs-12">
                             <header-two></header-two>

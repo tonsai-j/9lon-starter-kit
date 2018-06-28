@@ -7,7 +7,7 @@ const app = (state =
     }, action) => {
     switch (action.type) {
         case UPDATE_PAGE:
-        console.log('action',action);
+        // console.log('action',action);
         
             return {
                 ...state,

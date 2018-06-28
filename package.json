@@ -7,6 +7,7 @@
     "start": "polymer serve -p 4444",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:webpack": "webpack --config webpack.config.js",
+    
     "build": "npm run build:prpl-server && npm run build:static",
     "build:prpl-server": "gulp clean:prpl-server && gulp build:prpl-server",
     "build:static": "polymer build",

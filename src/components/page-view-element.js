@@ -9,7 +9,7 @@ export class PageViewElement extends LitElement {
   }
   _shouldRender(props, changedProps, old) {
     if ('active' in props) {
-      console.log('props',props);
+      // console.log('props',props);
       
       if (props.active) {
         // console.log(props, changedProps, old);
