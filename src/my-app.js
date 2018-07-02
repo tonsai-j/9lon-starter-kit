@@ -8,6 +8,7 @@ import { navigate } from "./actions/my-app-action.js";
 // http://jsfiddle.net/g7zp5sbL/1/
 // สอนการใช้ slot
 // https://www.youtube.com/watch?v=easo9fuIQuM
+import BulmaStyle from "./style/bulma-styles";
 import "./my-routes.js";
 class MyApp extends connect(store)(LitElement) {
   static get properties() {
@@ -26,6 +27,7 @@ class MyApp extends connect(store)(LitElement) {
 
   _render({ _page, appTitle }) {
     return html`
+    ${BulmaStyle()}
         <!-- <link rel="stylesheet" href="../../../style/"> -->
     <!-- <link rel="stylesheet" href="../style/reset.css"> -->
             <my-routes page="${_page}"></my-routes>
