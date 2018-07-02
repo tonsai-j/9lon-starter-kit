@@ -10,6 +10,7 @@ import bulmaStyles from './style/bulma-styles'
 // http://jsfiddle.net/g7zp5sbL/1/
 // สอนการใช้ slot
 // https://www.youtube.com/watch?v=easo9fuIQuM
+import BulmaStyle from "./style/bulma-styles";
 import "./my-routes.js";
 class MyApp extends connect(store)(LitElement) {
   static get properties() {
