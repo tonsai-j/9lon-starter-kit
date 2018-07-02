@@ -6,7 +6,7 @@ class headerOne extends LitElement {
         return html`
          ${BulmaStyle()}
             <nav
-          class="navbar is-primary"
+          class="navbar is-info"
           role="navigation"
           aria-label="main navigation"
         >
