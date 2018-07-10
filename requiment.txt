@@ -3,6 +3,7 @@
 ทำเพจซ้อนเพจได้
 สร้างเพจจากการเจนได้
 แต่ละเพจสามารถเลือกเลเอาร์ที่ตัวเองต้องการได้
+npm install -g browser-sync
 
 //https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
 People.sort(dynamicSortMultiple("Name", "-Surname"));

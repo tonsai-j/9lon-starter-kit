@@ -21,75 +21,27 @@ class contentTwo extends LitElement {
     return html`
       
         <style>
-            app-header {
-                position: fixed;
-                background-color: #FFF;
-                color: blue;
-                top: 0;
-                left: 0;
-                width: 100%;
-            }
-        
-            app-header paper-icon-button {
-                --paper-icon-button-ink-color: white;
-            }
-        
-            div.toolbar {
-                height: 64px;
-            }
-        
-            div#content {
-                padding-top: 74px;
-                background-color: #EEE;
-            }
-        
-            .wrapper {
-                height: 100vh;
-                display: flex;
-        
-                /* Direction of the items, can be row or column */
-                flex-direction: column;
-            }
-        
-            footer {
-                height: 100px;
-                background-color: #FFF;
-                color: blue;
-                width: 100%;
-                flex: none;
-            }
-        
-            main {
-                flex: 1;
-            }
-            
-            header{
-                z-index: 1
-            }
+           
         </style>
         <!-- <link rel="stylesheet" href="../../../style/reset.css"> -->
         <!-- <link rel="stylesheet" href="../../../style/bulma.css"> -->
         ${bulmaStyles()}
         <div class="wrapper">
             <header>
-                <app-header fixed condenses effects="waterfall" >
-                    <div class="row toolbar">
-                        <div class="col-xs-12">
+                <!-- <app-header condenses effects="waterfall" > -->
                             <header-two></header-two>
-                        </div>
-                    </div>
-                </app-header>
+                <!-- </app-header> -->
             </header>
             <main>
                 <div id="content" class="row container">
-                <div class="columns">
-          <div class="column is-one-quarter">
-          <nav-two></nav-two>
-          </div>
-          <div class="column">
-          <slot name="content"></slot>
-          </div>
-          </div>
+                    <div class="columns">
+                        <div class="column is-one-quarter">
+                            <nav-two></nav-two>
+                        </div>
+                        <div class="column">
+                            <slot name="content"></slot>
+                        </div>
+                    </div>
                 </div>
             </main>
             <footer>

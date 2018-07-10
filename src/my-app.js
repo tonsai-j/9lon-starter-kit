@@ -5,7 +5,7 @@ import { updateMetadata } from "pwa-helpers/metadata.js";
 import { store } from "./store/store.js";
 import { navigate } from "./actions/my-app-action.js";
 
-import bulmaStyles from './style/bulma-styles'
+// import bulmaStyles from './style/bulma-styles'
 // เอาข้อมูลจาก tag form  เอาข้อมูลกับมาเป้น object
 // http://jsfiddle.net/g7zp5sbL/1/
 // สอนการใช้ slot
@@ -19,6 +19,9 @@ class MyApp extends connect(store)(LitElement) {
       appTitle: String
     };
   }
+  // static get importPath() {
+  //   return import.meta.url
+  // }
   constructor() {
     super();
     this.appTitle = "ระบบพื้นฐาน";
@@ -29,9 +32,8 @@ class MyApp extends connect(store)(LitElement) {
 
   _render({ _page, appTitle }) {
     return html`
-     ${bulmaStyles()}
-    <!-- <link rel="stylesheet" href="../../../style/"> -->
-    <!-- <link rel="stylesheet" href="../style/reset.css"> -->
+     ${BulmaStyle()}
+     
     <my-routes page="${_page}"></my-routes>
     <a id="link" href="/" style="display:none;"></a>
         `;

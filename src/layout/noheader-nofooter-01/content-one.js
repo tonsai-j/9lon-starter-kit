@@ -9,19 +9,19 @@ class contentOne extends LitElement {
           ${bulmaStyles()}
         <div class="">
             <header>
-                        <header-one></header-one>
+                <header-one></header-one>
             </header>
             <main>
-                <div id="content" class="row container">
+              <div id="content" class="row container">
                 <div class="columns">
-          <div class="column">
-          <slot name="content"></slot>
-          </div>
-          </div>
+                  <div class="column">
+                    <slot name="content"></slot>
+                  </div>
                 </div>
+              </div>
             </main>
             <footer>
-            <footer-one></footer-one>
+              <footer-one></footer-one>
             </footer>
         </div> 
         
