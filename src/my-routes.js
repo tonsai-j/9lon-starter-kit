@@ -43,6 +43,14 @@ class MyRoutes extends LitElement {
         <content-two class="page" active?="${page === 'page-dashboard/page-side'}">
             <page-side slot="content" active></page-side>
         </content-two>
+
+        <content-one class="page" active?="${page === 'page-register'}">
+            <page-register slot="content" active></page-register>
+        </content-one>
+
+        <content-one class="page" active?="${page === 'page-renew'}">
+            <page-renew slot="content" active></page-renew>
+        </content-one>
         `
 
 
