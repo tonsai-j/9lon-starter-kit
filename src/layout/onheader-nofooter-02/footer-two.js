@@ -7,10 +7,12 @@ class footerTwo extends LitElement {
         <footer class="footer">
             <div class="content has-text-centered">
                 <p>
-                <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                สามารถใช้งานได้บนบราวเซอร์ Internet Explorer 11 Firefox 24.0 Google Chrome 30 <br>
+                    Copyright(c)2018 กระทรวงพาณิชย์ กรมการค้าต่างประเทศ <br>
+                <!-- <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
                 <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
                 is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-                </p>
+                </p> -->
             </div>
         </footer>
             `;

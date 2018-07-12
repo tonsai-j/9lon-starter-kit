@@ -22,7 +22,7 @@ class navTwo extends LitElement {
         <p class="menu-label">General</p>
         <ul class="menu-list">
           <li>
-            <a>Dashboard</a>
+            <a>หน้าจัดการ</a>
           </li>
           <li>
             <a>Customers</a>
