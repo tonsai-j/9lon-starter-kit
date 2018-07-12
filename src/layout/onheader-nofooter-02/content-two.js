@@ -23,8 +23,6 @@ class contentTwo extends LitElement {
         <style>
            
         </style>
-        <!-- <link rel="stylesheet" href="../../../style/reset.css"> -->
-        <!-- <link rel="stylesheet" href="../../../style/bulma.css"> -->
         ${bulmaStyles()}
         <div class="wrapper">
             <header>
