@@ -4,16 +4,19 @@ import '@polymer/paper-material'
 import '@polymer/paper-button'
 import bulmaStyles from '../../../style/bulma-styles'
 import '@polymer/iron-pages'
+import '@polymer/paper-icon-button'
+import "@polymer/iron-icons/iron-icons";
 
 class ExporterManage extends LitElement {
     static get properties() {
         return {
-            name: Array
+            name: Array,
+            button_tabs: Number
         };
     }
     constructor() {
         super()
-
+        this.button_tabs = 0
     }
     _render({ name }) {
         return html`
@@ -27,7 +30,7 @@ class ExporterManage extends LitElement {
         
             iron-pages {
                 width: 100%;
-                height: 400px;
+                height: 500px;
                 font-size: 3em;
                 color: white;
                 text-align: center;
@@ -44,28 +47,45 @@ class ExporterManage extends LitElement {
             }
         
         
-        
             iron-pages div:nth-child(1) {
-                background-color: #F5F5F5;
+                background-image: url("https://cdn-images-1.medium.com/max/1200/1*yNDx7AIVM0DvsouLfYjR4g.png");
             }
         
             iron-pages div:nth-child(2) {
-                background-color: #00BFFF;
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFR3maypCpITItODx-Ieck9WfBnHqIkhn1Qkj-y3OfefERUr14");
+        
             }
         
             iron-pages div:nth-child(3) {
-                background-color: #87CEEB;
+                background-color: #f2f1f9;
+            }
+        
+            .right {
+                position: absolute;
+                right: 20px;
+                width: 200px;
+                height: 50px;
+                bottom: 20px;
+                /* border: 3px solid #73AD21; */
+                padding: 10px;
+            }
+        
+            .tabs.is-toggle li.is-active a {
+                background-color: #f0f0f0;
+                border-color: #efefef;
+                color: #fff;
+                z-index: 1;
             }
         </style>
         
         
         <paper-material elevation="0">
             <br>
-            <h1 style="text-align:center">จัดการทะเบียน
-            </h1>
-            <div class="tabs is-boxed">
+            <br>
+            <h3 class="title is-4" style="text-align:center">จัดการทะเบียน</h3>
+            <div class="tabs is-toggle is-fullwidth is-large" style="margin-bottom: 0rem;">
                 <ul>
-                    <li class="is-active">
+                    <li class$="${this.button_tabs === 0 ? 'is-active' : ''}" on-click="${(e) => this.tab1()}">
                         <a>
                             <span class="icon is-small">
                                 <i class="fas fa-image" aria-hidden="true"></i>
@@ -73,7 +93,7 @@ class ExporterManage extends LitElement {
                             <span>ลงทะเบียน</span>
                         </a>
                     </li>
-                    <li>
+                    <li class$="${this.button_tabs === 1 ? 'is-active' : ''}" on-click="${(e) => this.tab2()}">
                         <a>
                             <span class="icon is-small">
                                 <i class="fas fa-music" aria-hidden="true"></i>
@@ -81,7 +101,7 @@ class ExporterManage extends LitElement {
                             <span>ต่ออายุ</span>
                         </a>
                     </li>
-                    <li>
+                    <li class$="${this.button_tabs === 2 ? 'is-active' : ''}" on-click="${(e) => this.tab3()}">
                         <a>
                             <span class="icon is-small">
                                 <i class="fas fa-film" aria-hidden="true"></i>
@@ -91,44 +111,63 @@ class ExporterManage extends LitElement {
                     </li>
                 </ul>
             </div>
-            <!-- <paper-material elevation="2"> -->
-                <!-- <br> -->
-                <iron-pages selected="0">
-                    <div>One</div>
-                    <div>Two</div>
-                    <div>Three</div>
-                </iron-pages>
-                <!-- <br> -->
-            <!-- </paper-material> -->
+        
+            <iron-pages selected="${this.button_tabs}">
+                <div>
+                    <span class="right">
+        
+                        <a id="registerExporter" class="button is-success is-focused " style="width:200px;height:50px">ลงทะเบียน</a>
+                    </span>
+                </div>
+        
+                <div>
+                    <span class="right">
+                        <a id="renewExporter" class="button is-info  is-focused " style="width:200px;height:50px">ต่ออายุ</a>
+                    </span>
+                </div>
+        
+                <div>
+                    <span class="right">
+                        <a class="button is-warning is-focused " style="width:200px;height:50px">เปลี่ยนประเภท</a>
+                    </span>
+                </div>
+            </iron-pages>
+        
         </paper-material>
 
 
         `;
     }
-
+    registerExporter(e) {
+        console.log('bbbbbbbbbbbbbbbbbb')
+        this.dispatchEvent(new CustomEvent('change-page', {
+            bubbles: true, composed: true, detail: { path: '/page-register', params: '' }
+        }));
+    }
+    renewExporter(e) {
+        console.log('AAAAAAAAAA')
+        this.dispatchEvent(new CustomEvent('change-page', {
+            bubbles: true, composed: true, detail: { path: '/page-renew', params: '' }
+        }));
+    }
+    tab1() {
+        // console.log(111111111111111111)
+        this.button_tabs = 0
+    }
+    tab2() {
+        // console.log(222222222222222)
+        this.button_tabs = 1
+    }
+    tab3() {
+        // console.log(33333333333333)
+        this.button_tabs = 2
+    }
     _firstRendered() {
-        // var pages = this.shadowRoot.querySelector("iron-pages")
+        var pages = this.shadowRoot.querySelector("#registerExporter")
+        pages.addEventListener('click', this.registerExporter.bind(this));
 
-        // console.log(pages)
-        // setInterval(function () { pages.selectNext(); }, 3000);
-        // pages.addEventListener('click', function (e) {
-
-        //     pages.selectNext();
-        // });
-
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            // for (i = 0; i < tabcontent.length; i++) {
-            //     tabcontent[i].style.display = "none";
-            // }
-            tablinks = document.getElementsByClassName("tablinks");
-            // for (i = 0; i < tablinks.length; i++) {
-            //     tablinks[i].className = tablinks[i].className.replace(" active", "");
-            // }
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
+        var pages = this.shadowRoot.querySelector("#renewExporter")
+        pages.addEventListener('click', this.renewExporter.bind(this));
     }
 }
 

@@ -11,13 +11,14 @@ import './components/page-slide'
 import './components/page-manage'
 import './components/page-new'
 import bulmaStyles from '../../style/bulma-styles'
-import './components/page-register'
+// import './components/page-register'
 // import './shared-styles.js';
 
 import './components/exporter-nav'
 import './components/exporter-slide'
 import './components/exporter-manage'
 import './components/exporter-card'
+import './components/manege-register'
 
 class PageDashboard extends PageViewElement {
     static get properties() {
@@ -52,10 +53,11 @@ class PageDashboard extends PageViewElement {
         <page-new></page-new> -->
 
         <!-- <page-register></page-register> -->
-        <exporter-nav></exporter-nav>
+        <!-- <exporter-nav></exporter-nav> -->
         <exporter-slide></exporter-slide>
         <exporter-manage></exporter-manage>
         <exporter-card></exporter-card>
+        <!-- <manage-register></manage-register> -->
         
         <!-- <style>
             paper-material {

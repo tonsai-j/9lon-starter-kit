@@ -12,7 +12,8 @@ const app = (state =
             return {
                 ...state,
                 page: action.page,
-                params: action.params
+                params: action.params,
+                hash: action.hash
             };
         default:
             return state;

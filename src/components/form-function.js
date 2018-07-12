@@ -16,14 +16,14 @@ const FormMixin = subclass => class extends subclass {
         // ถ้าเป็นตัวเล็กก็ให้แปลงข้อมูล
         if (number === '') {
             value = Number(value)
-            if (isNaN(value)) throw 'กรุณาใส่ค่าที่เป็นตัวเล็กด้วย';
+            if (isNaN(value)) throw 'กรุณาใส่ค่าที่เป็นตัวเลขด้วย';
         }
 
         console.log(name, value);
 
         // var form = this.data;
-        this.data2.firstName =  this.cloneData(value)
-        // this.data[name] = this.cloneData(value);
+        // this.data2.firstName =  this.cloneData(value)
+        this.data[name] = this.cloneData(value);
         // this.data = this.cloneData(form)
         // this.setState(form);
     }
