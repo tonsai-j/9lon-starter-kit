@@ -42,11 +42,10 @@ class MyRoutes extends LitElement {
         </content-three>
         
         
-        <content-two class="page" active?="${page ===
-          "page-dashboard/page-side"}">
+        <content-two class="page" active?="${page === "page-dashboard/page-side"}">
             <page-side slot="content" active></page-side>
         </content-two>
-<<<<<<< HEAD
+
 
         <content-one class="page" active?="${page === 'page-register'}">
             <page-register slot="content" active></page-register>
@@ -55,14 +54,9 @@ class MyRoutes extends LitElement {
         <content-one class="page" active?="${page === 'page-renew'}">
             <page-renew slot="content" active></page-renew>
         </content-one>
-        `
-
-
-    }
-=======
+       
         `;
   }
->>>>>>> 84e36243c5f98f1bed2c4060216973b93edd8660
 }
 
 customElements.define("my-routes", MyRoutes);

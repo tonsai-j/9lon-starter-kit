@@ -11,8 +11,9 @@ import { FormMixin } from "./../../components/form-function.js";
 import { connect } from "../../../node_modules/pwa-helpers/connect-mixin.js";
 // import './shared-styles.js';
 import { store } from "../../store/store";
+import ownStyle from "../../style/own-style";
 class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
-//   class pageForm extends connect(store)(LitElement) {
+  //   class pageForm extends connect(store)(LitElement) {
   static get properties() {
     return {
       data: Object,
@@ -36,6 +37,8 @@ class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
   }
   _render({ data, data2 }) {
     return html`
+    ${ownStyle}
+    <div class="own-style-flex own-flex-middle">
          pageForm sdfsf ได้ ${data2.firstName} --
           <input id="lastName" name="firstName" 
             value="${data2.firstName}"
@@ -54,6 +57,7 @@ class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
             on-focus="${e => this._formSetSeleteValue(e)}">
          
             <button on-click="${e => this.test(e)}">ดึงค่า</button>
+            </div>
         `;
   }
   _didRender(props, changedProps, prevProps) {
