@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "polymer serve -p 4444",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "webpack:dev": "webpack-dev-server --mode development --open",
     "build:webpack": "webpack --config webpack.config.js",
     "watch": "browser-sync start --proxy http://localhost:4444 --files 'src/**/*.*' 'index.html' '*.js'",
@@ -13,7 +13,9 @@
     "build:prpl-server": "gulp clean:prpl-server && gulp build:prpl-server",
     "build:static": "polymer build",
     "serve:prpl-server": "prpl-server --root server/build",
-    "serve:static": "polymer serve --port 5000 build/es5-bundled"
+    "serve:static": "polymer serve --port 5000 build/es5-bundled",
+    "docker:dev:start":"docker-compose -f .\\docker-compose.dev.yml up -d",
+    "docker:dev:rm":"docker-compose -f .\\docker-compose.dev.yml down"
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +33,7 @@
     "@polymer/paper-tabs": "^3.0.0-pre.21",
     "@vaadin/vaadin-grid": "^5.0.0-pre.5",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "pwa-helpers": "^0.8.2",
+    "pwa-helpers": "^0.8.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },

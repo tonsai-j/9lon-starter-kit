@@ -1,12 +1,13 @@
 import { LitElement, html } from "@polymer/lit-element";
-import '@polymer/app-layout/app-header/app-header'
-import '@polymer/app-layout/app-toolbar/app-toolbar'
+// import '@polymer/app-layout/app-header/app-header'
+// import '@polymer/app-layout/app-toolbar/app-toolbar'
 
-import '@polymer/app-layout/app-drawer-layout/app-drawer-layout'
-import '@polymer/app-layout/app-drawer/app-drawer'
+// import '@polymer/app-layout/app-drawer-layout/app-drawer-layout'
+// import '@polymer/app-layout/app-drawer/app-drawer'
 
-import { FlexboxGridLit, FlexboxGridRemovePadding } from './../../style/flexbox-grid-lit';
+// import { FlexboxGridLit, FlexboxGridRemovePadding } from './../../style/flexbox-grid-lit';
 
+// ${FlexboxGridLit} ${FlexboxGridRemovePadding}
 import './header-three'
 import './nav-three'
 // {/* <header-two></header-two>
@@ -22,7 +23,6 @@ class contentThree extends LitElement {
     _render() {
         return html`
       
-         ${FlexboxGridLit} ${FlexboxGridRemovePadding}
         <style>
             app-header {
                 position: fixed;
@@ -88,7 +88,7 @@ class contentThree extends LitElement {
             }
         </style>
         
-        <app-drawer-layout>
+        <!-- <app-drawer-layout>
         
             <app-drawer slot="drawer">
                 <nav-three></nav-three>
@@ -101,11 +101,11 @@ class contentThree extends LitElement {
                         <header-three></header-three>
                     </div>
                 </div>
-            </app-header>
+            </app-header> -->
         
             <slot name="content"></slot>
         
-        </app-drawer-layout>
+        <!-- </app-drawer-layout> -->
 
      
         `

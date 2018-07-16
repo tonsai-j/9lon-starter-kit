@@ -1,6 +1,6 @@
 import { LitElement, html } from "@polymer/lit-element";
-import "@polymer/iron-icon";
-import "@polymer/iron-icons/iron-icons";
+// import "@polymer/iron-icon";
+// import "@polymer/iron-icons/iron-icons";
 import BulmaStyle from "../../style/bulma-styles";
 class navTwo extends LitElement {
   static get properties() {

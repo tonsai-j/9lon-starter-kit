@@ -1,6 +1,6 @@
 import { LitElement, html } from "@polymer/lit-element";
-import "@polymer/app-layout/app-header/app-header";
-import "@polymer/app-layout/app-toolbar/app-toolbar";
+// import "@polymer/app-layout/app-header/app-header";
+// import "@polymer/app-layout/app-toolbar/app-toolbar";
 
 import bulmaStyles from "../../style/bulma-styles";
 

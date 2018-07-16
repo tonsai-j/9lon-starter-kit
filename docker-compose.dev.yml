@@ -1,0 +1,12 @@
+version: '3'
+services:
+  devProject:
+    image: jefferyb/polymer-cli:alpine
+    volumes:
+     - ./:/home/polymer/app
+    ports:
+      - "4455:8081"
+    # environment:
+    #   - NGINX_PORT=80
+    command: polymer serve -H 0.0.0.0
+# docker run --name polymer-project -d -p 4455:8081 -v "$(pwd):/home/polymer/app" jefferyb/polymer-cli polymer serve -H 0.0.0.0

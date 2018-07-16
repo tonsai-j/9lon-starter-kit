@@ -1,7 +1,7 @@
 import { LitElement, html } from "@polymer/lit-element";
 import "./layout/noheader-nofooter-01/content-one";
 import "./layout/onheader-nofooter-02/content-two";
-import "./layout/onheader-nofooter-03/content-three";
+// import "./layout/onheader-nofooter-03/content-three";
 
 import BulmaStyle from "./style/bulma-styles";
 class MyRoutes extends LitElement {
@@ -37,9 +37,9 @@ class MyRoutes extends LitElement {
             <page-form slot="content" active></page-form>
         </content-two>
 
-        <content-three class="page" active?="${page === "page-list-file"}">
+        <content-two class="page" active?="${page === "page-list-file"}">
             <page-list-file slot="content" active></page-list-file>
-        </content-three>
+        </content-two>
         
         
         <content-two class="page" active?="${page === "page-dashboard/page-side"}">

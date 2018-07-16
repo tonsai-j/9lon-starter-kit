@@ -1,0 +1,25 @@
+version: '3'
+services:
+  webapp:
+    image: nginx:1.14-alpine-perl
+    volumes:
+     - ./:/etc/nginx/conf.d/mysite.template
+    ports:
+      - "4567:80"
+    # environment:
+    #   - NGINX_PORT=80
+    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+
+#       version: '2'
+# services:
+#   dft-eu:
+#     image: nextscorp/nylon
+#     # container_name : dft-eu-app
+#     # environment:
+#     #   - NYLON_WATCH=WIN
+#     volumes:
+#       - .:/nylon
+#       #- ./public/build/es5-bundled:/nylon/public
+#     ports:
+#       - 3000:3000
+    

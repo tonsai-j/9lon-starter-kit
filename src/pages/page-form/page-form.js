@@ -8,10 +8,16 @@ import {
 } from "./../../components/my-mixin.js";
 import { FormMixin } from "./../../components/form-function.js";
 // import { connect } from "pwa-helpers/connect-mixin.js";
-import { connect } from "../../../node_modules/pwa-helpers/connect-mixin.js";
+import { connect } from "pwa-helpers/connect-mixin.js";
 // import './shared-styles.js';
 import { store } from "../../store/store";
 import ownStyle from "../../style/own-style";
+import {
+  mahaniyomFont,
+  CSChatThaiFont,
+  notosansthaiFont,
+  rsuFont
+} from "../../style/fonts-style";
 class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
   //   class pageForm extends connect(store)(LitElement) {
   static get properties() {
@@ -37,7 +43,44 @@ class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
   }
   _render({ data, data2 }) {
     return html`
-    ${ownStyle}
+    ${ownStyle} ${rsuFont}  ${mahaniyomFont} ${CSChatThaiFont} ${notosansthaiFont}
+    <style>
+      .testRsu{
+        font-size: 1em;
+				font-family: 'rsuregular', sans-serif;
+				-webkit-font-smoothing: antialiased;
+      }
+      .testmahaniyom{
+        font-size: 1em;
+				font-family: 'mahaniyom', sans-serif;
+				-webkit-font-smoothing: antialiased;
+      }
+      .testCSChatThai{
+        font-size: 1em;
+				font-family: 'CSChatThai', sans-serif;
+				-webkit-font-smoothing: antialiased;
+      }
+      .testnotoSansThaiRegular{
+        font-size: 1em;
+				font-family: 'notoSansThaiRegular', sans-serif;
+				-webkit-font-smoothing: antialiased;
+      }
+      </style>
+      <div class="">
+        ทดสอบ no style font 232
+      </div>
+      <div class="testRsu">
+        ทดสอบ font
+      </div>
+      <div class="testmahaniyom">
+        ทดสอบ font
+      </div>
+      <div class="testCSChatThai">
+        ทดสอบ font
+      </div>
+      <div class="testnotoSansThaiRegular">
+        ทดสอบ font
+      </div>
     <div class="own-style-flex own-flex-middle">
          pageForm sdfsf ได้ ${data2.firstName} --
           <input id="lastName" name="firstName" 
