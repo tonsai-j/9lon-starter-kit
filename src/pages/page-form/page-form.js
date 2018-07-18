@@ -1,16 +1,26 @@
 import { html, LitElement } from "@polymer/lit-element";
 import { PageViewElement } from "./../../components/page-view-element.js";
-import {
-  Mixin,
-  MyMixin,
-  MyMixinTwo,
-  MyMixinThree
-} from "./../../components/my-mixin.js";
+// import {
+//   Mixin,
+//   MyMixin,
+//   MyMixinTwo,
+//   MyMixinThree
+// } from "./../../components/my-mixin.js";
 import { FormMixin } from "./../../components/form-function.js";
-// import { connect } from "pwa-helpers/connect-mixin.js";
 import { connect } from "pwa-helpers/connect-mixin.js";
-// import './shared-styles.js';
+
+// This element is connected to the Redux store.
 import { store } from "../../store/store";
+
+// These are the actions needed by this element.
+import { formSaveRegister } from '../../actions/form-input-action';
+
+// We are lazy loading its reducer.
+import formInput from '../../reducers/form-input-reducer';
+store.addReducers({
+  formInput
+});
+
 import ownStyle from "../../style/own-style";
 import {
   mahaniyomFont,
@@ -18,12 +28,14 @@ import {
   notosansthaiFont,
   rsuFont
 } from "../../style/fonts-style";
-class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
-  //   class pageForm extends connect(store)(LitElement) {
+// class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
+class pageForm extends connect(store)(FormMixin(PageViewElement)) {
+  // class pageForm extends connect(store)(LitElement) {
   static get properties() {
     return {
       data: Object,
-      data2: Object
+      data2: Object,
+      number: Object
     };
   }
   _stateChanged(state) {
@@ -39,12 +51,15 @@ class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
     this.data2 = {
       firstName: "ชื่อ"
     };
+    this.number = {
+      num: 0
+    };
     // this.value = "x"
   }
   _render({ data, data2 }) {
     return html`
     ${ownStyle} ${rsuFont}  ${mahaniyomFont} ${CSChatThaiFont} ${notosansthaiFont}
-    <style>
+    <!-- <style>
       .testRsu{
         font-size: 1em;
 				font-family: 'rsuregular', sans-serif;
@@ -80,15 +95,18 @@ class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
       </div>
       <div class="testnotoSansThaiRegular">
         ทดสอบ font
-      </div>
-    <div class="own-style-flex own-flex-middle">
+        own-style-flex own-flex-middle
+      </div> -->
+      <button on-click="${e => this._test(e)}"> เรียกค่า</button>
+      จำนวนการคลิก ${this.number.num} <-
+    <div class="">
          pageForm sdfsf ได้ ${data2.firstName} --
           <input id="lastName" name="firstName" 
             value="${data2.firstName}"
             on-input="${e => this._formOnInputObject(e)}" 
             on-focus="${e => this._formSetSeleteValue(e)}">
 
-        ${data.firstName}
+        "" > ${data.firstName} <----
         <input id="firstName" name="firstName" number
             value="${data.firstName}"
             on-input="${e => this._formOnInputObject(e)}" 
@@ -101,16 +119,23 @@ class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
          
             <button on-click="${e => this.test(e)}">ดึงค่า</button>
             </div>
+
+            <button on-click="${e => this.saveRedux(e)}"> บันทึก</button>
         `;
   }
   _didRender(props, changedProps, prevProps) {
-    console.log(props, changedProps, prevProps);
-    console.log("-----------------------------------");
+    // console.log(props, changedProps, prevProps);
+    // console.log("-----------------------------------");
   }
+  saveRedux() {
+    console.log("this.data   asds >", this.data);
+    console.log('เข้า')
+    store.dispatch(formSaveRegister(this.data))
+  }
+
   test(e) {
     // console.log(e);
-    console.log(this.data);
-
+    // console.log(this.data);
     // let nextParams = { x: 2 }
     // this._redirect('/page-exporter', nextParams)
   }
