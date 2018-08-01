@@ -27,9 +27,11 @@ class MyBreadcrumb extends LitElement {
      ${bulmaStyles()}
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
-                ${value.map(({ classname, href, name }) => {
+                ${value.map(({ href, name ,last}) => {
                   return html`
-                    <li class$=${classname}><a href$=${href}>${name}</a></li>
+                    <li class$=${(last ? 'is-active' : '')}>
+                        <a href$=${href} aria-current$=${(last ? 'page' : '')}>${name}</a>
+                    </li>
                     `;
                 })}
                 <!-- <li><a href="/">Bulma</a></li>
@@ -41,23 +43,15 @@ class MyBreadcrumb extends LitElement {
         `;
   }
   _shouldRender(props, changedProps, prevProps) {
-    // classname: "is-active",
     let lengthValue = this.value.length || 0;
-    let newBr = [];
-    let newObj = {};
     this.value.forEach((e, index) => {
+      // ต้องเป็นค่าสุดท้าย
       if (index === lengthValue - 1) {
-        e = Object.assign(e, { classname: "is-active" });
+        e = Object.assign(e, { classname: "is-active" ,last: true});
       } else {
-        e = Object.assign(e, { classname: "" });
+        e = Object.assign(e, { classname: "",last: false });
       }
-
-      //   newBr.push(newObj);
-      // delete e
-      // return e
     });
-    // console.log('newBr',newBr);
-
     return true;
   }
 }
