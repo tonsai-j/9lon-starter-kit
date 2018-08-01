@@ -11,16 +11,9 @@ class headerNav extends LitElement {
           
           .is-con-menu{
             height:45px;
-            display: -webkit-flex; /* Safari */
-            display: flex;
-            -webkit-align-items: stretch; /* Safari 7.0+ */
-            align-items: stretch;
             line-height: 1;
           }
           .menu-nav{
-            display: -webkit-flex; /* Safari */
-            display: flex;
-            align-items: center;
             color:#ffffff;
             padding:0px 15px;
           }
@@ -29,13 +22,13 @@ class headerNav extends LitElement {
             color:black;
           }
           </style>
-            <div class="is-nav-black" >
-                <div class="container is-con-menu">
+            <div class="is-nav-black " >
+                <div class="container is-con-menu own-flex-stretch ">
                 <!-- <menu> -->
-                    <a class="menu-nav "> หน้าแรก</a> 
-                    <a class="menu-nav"> ข้าวประกาศ</a>
-                    <a class="menu-nav"> คำถามที่พบบ่อย</a>
-                    <a class="menu-nav"> ติดต่อหน่วยงาน</a>   
+                    <a class="menu-nav own-flex-middle "> หน้าแรก</a> 
+                    <a class="menu-nav own-flex-middle"> ข่าวประกาศ</a>
+                    <a class="menu-nav own-flex-middle"> คำถามที่พบบ่อย</a>
+                    <a class="menu-nav own-flex-middle"> ติดต่อหน่วยงาน</a>   
                 <!-- </menu> -->
                 </div>
             </div>
