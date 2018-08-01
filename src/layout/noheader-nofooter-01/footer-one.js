@@ -1,10 +1,21 @@
 import { LitElement, html } from "@polymer/lit-element";
-
+import BulmaStyle from "../../style/bulma-styles";
+import ownStyle from "../../style/own-style";
 class footerOne extends LitElement {
-    _render(){
-        return html`
-            
-            `
-    }
+  _render() {
+    return html`
+             ${ownStyle} 
+        
+        ${BulmaStyle()}
+        <footer class="footer is-nav-black">
+            <div class="content has-text-centered">
+                <p>
+                สามารถใช้งานได้บนบราวเซอร์ Google Chrome 30 <br>
+                    Copyright(c)2018 กระทรวงพาณิชย์ กรมการค้าต่างประเทศ <br>
+                </p>
+            </div>
+        </footer>
+            `;
+  }
 }
-customElements.define('footer-one', footerOne)
+customElements.define("footer-one", footerOne);
