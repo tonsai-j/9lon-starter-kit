@@ -5,19 +5,41 @@ const RouterConfig = (store, navigate) => [
     action: store.dispatch(navigate("page-dashboard")),
     component: "page-dashboard"
   },
-  { path: "/two", component: "my-two" },
-  { path: "/three", component: "my-three" },
+  {
+    path: "/exporter",
+    action: store.dispatch(navigate("page-exporter")),
+    component: "page-exporter"
+  },
+  {
+    path: "/form",
+    action: store.dispatch(navigate("page-form")),
+    component: "page-form"
+  },
+  {
+    path: "/index-default",
+    action: store.dispatch(navigate("page-index-default")),
+    component: "page-index-default"
+  },
+  {
+    path: "/register",
+    action: store.dispatch(navigate("page-register")),
+    component: "page-register"
+  },
   {
     path: "/renew",
-    action: ctx => store.dispatch(navigate("page-renew")),
+    action:  store.dispatch(navigate("page-renew")),
     component: "page-renew"
+  },
+  {
+    path: "(.*)",
+    action: ctx => store.dispatch(navigate("page-404")),
+    component: "page-404"
   }
 ];
 
 const RouterPage = async page => {
   // console.log(page);
   // console.log(__dirname);
-
   switch (page) {
     case "page-dashboard":
       await import("../pages/page-dashboard/page-dashboard.js");
@@ -49,7 +71,6 @@ const RouterPage = async page => {
       await import("../pages/page-index-default/page-index-default.js");
       break;
     default:
-      //   page = "page-404";
       await import("../pages/page-404/page-404.js");
   }
 };

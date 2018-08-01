@@ -1,12 +1,8 @@
 import { html,LitElement } from '@polymer/lit-element';
-// import { PageViewElement } from './../../components/page-view-element.js';
-import { Mixin, MyMixin, MyMixinTwo, MyMixinThree } from './../../components/my-mixin.js'
 
 import BulmaStyle from '../../style/bulma-styles'
-import FontawesomeStyle from '../../style/fontawesome-style'
-// import './shared-styles.js';
 
-class PageExporter extends Mixin(LitElement).with(MyMixin, MyMixinTwo, MyMixinThree) {
+class PageExporter extends LitElement {
     _render() {
         return html`
         ${BulmaStyle()}
@@ -16,7 +12,7 @@ class PageExporter extends Mixin(LitElement).with(MyMixin, MyMixinTwo, MyMixinTh
             </div>
             หน้าเพจ Exporter 
             <input class="input" type="text" placeholder="Text input" />
-1212
+                1212
             `;
     }
 

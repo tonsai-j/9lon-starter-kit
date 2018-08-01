@@ -31,14 +31,14 @@ class ExporterTable extends LitElement {
             }
         </style>
         <section>
-            <div class="hero-body">
+            <!-- <div class="hero-body"> -->
                 <div class="container">
                     <h1 class="subtitle" style="text-align:left">
                         รายชื่อคณะกรรมการ
                     </h1>
                     <a class="button is-info is-focused">Focus</a>
                 </div>
-            </div>
+            <!-- </div> -->
         </section>
         <!-- <p>
                                                                                                                                                                                                             <hr>
