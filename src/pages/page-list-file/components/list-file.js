@@ -1,6 +1,6 @@
 import { LitElement, html } from '@polymer/lit-element';
 import '@polymer/iron-icon'
-import '@polymer/iron-icons/iron-icons'
+// import '@polymer/iron-icons/iron-icons'
 import { FlexboxGridLit, FlexboxGridRemovePadding } from '../../../style/flexbox-grid-lit';
 // import './shared-styles.js';
 import { StyleFile } from './style-file.js'

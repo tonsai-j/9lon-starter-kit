@@ -2,31 +2,54 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.js",
   "sources": ["images/**/*", "style/**/*"],
+  "fragments": [
+    "src/pages/page-404/page-404.js",
+    "src/pages/page-dashboard/page-dashboard.js",
+    "src/pages/page-exporter/page-exporter.js",
+    "src/pages/page-form/page-form.js",
+    "src/pages/page-list-file/page-list-file.js",
+    "src/pages/page-register/page-register.js",
+    "src/pages/page-renew/page-renew.js"
+  ],
   "extraDependencies": ["node_modules/@webcomponents/webcomponentsjs/**"],
   "builds": [
+    { 
+      "name": "es6-prod",
+      "preset": "es6-unbundled",
+      "html": {
+        "minify": {
+          "exclude": [
+            "/style/bulma-new-style/bulma.min.css",
+            "/style/fontawesome/all.css"
+          ]
+        }
+      },
+      "basePath": true,  
+      "addServiceWorker": true
+    },
     {
       "name": "es5-bundled",
-      "bundle": {
-        "stripComments": "true",
-        "inlineCss": "false",
-        "sourcemaps": "true"
-      },
-      "js": {
-        "compile": "es5",
-        "minify": true,
-        "transformModulesToAmd": true
-      },
+      "browserCapabilities": ["es2015", "push"],
+      "preset": "es5-bundled",
       "css": {
         "minify": true
       },
       "html": {
         "minify": {
           "exclude": [
-            "/style/bulma-new-style/bulma.min.css"
+            "/style/bulma-new-style/bulma.min.css",
+            "/style/fontawesome/all.css"
           ]
         }
       },
-      "autoBasePath":true,
+      "bundle": {             
+        "inlineCss": true,          
+        "inlineScripts": true,      
+        "rewriteUrlsInTemplates": true, 
+        "sourcemaps": true,     
+        "stripComments": true  
+      },
+      "basePath": true,  
       "addServiceWorker": true
     }
   ],

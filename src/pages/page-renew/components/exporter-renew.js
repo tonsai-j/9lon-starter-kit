@@ -1,11 +1,11 @@
 import { LitElement, html } from '@polymer/lit-element';
 // import { PageViewElement } from './../../../components/page-view-element';
 import '@polymer/paper-material'
-import '@polymer/paper-button'
+//import '@polymer/paper-button'
 import bulmaStyles from '../../../style/bulma-styles'
 import '@polymer/iron-pages'
 import '@polymer/paper-icon-button'
-import "@polymer/iron-icons/iron-icons";
+// //import "@polymer/iron-icons/iron-icons";
 
 class ExporterRenew extends LitElement {
     static get properties() {

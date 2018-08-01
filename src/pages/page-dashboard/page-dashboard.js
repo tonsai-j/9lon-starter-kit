@@ -1,8 +1,8 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './../../components/page-view-element';
 import '@polymer/paper-material'
-import '@polymer/paper-input/paper-input'
-import '@polymer/paper-button'
+// import '@polymer/paper-input/paper-input'
+//import '@polymer/paper-button'
 
 import './components/profile-filter'
 import './components/profile-table'

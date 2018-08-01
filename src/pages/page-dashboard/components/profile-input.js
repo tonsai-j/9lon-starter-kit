@@ -3,8 +3,8 @@ import { LitElement, html } from '@polymer/lit-element';
 import '@polymer/paper-material'
 import '@vaadin/vaadin-grid'
 import '@vaadin/vaadin-grid/vaadin-grid-column'
-import '@polymer/paper-button'
-import '@polymer/paper-input/paper-input'
+//import '@polymer/paper-button'
+// import '@polymer/paper-input/paper-input'
 
 
 class ProfileInput extends LitElement {

@@ -1,7 +1,7 @@
 import { LitElement, html } from '@polymer/lit-element';
 // import { PageViewElement } from './../../../components/page-view-element';
 import '@polymer/paper-material'
-import '@polymer/paper-card'
+// import '@polymer/paper-card'
 
 
 class PageNew extends LitElement {

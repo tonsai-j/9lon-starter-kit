@@ -1,7 +1,7 @@
 import { LitElement, html } from '@polymer/lit-element';
 // import { PageViewElement } from './../../../components/page-view-element';
 import '@polymer/paper-material'
-import '@polymer/paper-button'
+//import '@polymer/paper-button'
 
 class PageManage extends LitElement {
     static get properties() {

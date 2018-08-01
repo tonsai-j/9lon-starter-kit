@@ -14,21 +14,15 @@
     "build:static": "polymer build",
     "serve:prpl-server": "prpl-server --root server/build",
     "serve:static": "polymer serve --port 5000 build/es5-bundled",
-    "docker:dev:start":"docker-compose -f .\\docker-compose.dev.yml up -d",
-    "docker:dev:rm":"docker-compose -f .\\docker-compose.dev.yml down"
+    "docker:dev:start": "docker-compose -f .\\docker-compose.dev.yml up -d",
+    "docker:dev:rm": "docker-compose -f .\\docker-compose.dev.yml down"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@polymer/app-layout": "^3.0.0-pre.19",
     "@polymer/iron-icon": "^3.0.0-pre.19",
-    "@polymer/iron-icons": "^3.0.0-pre.21",
     "@polymer/iron-pages": "^3.0.0-pre.21",
     "@polymer/lit-element": "^0.5.1",
-    "@polymer/paper-button": "^3.0.0-pre.19",
-    "@polymer/paper-card": "^3.0.0-pre.21",
-    "@polymer/paper-icon-button": "^3.0.0-pre.21",
-    "@polymer/paper-input": "^3.0.0-pre.19",
     "@polymer/paper-material": "^3.0.0-pre.19",
     "@polymer/paper-tabs": "^3.0.0-pre.21",
     "@vaadin/vaadin-grid": "^5.0.0-pre.5",
