@@ -1,14 +1,9 @@
 export const UPDATE_PAGE = "UPDATE_PAGE";
 
 export const navigate = location => dispatch => {
-  console.log("location", location);
+  // console.log("location", location);
 
   var path = window.decodeURIComponent(location.pathname);
-  // if (path !== '/') {
-  //     path = path.replace('page-', '')
-  //     path = '/page-' + path.replace('/', '')
-  // }
-  // console.log('path', path);
   var search = location.search.substring(1);
   var params = {};
   if (location.search != "") {
@@ -24,7 +19,7 @@ export const navigate = location => dispatch => {
   let hash = location.hash;
   // Extract the page name from path.
   const page = path === "/" ? "page-dashboard" : path.slice(1);
-  console.log("page", page);
+  // console.log("page", page);
   // Any other info you might want to extract from the path (like page type),
   // you can do here
   dispatch(loadPage(page, params, hash));
@@ -41,11 +36,7 @@ const loadPage = (page, params, hash) => async dispatch => {
       // navigate to view1 page and my-view1.js is loaded
       break;
     case "page-dashboard/page-side":
-      // console.log(1111111);
-
       await import("../pages/page-dashboard/page-side.js");
-      // Put code here that you want it to run every time when
-      // navigate to view1 page and my-view1.js is loaded
       break;
     case "page-exporter":
       await import("../pages/page-exporter/page-exporter.js");
@@ -62,7 +53,12 @@ const loadPage = (page, params, hash) => async dispatch => {
     case "page-renew":
       await import("../pages/page-renew/page-renew.js");
       break;
-
+    case "page-index":
+      await import("../pages/page-index/page-index.js");
+      break;
+    case "page-index-default":
+      await import("../pages/page-index-default/page-index-default.js");
+      break;
     default:
       page = "page-404";
       await import("../pages/page-404/page-404.js");
