@@ -31,6 +31,11 @@ const RouterConfig = (store, navigate) => [
     component: "page-renew"
   },
   {
+    path: "/index",
+    action:  store.dispatch(navigate("page-index")),
+    component: "page-index"
+  },
+  {
     path: "(.*)",
     action: ctx => store.dispatch(navigate("page-404")),
     component: "page-404"

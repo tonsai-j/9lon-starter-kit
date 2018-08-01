@@ -83,10 +83,6 @@ class PageDashboard extends LitElement {
                 <paper-button class="pink">ค้นหา</paper-button>
             </paper-material>
         </div> -->
-        <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean accumsan, lorem id efficitur tincidunt, neque ligula euismod
-                                                                lectus, in imperdiet erat libero eu ligula. In ac varius nisl. Aliquam nunc augue, elementum eget dapibus quis, elementum
-                                                                id diam. Etiam condimentum, lacus et facilisis efficitur, lectus velit commodo lacus, quis pellentesque orci massa
-                                                                quis turpis.  -->
         
         `;
     }
