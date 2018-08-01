@@ -1,23 +1,19 @@
-import { html } from '@polymer/lit-element';
-import { PageViewElement } from './../../components/page-view-element.js';
-import bulmaStyles from '../../style/bulma-styles'
-import './components/exporter-renew'
+import { html ,LitElement} from "@polymer/lit-element";
+import bulmaStyles from "../../style/bulma-styles";
+import "./components/exporter-renew";
 
-class PageRenew extends PageViewElement {
-    _render() {
-        return html`
+class PageRenew extends LitElement {
+  _render() {
+    return html`
              ${bulmaStyles()}
             
-            ssssssssss
+            ลานา
         `;
-    }
+  }
+  onAfterEnter(context) {
+    console.log(context);
 
-    _pageActive(params) {
-        console.log(params)
-        console.log('page-list-file');
-
-    }
-
+  }
 }
 
-customElements.define('page-renew', PageRenew);
+customElements.define("page-renew", PageRenew);

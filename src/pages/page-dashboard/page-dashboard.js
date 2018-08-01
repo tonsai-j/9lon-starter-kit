@@ -1,5 +1,5 @@
-import { html } from '@polymer/lit-element';
-import { PageViewElement } from './../../components/page-view-element';
+import { html, LitElement} from '@polymer/lit-element';
+// import { PageViewElement } from './../../components/page-view-element';
 import '@polymer/paper-material'
 // import '@polymer/paper-input/paper-input'
 //import '@polymer/paper-button'
@@ -20,7 +20,7 @@ import './components/exporter-manage'
 import './components/exporter-card'
 import './components/manege-register'
 
-class PageDashboard extends PageViewElement {
+class PageDashboard extends LitElement {
     static get properties() {
         return {
             name: Array

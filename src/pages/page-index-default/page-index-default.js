@@ -1,9 +1,8 @@
-import { html } from '@polymer/lit-element';
-import { PageViewElement } from './../../components/page-view-element.js';
+import { html ,LitElement} from '@polymer/lit-element';
 import bulmaStyles from '../../style/bulma-styles'
 // import './components/exporter-renew'
 
-class PageIndexDefault extends PageViewElement {
+class PageIndexDefault extends LitElement {
     _render() {
         return html`
              ${bulmaStyles()}

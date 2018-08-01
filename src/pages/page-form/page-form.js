@@ -1,11 +1,4 @@
 import { html, LitElement } from "@polymer/lit-element";
-import { PageViewElement } from "./../../components/page-view-element.js";
-// import {
-//   Mixin,
-//   MyMixin,
-//   MyMixinTwo,
-//   MyMixinThree
-// } from "./../../components/my-mixin.js";
 import { FormMixin } from "../../function/form-function";
 import { connect } from "pwa-helpers/connect-mixin.js";
 
@@ -33,7 +26,7 @@ import to from "../../function/to";
 import "../../components/my-input";
 import bulmaStyles from "../../style/bulma-styles";
 // class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
-class pageForm extends connect(store)(FormMixin(PageViewElement)) {
+class pageForm extends connect(store)(FormMixin(LitElement)) {
   // class pageForm extends connect(store)(LitElement) {
   static get properties() {
     return {
