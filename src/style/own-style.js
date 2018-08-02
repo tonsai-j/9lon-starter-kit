@@ -3,6 +3,10 @@ import { html } from "@polymer/lit-element";
 export default html`
 <style>
     /* https://cssreference.io/property/align-items/ */
+    .own-text-middle{
+        line-height: 38px;
+    }
+    
     .own-style-flex {
         width: 100%;
         height: 100%;
