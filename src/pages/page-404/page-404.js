@@ -1,20 +1,15 @@
-import { html } from '@polymer/lit-element';
-import { PageViewElement } from './../../components/page-view-element.js';
-
-// import './shared-styles.js';
-
-class Page404 extends PageViewElement {
-    _render() {
-        return html`
-            Page404
+import { html, LitElement } from "@polymer/lit-element";
+import bulmaStyles from "../../style/bulma-styles";
+class Page404 extends LitElement {
+  _render() {
+    return html`
+         ${bulmaStyles()}
+           404 <br>
+            ขอโทษ <br>
+            เราหาหน้าเว็บที่ท่านต้องการไม่เจอ
         
         `;
-    }
-
-    _pageActive(params){
-        console.log(params)
-    }
-
+  }
 }
 
-customElements.define('page-404', Page404);
+customElements.define("page-404", Page404);

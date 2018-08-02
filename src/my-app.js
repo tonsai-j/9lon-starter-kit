@@ -12,6 +12,7 @@ import { Router } from "@vaadin/router";
 import "./layout/noheader-nofooter-01/content-one";
 import BulmaStyle from "./style/bulma-styles";
 import { RouterConfig } from "./components/routes-setting";
+
 class MyApp extends connect(store)(LitElement) {
   static get properties() {
     return {
@@ -30,11 +31,6 @@ class MyApp extends connect(store)(LitElement) {
   _render({ _page }) {
     return html`
      ${BulmaStyle()}
-     <!-- <a href="/">one</a>
-    <a href="/two">two</a>
-    <a href="/three">three</a>
-    <a href="/renew">page-renew</a>
-     -->
     <content-one>
       <div id="outlet" slot="content"></div>
     </content-one>
