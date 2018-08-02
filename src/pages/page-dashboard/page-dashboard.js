@@ -1,5 +1,5 @@
-import { html } from '@polymer/lit-element';
-import { PageViewElement } from './../../components/page-view-element';
+import { html, LitElement} from '@polymer/lit-element';
+// import { PageViewElement } from './../../components/page-view-element';
 import '@polymer/paper-material'
 import bulmaStyles from '../../style/bulma-styles'
 
@@ -9,7 +9,7 @@ import './components/exporter-card'
 
 import './components/exporter-sign'
 
-class PageDashboard extends PageViewElement {
+class PageDashboard extends LitElement {
     static get properties() {
         return {
             name: Array
@@ -35,7 +35,16 @@ class PageDashboard extends PageViewElement {
         <!-- <exporter-manage></exporter-manage>
         <exporter-card></exporter-card> -->
         
+<<<<<<< HEAD
         <exporter-sign></exporter-sign>
+=======
+            <paper-material elevation="1" style="text-align:left">
+                <paper-input label="this input requires some text" required auto-validate error-message="needs some text!">
+                </paper-input>
+                <paper-button class="pink">ค้นหา</paper-button>
+            </paper-material>
+        </div> -->
+>>>>>>> 36f8f83cab647997fc16e3f9a44df8e05a44a365
         
         `;
     }

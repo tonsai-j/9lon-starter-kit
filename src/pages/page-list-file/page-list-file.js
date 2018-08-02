@@ -1,9 +1,9 @@
-import { html } from '@polymer/lit-element';
-import { PageViewElement } from './../../components/page-view-element.js';
+import { html ,LitElement} from '@polymer/lit-element';
+// import { PageViewElement } from './../../components/page-view-element.js';
 import './components/list-files.js'
 // import './shared-styles.js';
 
-class PageListFile extends PageViewElement {
+class PageListFile extends LitElement {
     _render() {
         return html`
             page-list-file -> <list-files></list-files>

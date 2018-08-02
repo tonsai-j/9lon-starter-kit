@@ -8,7 +8,7 @@ const FormMixinClass = subclass =>
     //     this.dispatchEvent(new CustomEvent('whales', {detail: {whales: this.whales}}))
     //   });
     async _test() {
-      console.log("MyMixin");ย
+      console.log("MyMixin");
       this.number.num++;
       this.number = Object.assign(this.number, this.number);
       console.log(this.number);

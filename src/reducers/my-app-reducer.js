@@ -1,13 +1,12 @@
 import { UPDATE_PAGE } from '../actions/my-app-action.js';
-
+import { ROUTERDEFAULT } from '../components/routes-setting'
 const app = (state =
     {
-        page: "page-dashboard",
+        page: ROUTERDEFAULT,
         params: {}
     }, action) => {
     switch (action.type) {
         case UPDATE_PAGE:
-        // console.log('action',action);
         
             return {
                 ...state,

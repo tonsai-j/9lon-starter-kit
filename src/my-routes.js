@@ -10,9 +10,9 @@ class MyRoutes extends LitElement {
       page: String
     };
   }
-//   static get importPath() {
-//     return import.meta.url;
-//   }
+  //   static get importPath() {
+  //     return import.meta.url;
+  //   }
   _render({ page }) {
     return html`
         <style>
@@ -26,6 +26,8 @@ class MyRoutes extends LitElement {
         </style>
         ${BulmaStyle()}
         <!-- <link rel="stylesheet" href="../style/reset.css"> -->
+        
+        
         <content-one class="page" active?="${page === "page-dashboard"}">
             <page-dashboard slot="content" active></page-dashboard>
         </content-one>
@@ -42,19 +44,28 @@ class MyRoutes extends LitElement {
         </content-two>
         
         
-        <content-two class="page" active?="${page === "page-dashboard/page-side"}">
+        <content-two class="page" active?="${page ===
+          "page-dashboard/page-side"}">
             <page-side slot="content" active></page-side>
         </content-two>
 
 
-        <content-one class="page" active?="${page === 'page-register'}">
+        <content-one class="page" active?="${page === "page-register"}">
             <page-register slot="content" active></page-register>
         </content-one>
 
-        <content-one class="page" active?="${page === 'page-renew'}">
+        <content-one class="page" active?="${page === "page-renew"}">
             <page-renew slot="content" active></page-renew>
         </content-one>
        
+        <content-one class="page" active?="${page === "page-index"}">
+            <page-index slot="content" active></page-index>
+        </content-one>
+
+        <content-one class="page" active?="${page === "page-index-default"}">
+            <page-index-default slot="content" active></page-index-default>
+        </content-one>
+        
         `;
   }
 }

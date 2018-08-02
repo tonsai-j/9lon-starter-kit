@@ -23,13 +23,13 @@ class ExporterRegist extends LitElement {
         <style>
         </style>
         <section>
-            <div class="hero-body">
+            <!-- <div class="hero-body"> -->
                 <div class="container">
                     <h1 class="title" style="text-align:center">
                         ข้อมูลส่วนตัว
                     </h1>
                 </div>
-            </div>
+            <!-- </div> -->
         </section>
         <p>
             <hr>
