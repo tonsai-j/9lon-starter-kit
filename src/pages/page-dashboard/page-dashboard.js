@@ -35,16 +35,7 @@ class PageDashboard extends LitElement {
         <!-- <exporter-manage></exporter-manage>
         <exporter-card></exporter-card> -->
         
-<<<<<<< HEAD
         <exporter-sign></exporter-sign>
-=======
-            <paper-material elevation="1" style="text-align:left">
-                <paper-input label="this input requires some text" required auto-validate error-message="needs some text!">
-                </paper-input>
-                <paper-button class="pink">ค้นหา</paper-button>
-            </paper-material>
-        </div> -->
->>>>>>> 36f8f83cab647997fc16e3f9a44df8e05a44a365
         
         `;
     }
