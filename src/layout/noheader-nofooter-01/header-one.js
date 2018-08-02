@@ -31,8 +31,29 @@ class headerOne extends LitElement {
             </div>
             <div class="navbar-menu">
               <div class="navbar-end">
-                <div class="own-flex-middle">
+                <!-- <div class="own-flex-middle">
                   เข้าสู่ระบบ
+                </div> -->
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="own-flex-middle">
+                      เข้าสู่ระบบ v
+                    </div>
+                    <div class="navbar-dropdown is-boxed">
+                      <a class="navbar-item" href="/documentation/overview/start/">
+                        Overview
+                      </a>
+                      <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
+                        Modifiers
+                      </a>
+                      <hr class="navbar-divider">
+                      <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
+                        Elements
+                      </a>
+                      <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
+                        ออกจากระบบ
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -27,16 +27,40 @@ const RouterConfig = (store, navigate) => [
   },
   {
     path: "/renew",
-    action:  store.dispatch(navigate("page-renew")),
+    action: store.dispatch(navigate("page-renew")),
     component: "page-renew"
   },
+  // {
+  //   path: '/index',
+  //     children: [
+  //       // {
+  //       //   path: '/x',
+  //       //   action: store.dispatch(navigate("page-index")),
+  //       //   component: 'page-index'
+  //       // },
+  //       {
+  //         path: '/:user/:to',
+  //         // action: store.dispatch(navigate("page-index")),
+  //         action : (ctx)=>{
+  //           console.log(ctx);
+            
+  //           store.dispatch(navigate("page-index"))
+  //         },
+  //         component: 'page-index'
+  //       },
+  //     ]
+  //   },
   {
     path: "/index",
-    action:  store.dispatch(navigate("page-index")),
+    action: ctx => {
+      // console.log(ctx);
+
+      store.dispatch(navigate("page-index"));
+    },
     component: "page-index"
   },
   {
-    path: "(.*)",
+    path: "/notfound/(.*)",
     action: ctx => store.dispatch(navigate("page-404")),
     component: "page-404"
   }
@@ -74,6 +98,9 @@ const RouterPage = async page => {
       break;
     case "page-index-default":
       await import("../pages/page-index-default/page-index-default.js");
+      break;
+    case "my-three":
+      await import("../my-three");
       break;
     default:
       await import("../pages/page-404/page-404.js");
