@@ -51,6 +51,11 @@ const RouterConfig = (store, navigate) => [
   //     ]
   //   },
   {
+    path: "/login",
+    action:store.dispatch(navigate("page-login")),
+    component: "page-login"
+  },
+  {
     path: "/index",
     action: ctx => {
       // console.log(ctx);
@@ -99,8 +104,8 @@ const RouterPage = async page => {
     case "page-index-default":
       await import("../pages/page-index-default/page-index-default.js");
       break;
-    case "my-three":
-      await import("../my-three");
+    case "page-login":
+      await import("../pages/page-login/page-login");
       break;
     default:
       await import("../pages/page-404/page-404.js");
