@@ -1,22 +1,37 @@
 import { html, LitElement } from "@polymer/lit-element";
-import { Mixin, MyMixin, MyMixinTwo, MyMixinThree } from '../../function/my-mixin'
-import Composable from '../../function/ComposableMixin'
+import {
+  Mixin,
+  MyMixin,
+  MyMixinTwo,
+  MyMixinThree
+} from "../../function/my-mixin";
+import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
 import "../../components/my-breadcrumb";
 // import "../../components/my-tabs/my-tab";
 import "../../components/my-tabs/my-tabs";
+import "../../components/my-input/my-input";
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
-  class PageIndex extends Composable(LitElement).compose(MyMixin,MyMixinTwo,MyMixinThree) {
-// class PageIndex extends LitElement {
+class PageIndex extends Composable(LitElement).compose(
+  MyMixin,
+  MyMixinTwo,
+  MyMixinThree
+) {
+  // class PageIndex extends LitElement {
   static get properties() {
     return {
       brk: Array,
-      seletedTab: Number
+      seletedTab: Number,
+      contract: Object
     };
   }
   constructor() {
     super();
     this.seletedTab = 1;
+    this.contract = {
+      first_name: "ตั้งต้น",
+      last_name: "ไม่มี"
+    };
     this.brk = [
       {
         href: "/",
@@ -41,7 +56,7 @@ import "../../components/my-tabs/my-tabs";
     // });
     this._setValueProps = this._setValueProps.bind(this);
   }
-  _render({ brk, seletedTab }) {
+  _render({ brk, seletedTab, contract }) {
     return html`
          ${bulmaStyles()}
             page-index
@@ -58,6 +73,20 @@ import "../../components/my-tabs/my-tabs";
               <my-tab>อัพโหลดเอกสาร</my-tab>   
               <my-tab style="color:red">รายงาน</my-tab>       
             </my-tabs>
+            ${contract.first_name} <- first_name
+            ${contract.last_name} <- first_name
+            <my-input classnylon="input is-primary" 
+                      value$="${contract.first_name}"
+                      type="text" 
+                      placeholder="Text input"
+                      name-value="contract first_name" 
+                      on-value-changed="${this._setValueProps}" ></my-input>
+            <my-input classnylon="input is-primary" 
+                      value$="${contract.last_name}"
+                      type="text" 
+                      placeholder="Text input"
+                      name-value="contract last_name" 
+                      on-value-changed="${this._setValueProps}" ></my-input>
             
         `;
   }
@@ -69,14 +98,25 @@ import "../../components/my-tabs/my-tabs";
     this.brk = this.brk.slice(0);
     // console.log(this.brk);
   }
-  _setValueProps(e) {
+  async _setValueProps(e) {
     let value = e.detail.value;
+    // เช่น name-value="contract first_name"
     let valueName = e.currentTarget.getAttribute("name-value");
-    this[valueName] = value;
-    this._test()
+    let valueNameArray = valueName.split(" ");
+    // สติงเริ่มต้น
+    let strTOEval = `this`;
+    // วนเพิ่มสติง
+    valueNameArray.forEach(
+      (element, index) => (strTOEval += `[valueNameArray[${index}]]`)
+    );
+    strTOEval += ` = value`;
+    // แปลงสติงเป็นคำสั่ง javascript
+    eval(strTOEval);
+    await this.requestRender();
+    // this._test();
   }
   _shouldRender(props, changedProps, prevProps) {
-    // console.log(props, changedProps, prevProps);
+    console.log(props, changedProps, prevProps);
 
     return true;
   }

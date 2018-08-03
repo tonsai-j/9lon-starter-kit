@@ -60,8 +60,8 @@ class MyTabs extends LitElement {
         if (attributes.length > 0) {
           for (const key in attributes) {
             if (attributes.hasOwnProperty(key)) {
-              const attribute = attributes[key];
-              spanText.setAttribute([attribute.nodeName], attribute.nodeValue);
+              const {nodeName,nodeValue} = attributes[key];
+              spanText.setAttribute([nodeName.replace("nylon", "")], nodeValue);
             }
           }
         }

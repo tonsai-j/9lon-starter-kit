@@ -23,7 +23,7 @@ import {
 } from "../../style/fonts-style";
 
 import to from "../../function/to";
-import "../../components/my-input";
+// import "../../components/my-input";
 import bulmaStyles from "../../style/bulma-styles";
 // class pageForm extends connect(store)(Mixin(PageViewElement).with(FormMixin)) {
 class pageForm extends connect(store)(FormMixin(LitElement)) {
@@ -98,7 +98,7 @@ class pageForm extends connect(store)(FormMixin(LitElement)) {
         ทดสอบ font
         own-style-flex own-flex-middle
       </div> -->
-      <my-input testxxx="test" disabled$=${btn} classnylon="input is-primary" type="text" placeholder="Text input"></my-input>
+      <!-- <my-input testxxx="test" disabled$=${btn} classnylon="input is-primary" type="text" placeholder="Text input"></my-input> -->
       <button on-click="${e => this.changePopInsert(e)}"> ลองเปลี่ยนค่า</button>
       
       <br>
