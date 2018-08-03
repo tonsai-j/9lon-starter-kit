@@ -3,7 +3,7 @@ import { Mixin, MyMixin, MyMixinTwo, MyMixinThree } from '../../function/my-mixi
 import Composable from '../../function/ComposableMixin'
 import bulmaStyles from "../../style/bulma-styles";
 import "../../components/my-breadcrumb";
-import "../../components/my-tabs/my-tab";
+// import "../../components/my-tabs/my-tab";
 import "../../components/my-tabs/my-tabs";
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
   class PageIndex extends Composable(LitElement).compose(MyMixin,MyMixinTwo,MyMixinThree) {
@@ -53,7 +53,11 @@ import "../../components/my-tabs/my-tabs";
             <hr>
             <my-tabs selected$="${seletedTab}" 
                       name-value="seletedTab" 
-                      on-tab-selected="${this._setValueProps}" />
+                      on-tab-selected="${this._setValueProps}" >
+              <my-tab>ข้อมูลส่วนตัว</my-tab>
+              <my-tab>อัพโหลดเอกสาร</my-tab>   
+              <my-tab style="color:red">รายงาน</my-tab>       
+            </my-tabs>
             
         `;
   }

@@ -6,69 +6,103 @@ class MyTabs extends LitElement {
     return {
       selected: String,
       tabs: Array,
-      whales: Number
+      whales: Number,
+      element: Object
     };
   }
   constructor() {
     super();
     this.selected = "";
-    this.tabs = [
-      {
-        name: "ข้อมูลส่วนตัว"
-      },
-      {
-        name: "อัพโหลดเอกสาร"
-      },
-      {
-        name: "รายงาน"
-      }
-    ];
+    // this.tabs = [
+    //   {
+    //     name: "ข้อมูลส่วนตัว"
+    //   },
+    //   {
+    //     name: "อัพโหลดเอกสาร"
+    //   },
+    //   {
+    //     name: "รายงาน"
+    //   }
+    // ];
+    this.tabs = [];
+    this.element = {};
     this.activeTab = this.activeTab.bind(this);
   }
-  _render({ selected, tabs }) {
+  _render() {
     return html`
       ${bulmaStyles()}
       
       <div class="tabs is-boxed">
         <ul>
-            ${tabs.map(({ name, active }, index) => {
-              return html`
-                <li id$=${index} class$=${
-                active ? "is-active" : ""
-              } on-click="${this.activeTab}">
-                <a>
-                    <span>${name}</span>
-                </a>
-            </li>
-                `;
-            })}
         </ul>
     </div>
       `;
   }
   _firstRendered() {
-    if (this.tabs.length > 0) {
-      let round = this.selected || 0;
-      this.tabs[round] = Object.assign(this.tabs[round], { active: true });
-      this.tabs = this.tabs.slice(0);
+    let ul = this.shadowRoot.querySelector("ul");
+    this.element = ul;
+    const children = this.children;
+    let li = "";
+    let aHref = "";
+    let spanText = "";
+    let text = "";
+    for (const key in children) {
+      if (children.hasOwnProperty(key)) {
+        const element = children[key];
+        let attributes = element.attributes;
+        // สร้าง
+        li = document.createElement("li");
+        aHref = document.createElement("a");
+        spanText = document.createElement("span");
+        text = document.createTextNode(element.innerText);
+
+        // ใส่ attribute เข้าไป
+        if (attributes.length > 0) {
+          for (const key in attributes) {
+            if (attributes.hasOwnProperty(key)) {
+              const attribute = attributes[key];
+              spanText.setAttribute([attribute.nodeName], attribute.nodeValue);
+            }
+          }
+        }
+        // เอาฝั่งเข้าไป
+        spanText.appendChild(text);
+        aHref.appendChild(spanText);
+        li.appendChild(aHref);
+        ul.appendChild(li);
+        // // เพิ่ม event
+        li.addEventListener("click", this.activeTab);
+        li.setAttribute("id", key);
+        if (this.selected === key) {
+          li.setAttribute("class", "is-active");
+        }
+      }
     }
+    // console.log(children);
   }
+  // _didRender(props, changedProps, prevProps){
+  //   console.log(this);
+
+  // }
   //   _shouldRender(props, changedProps, prevProps) {
   //     console.log(this.tabs);
   //     return true;
   //   }
   async activeTab(e) {
     //   เป็นสตริงต้องแปลงเป็นตัวเลขก่อน
-    const id = Number(e.currentTarget.id);
+    const id = e.currentTarget.id;
     this.selected = id;
-    this.tabs.forEach((el, index) => {
-      if (index === id) {
-        el = Object.assign(el, { active: true });
-      } else {
-        el = Object.assign(el, { active: false });
+    let children = this.element.children;
+    for (const key in children) {
+      if (children.hasOwnProperty(key)) {
+        const element = children[key];
+        if (id === key) {
+          element.setAttribute("class", "is-active");
+        } else {
+          element.removeAttribute("class");
+        }
       }
-    });
-    this.tabs = this.tabs.slice(0);
+    }
     this.dispatchEvent(
       new CustomEvent("tab-selected", {
         bubbles: true,
