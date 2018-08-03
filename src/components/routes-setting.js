@@ -105,7 +105,7 @@ const RouterPage = async page => {
       await import("../pages/page-index-default/page-index-default.js");
       break;
     case "page-login":
-      await import("../pages/page-login/page-login");
+      await import("../pages/page-login/page-login.js");
       break;
     default:
       await import("../pages/page-404/page-404.js");

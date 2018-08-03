@@ -9,12 +9,10 @@ class MyTab extends LitElement {
   }
   _render() {
     return html`
-        ${bulmaStyles()}
-        <li>
-                <a>
-                    <span>Music</span>
-                </a>
-            </li>
+        <!-- ${bulmaStyles()} -->
+        <style>
+        </style>
+        <li><a><slot></slot></a></li>
       `;
   }
 }

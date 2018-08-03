@@ -50,9 +50,5 @@ export default html`
     .is-nav-black {
             background-color: black;
           }
-    .title-body{
-        font-size: 2em;
-        text-align: center;
-    }
     </style>
 `;

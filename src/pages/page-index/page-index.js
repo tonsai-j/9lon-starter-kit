@@ -1,16 +1,22 @@
 import { html, LitElement } from "@polymer/lit-element";
+import { Mixin, MyMixin, MyMixinTwo, MyMixinThree } from '../../function/my-mixin'
+import Composable from '../../function/ComposableMixin'
 import bulmaStyles from "../../style/bulma-styles";
 import "../../components/my-breadcrumb";
-import '../../components/my-tabs/my-tab'
-import '../../components/my-tabs/my-tabs'
-class PageIndex extends LitElement {
+import "../../components/my-tabs/my-tab";
+import "../../components/my-tabs/my-tabs";
+// class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
+  class PageIndex extends Composable(LitElement).compose(MyMixin,MyMixinTwo,MyMixinThree) {
+// class PageIndex extends LitElement {
   static get properties() {
     return {
-      brk: Array
+      brk: Array,
+      seletedTab: Number
     };
   }
   constructor() {
     super();
+    this.seletedTab = 1;
     this.brk = [
       {
         href: "/",
@@ -29,17 +35,26 @@ class PageIndex extends LitElement {
         name: "คนเดียว"
       }
     ];
+    // this.addEventListener("change-selected", e => {
+    //   console.log(e);
+
+    // });
+    this._setValueProps = this._setValueProps.bind(this);
   }
-  _render({ brk }) {
+  _render({ brk, seletedTab }) {
     return html`
          ${bulmaStyles()}
             page-index
             ลองเพิ่มหน้าเองแล้ว
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-breadcrumb value=${brk}></my-breadcrumb>
-            <my-tabs selected="1">
-                
-            </my-tabs>
+            <br>
+            ${seletedTab} <-ค่า
+            <hr>
+            <my-tabs selected$="${seletedTab}" 
+                      name-value="seletedTab" 
+                      on-tab-selected="${this._setValueProps}" />
+            
         `;
   }
   addValue(el) {
@@ -47,8 +62,19 @@ class PageIndex extends LitElement {
       href: "/",
       name: "คนเดียว"
     });
-    this.brk = this.brk.slice(0)
+    this.brk = this.brk.slice(0);
     // console.log(this.brk);
+  }
+  _setValueProps(e) {
+    let value = e.detail.value;
+    let valueName = e.currentTarget.getAttribute("name-value");
+    this[valueName] = value;
+    this._test()
+  }
+  _shouldRender(props, changedProps, prevProps) {
+    // console.log(props, changedProps, prevProps);
+
+    return true;
   }
 }
 

@@ -5,7 +5,8 @@ class MyTabs extends LitElement {
   static get properties() {
     return {
       selected: String,
-      tabs: Array
+      tabs: Array,
+      whales: Number
     };
   }
   constructor() {
@@ -47,14 +48,13 @@ class MyTabs extends LitElement {
   }
   _firstRendered() {
     if (this.tabs.length > 0) {
-      let round = this.selected || 0
+      let round = this.selected || 0;
       this.tabs[round] = Object.assign(this.tabs[round], { active: true });
       this.tabs = this.tabs.slice(0);
     }
   }
   //   _shouldRender(props, changedProps, prevProps) {
   //     console.log(this.tabs);
-
   //     return true;
   //   }
   async activeTab(e) {
@@ -69,6 +69,13 @@ class MyTabs extends LitElement {
       }
     });
     this.tabs = this.tabs.slice(0);
+    this.dispatchEvent(
+      new CustomEvent("tab-selected", {
+        bubbles: true,
+        composed: true,
+        detail: { value: id }
+      })
+    );
   }
 }
 customElements.define("my-tabs", MyTabs);

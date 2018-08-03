@@ -15,12 +15,12 @@ class PageLogin extends LitElement {
                 border-radius: 5px;
             }
         </style>
-        <div id="main">
+        <div id="main" class="content">
             <div class="columns is-centered is-gapless">
                 <div class="column is-half">
                     <div class="columns">
                         <div class="column">
-                            <div class="title-body">เข้าสู่ระบบ</div>
+                            <div class="title is-4 has-text-centered">เข้าสู่ระบบ</div>
                         </div>
                     </div>
                     <div class="columns">
