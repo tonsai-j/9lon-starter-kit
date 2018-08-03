@@ -10,9 +10,13 @@
     "src/pages/page-list-file/page-list-file.js",
     "src/pages/page-register/page-register.js",
     "src/pages/page-renew/page-renew.js",
-    "src/pages/page-index/page-index.js"
+    "src/pages/page-index/page-index.js",
+    "src/pages/page-login/page-login.js"
   ],
-  "extraDependencies": ["node_modules/@webcomponents/webcomponentsjs/**"],
+  "extraDependencies": [
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "node_modules/axios/dist/**"
+  ],
   "builds": [
     { 
       "name": "es6-prod",

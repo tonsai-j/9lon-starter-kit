@@ -1,3 +1,18 @@
+/*
+ * This mixin does something really complicated.
+ * @polymer
+ * @mixinFunction
+ *
+MyNamespace.ReallyComplicatedMixin = Polymer.dedupingMixin((superclass) =>
+
+   // do some other stuff before creating the class...
+   ...
+
+  /*
+   * @polymer
+   * @mixinClass
+   */
+
 let Mixin = (superclass) => new MixinBuilder(superclass);
 class MixinBuilder {
     constructor(superclass) {
