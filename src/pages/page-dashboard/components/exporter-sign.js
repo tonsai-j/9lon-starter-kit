@@ -10,6 +10,7 @@ import {
   FlexboxGridRemovePadding
 } from "../../../style/flexbox-grid-lit";
 import ownStyle from "../../../style/own-style";
+
 class ExporterSign extends LitElement {
   static get properties() {
     return {
@@ -40,11 +41,11 @@ class ExporterSign extends LitElement {
         <!-- <paper-material elevation="1"> -->
         <!-- <div class="box">
                 <div class="panel"> -->
-                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <!-- <nav class="breadcrumb" aria-label="breadcrumbs">
                         <ul>
                             <li class="is-active"><a href="#" >ข้อมูล</a></li>
                         </ul>
-                    </nav>
+                    </nav> -->
                   
                 <div class="columns">
                     <div class="column  is-3 ">
@@ -116,13 +117,18 @@ class ExporterSign extends LitElement {
                         </div>
                     </div>
 
-                    <div class="column  is-4 "> 
+                    <div class="column  is-2 "> 
                         <div class="own-text-middle " >
                         ยังไม่ได้ลงทะเบียน
                         </div>
                     </div>
-
-                    <div class="column  is-3 ">
+                    <div class="column  is-2 "> 
+                        <div class="own-text-middle " >
+                        <a class="button is-link is-hovered own-flex-middle">ลงทะเบียนที่นี่</a>
+                        </div>
+                    </div>
+                    <div class="column  is-3 d">
+                    <!-- <a class="button is-link is-hovered own-flex-middle ">ลงทะเบียนที่นี่</a> -->
                     </div>
                 </div>
 

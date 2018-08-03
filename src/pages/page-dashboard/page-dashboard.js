@@ -35,13 +35,19 @@ class PageDashboard extends LitElement {
         <!-- <exporter-slide></exporter-slide> -->
         <!-- <exporter-manage></exporter-manage>
         <exporter-card></exporter-card> -->
-        <br>
+        <!-- <br> -->
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li class="is-active"><a href="#" >ข้อมูล</a></li>
+            </ul>
+        </nav>
+
         <div class="box">
             <div class="panel">
 
                 <exporter-sign></exporter-sign>
                 <sign-table></sign-table>
-                
+
             </div>
         </div>
         `;

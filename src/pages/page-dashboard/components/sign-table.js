@@ -26,6 +26,10 @@ class SignTable extends LitElement {
          ${bulmaStyles()} 
          ${ownStyle} 
         <style>
+        div.a {
+            text-align: center;
+        }
+
         #customers {
             font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
             border-collapse: collapse;
@@ -67,7 +71,10 @@ class SignTable extends LitElement {
             <td>Germany</td>
         </tr> -->
         <tr>
-            <td colspan="4">Berglunds snabbköp</td>
+            <td colspan="4" style="text-align:center" >
+               <a href=""><u> ลงทะเบียนที่นี่ </u></a>
+               
+            </td>
             <!-- <td>Christina Berglund</td>
             <td>Sweden</td>
             <td>Germany</td> -->
