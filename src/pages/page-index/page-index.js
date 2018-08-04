@@ -22,7 +22,8 @@ class PageIndex extends Composable(LitElement).compose(
     return {
       brk: Array,
       seletedTab: Number,
-      contract: Object
+      contract: Object,
+      btn: Boolean
     };
   }
   constructor() {
@@ -30,8 +31,10 @@ class PageIndex extends Composable(LitElement).compose(
     this.seletedTab = 1;
     this.contract = {
       first_name: "ตั้งต้น",
-      last_name: "ไม่มี"
+      last_name: "ไม่มี",
+      age:0
     };
+    this.btn = false;
     this.brk = [
       {
         href: "/",
@@ -55,8 +58,9 @@ class PageIndex extends Composable(LitElement).compose(
 
     // });
     this._setValueProps = this._setValueProps.bind(this);
+    this.toggle = this.toggle.bind(this)
   }
-  _render({ brk, seletedTab, contract }) {
+  _render({ brk, seletedTab, contract, btn }) {
     return html`
          ${bulmaStyles()}
             page-index
@@ -73,20 +77,29 @@ class PageIndex extends Composable(LitElement).compose(
               <my-tab>อัพโหลดเอกสาร</my-tab>   
               <my-tab style="color:red">รายงาน</my-tab>       
             </my-tabs>
+            <button on-click="${this.toggle}">เปลี่ยนค่า</button>
             ${contract.first_name} <- first_name
-            ${contract.last_name} <- first_name
-            <my-input classnylon="input is-primary" 
+            ${contract.last_name} <- last_name
+            <my-input classnylon="is-primary" 
+                      value$="${contract.age}"
+                      type="Number" 
+                      placeholder="Text input"
+                      name-value="contract age" 
+                      disabled="${btn}"
+                      on-value-changed="${this._setValueProps}" ></my-input>
+            <my-input id="tests" classnylon="is-primary" 
                       value$="${contract.first_name}"
                       type="text" 
                       placeholder="Text input"
                       name-value="contract first_name" 
+                      disabled="${btn}"
                       on-value-changed="${this._setValueProps}" ></my-input>
-            <my-input classnylon="input is-primary" 
+            <!-- <my-input classnylon="input is-primary" 
                       value$="${contract.last_name}"
                       type="text" 
                       placeholder="Text input"
                       name-value="contract last_name" 
-                      on-value-changed="${this._setValueProps}" ></my-input>
+                      on-value-changed="${this._setValueProps}" ></my-input> -->
             
         `;
   }
@@ -97,6 +110,13 @@ class PageIndex extends Composable(LitElement).compose(
     });
     this.brk = this.brk.slice(0);
     // console.log(this.brk);
+  }
+  toggle(){
+    this.btn = !this.btn
+    // console.log(this.btn)
+    let input = this.shadowRoot.querySelector("#tests");
+    // input.reflection()
+    
   }
   async _setValueProps(e) {
     let value = e.detail.value;

@@ -4,32 +4,143 @@ import bulmaStyles from "../../style/bulma-styles";
 class MyInput extends LitElement {
   static get properties() {
     return {
-      element: Object,
-      disabled: Boolean
+      // element: Object,
+      // disabled: Boolean
+      classnylon: String,
+      id: "",
+      ariaLabelledBy: String,
+      ariaDescribedBy: String,
+      disabled: Boolean,
+      title: String,
+      value: "",
+      invalid: "",
+      preventInvalidInput: "",
+      allowedPattern: "",
+      validator: "",
+      type: "",
+      pattern: "",
+      required: "",
+      autocomplete: "",
+      autofocus: "",
+      inputmode: "",
+      minlength: "",
+      maxlength: "",
+      min: Number,
+      max: Number,
+      step: Number,
+      name: String,
+      placeholder: "",
+      readonly: Boolean,
+      list: "",
+      size: "",
+      autocapitalize: "",
+      autocorrect: "",
+      tabIndex: "",
+      autosave: "",
+      results: "",
+      accept: "",
+      multiple: ""
     };
   }
   constructor() {
     super();
     this._changeValue = this._changeValue.bind(this);
   }
-  _render(props) {
+  _render({
+    classnylon,
+    id,
+    ariaLabelledBy,
+    ariaDescribedBy,
+    disabled,
+    title,
+    value,
+    invalid,
+    preventInvalidInput,
+    allowedPattern,
+    validator,
+    type,
+    pattern,
+    required,
+    autocomplete,
+    autofocus,
+    inputmode,
+    minlength,
+    maxlength,
+    min,
+    max,
+    step,
+    name,
+    placeholder,
+    readonly,
+    list,
+    size,
+    autocapitalize,
+    autocorrect,
+    tabIndex,
+    autosave,
+    results,
+    accept,
+    multiple
+  }) {
     return html`
     ${bulmaStyles()}
-    ${String(props.disabled)} < btn
-    <input oninput="${this._changeValue}" disabled="${props.disabled}"/>
-    <br>
+    <input 
+        class$="input ${classnylon}"
+        id$="${id}"
+        aria-labelledby$="${ariaLabelledBy}"
+        aria-describedby$="${ariaDescribedBy}"
+        disabled="${disabled}"
+        title$="${title}"
+        value="${value}"
+        invalid="${invalid}"
+        prevent-invalid-input="${preventInvalidInput}"
+        allowed-pattern="${allowedPattern}"
+        validator="${validator}"
+        type$="${type}"
+        pattern$="${pattern}"
+        required$="${required}"
+        autocomplete$="${autocomplete}"
+        autofocus$="${autofocus}"
+        inputmode$="${inputmode}"
+        minlength$="${minlength}"
+        maxlength$="${maxlength}"
+        min$="${min}"
+        max$="${max}"
+        step$="${step}"
+        name$="${name}"
+        placeholder$="${placeholder}"
+        readonly$="${readonly}"
+        list$="${list}"
+        size$="${size}"
+        autocapitalize$="${autocapitalize}"
+        autocorrect$="${autocorrect}"
+        oninput="${this._changeValue}"
+        tabindex$="${tabIndex}"
+        autosave$="${autosave}"
+        results$="${results}"
+        accept$="${accept}"
+        multiple$="${multiple}">
     `;
   }
-  _firstRendered() {
-    //
-    // console.log(this.properties);
+  // _firstRendered() {
+  //   //
+  //   // console.log(this.properties);
 
-    let element = this.shadowRoot.querySelector("input");
-    this.element = element;
-    this.reflection();
-  }
+  //   let element = this.shadowRoot.querySelector("input");
+  //   this.element = element;
+  //   this.reflection();
+  // }
   _changeValue(e) {
     let value = e.currentTarget.value;
+    switch (this.type) {
+      case "Number":
+        value = Number(value);
+        break;
+      default:
+        value = value;
+        break;
+    }
+
     // console.log(value);
     this.dispatchEvent(
       new CustomEvent("value-changed", {
@@ -39,27 +150,29 @@ class MyInput extends LitElement {
       })
     );
   }
-  _didRender(props, changedProps, prevProps) {
-    //   _firstRendered() {
-    // this.reflection();
-    // console.log("เปลี่ยน");
-  }
-  reflection() {
-    // console.log(1);
-    let element = this.shadowRoot.querySelector("input");
-    this.element = element;
-    // อิลิเม้นใหญ่
-    let attributes = this.attributes;
-    // element.setAttribute('class','input')
-    // console.log(element);
-    for (const key in attributes) {
-      if (attributes.hasOwnProperty(key)) {
-        const { nodeName, nodeValue } = attributes[key];
-        element.setAttribute([nodeName.replace("nylon", "")], nodeValue);
-      }
-    }
-    
-  }
+  // _didRender(props, changedProps, prevProps) {
+  //   //   _firstRendered() {
+  //   // this.reflection();
+  //   // console.log("เปลี่ยน");
+  // }
+  // reflection() {
+  //   // console.log(1);
+  //   let element = this.shadowRoot.querySelector("input");
+  //   this.element = element;
+  //   // อิลิเม้นใหญ่
+  //   console.log(this);
+
+  //   let attributes = this.attributes;
+  //   // element.setAttribute('class','input')
+  //   // console.log(element);
+  //   for (const key in attributes) {
+  //     if (attributes.hasOwnProperty(key)) {
+  //       const { nodeName, nodeValue } = attributes[key];
+  //       element.setAttribute([nodeName.replace("nylon", "")], nodeValue);
+  //     }
+  //   }
+
+  // }
 }
 
 customElements.define("my-input", MyInput);
