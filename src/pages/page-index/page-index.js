@@ -11,6 +11,9 @@ import "../../components/my-breadcrumb";
 // import "../../components/my-tabs/my-tab";
 import "../../components/my-tabs/my-tabs";
 import "../../components/my-input/my-input";
+import "../../components/my-input/my-textarea";
+import "../../components/my-input/my-dropdown";
+import "../../components/my-input/my-checkbox";
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
 class PageIndex extends Composable(LitElement).compose(
   MyMixin,
@@ -23,7 +26,8 @@ class PageIndex extends Composable(LitElement).compose(
       brk: Array,
       seletedTab: Number,
       contract: Object,
-      btn: Boolean
+      btn: Boolean,
+      option: Array
     };
   }
   constructor() {
@@ -32,8 +36,24 @@ class PageIndex extends Composable(LitElement).compose(
     this.contract = {
       first_name: "ตั้งต้น",
       last_name: "ไม่มี",
-      age:0
+      age: 0,
+      gender: "",
+      remember: false
     };
+    this.option = [
+      {
+        label: "กรุณาเลือกเพศ",
+        value: ""
+      },
+      {
+        label: "ชาย",
+        value: "male"
+      },
+      {
+        label: "หญิง",
+        value: "female"
+      }
+    ];
     this.btn = false;
     this.brk = [
       {
@@ -58,9 +78,9 @@ class PageIndex extends Composable(LitElement).compose(
 
     // });
     this._setValueProps = this._setValueProps.bind(this);
-    this.toggle = this.toggle.bind(this)
+    this.toggle = this.toggle.bind(this);
   }
-  _render({ brk, seletedTab, contract, btn }) {
+  _render({ brk, seletedTab, contract, btn, option }) {
     return html`
          ${bulmaStyles()}
             page-index
@@ -94,12 +114,26 @@ class PageIndex extends Composable(LitElement).compose(
                       name-value="contract first_name" 
                       disabled="${btn}"
                       on-value-changed="${this._setValueProps}" ></my-input>
-            <!-- <my-input classnylon="input is-primary" 
+            <my-textarea id="tests" classnylon="is-primary" 
                       value$="${contract.last_name}"
                       type="text" 
                       placeholder="Text input"
                       name-value="contract last_name" 
-                      on-value-changed="${this._setValueProps}" ></my-input> -->
+                      on-value-changed="${this._setValueProps}" ></my-textarea>
+            <my-dropdown id="tests" classnylon="is-primary" 
+                      seleted="${contract.gender}"
+                      name-value="contract gender"
+                      seletevalue="${option}"
+                      on-value-changed="${this._setValueProps}" >
+              <!-- <option>กรุณาเลือกเพศ</option>
+              <option>ชาย</option>
+              <option>หญิง</option> -->
+            </my-dropdown>   
+            <my-checkbox classnylon="is-primary" 
+                      checked="${contract.remember}"
+                      disabled="${btn}"
+                      name-value="contract remember" 
+                      on-value-changed="${this._setValueProps}" >Remember me</my-checkbox>     
             
         `;
   }
@@ -111,12 +145,11 @@ class PageIndex extends Composable(LitElement).compose(
     this.brk = this.brk.slice(0);
     // console.log(this.brk);
   }
-  toggle(){
-    this.btn = !this.btn
+  toggle() {
+    this.btn = !this.btn;
     // console.log(this.btn)
     let input = this.shadowRoot.querySelector("#tests");
     // input.reflection()
-    
   }
   async _setValueProps(e) {
     let value = e.detail.value;
