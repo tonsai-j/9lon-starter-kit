@@ -50,6 +50,25 @@ class MyCheckbox extends LitElement {
         </label>
     `;
   }
+  _shouldRender(props, changedProps, prevProps) {
+    if ("disabled" in changedProps) {
+      // console.log(props, changedProps, prevProps);
+      this._setRenderDisabled();
+      return true;
+    } else {
+      return false;
+    }
+  }
+  _setRenderDisabled() {
+    let element = this.shadowRoot.querySelector("label");
+    if (element) {
+      if (this.disabled) {
+        element.setAttribute("disabled", "");
+      } else {
+        element.removeAttribute("disabled");
+      }
+    }
+  }
   _changeValue(e) {
     // const element = this.shadowRoot.querySelector("select")
     // const children = element.children;

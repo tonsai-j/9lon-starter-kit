@@ -14,6 +14,7 @@ import "../../components/my-input/my-input";
 import "../../components/my-input/my-textarea";
 import "../../components/my-input/my-dropdown";
 import "../../components/my-input/my-checkbox";
+import "../../components/my-input/my-radio-group"
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
 class PageIndex extends Composable(LitElement).compose(
   MyMixin,
@@ -38,7 +39,8 @@ class PageIndex extends Composable(LitElement).compose(
       last_name: "ไม่มี",
       age: 0,
       gender: "",
-      remember: false
+      remember: false,
+      radio: "3"
     };
     this.option = [
       {
@@ -133,7 +135,20 @@ class PageIndex extends Composable(LitElement).compose(
                       checked="${contract.remember}"
                       disabled="${btn}"
                       name-value="contract remember" 
-                      on-value-changed="${this._setValueProps}" >Remember me</my-checkbox>     
+                      on-value-changed="${this._setValueProps}" >Remember me</my-checkbox>    
+            <my-radio-group
+                      checked="${contract.radio}"
+                      disabled="${btn}"
+                      name="radio"
+                      name-value="contract radio" 
+                      on-value-changed="${this._setValueProps}" >
+                <my-radio value="1"> 1 </my-radio>
+                <my-radio value="2"> 2 </my-radio>
+                <my-radio value="3"> 3 </my-radio>
+            </my-radio-group>             
+                      
+
+                      
             
         `;
   }
