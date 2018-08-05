@@ -33,23 +33,35 @@ class MyCheckbox extends LitElement {
   }) {
     return html`
     ${bulmaStyles()}
-    <label class$="checkbox ${classnylon}"
-            disabled="${disabled}">
-        <input type="checkbox" 
-                checked="${checked}"
-                id$="${id}"
-                name$="${name}"
+    <div class="field">
+  <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" 
+  checked="${checked}"
                 aria-labelledby$="${ariaLabelledBy}"
                 aria-describedby$="${ariaDescribedBy}"
                 disabled="${disabled}"
                 readonly$="${readonly}"
                 required$="${required}"
                 oninput="${this._changeValue}"
+  >
+  <label for="exampleCheckbox"><slot></slot></label>
+</div>
+    <!-- <label class$="checkbox ${classnylon}"
+            disabled="${disabled}">
+        <input type="checkbox" 
+                
         >
          <slot></slot>
-        </label>
+        </label> -->
     `;
   }
+  // id$="${id}"
+  //               name$="${name}"
+  //               aria-labelledby$="${ariaLabelledBy}"
+  //               aria-describedby$="${ariaDescribedBy}"
+  //               disabled="${disabled}"
+  //               readonly$="${readonly}"
+  //               required$="${required}"
+  //               oninput="${this._changeValue}"
   _shouldRender(props, changedProps, prevProps) {
     if ("disabled" in changedProps) {
       // console.log(props, changedProps, prevProps);
@@ -60,14 +72,14 @@ class MyCheckbox extends LitElement {
     }
   }
   _setRenderDisabled() {
-    let element = this.shadowRoot.querySelector("label");
-    if (element) {
-      if (this.disabled) {
-        element.setAttribute("disabled", "");
-      } else {
-        element.removeAttribute("disabled");
-      }
-    }
+    // let element = this.shadowRoot.querySelector("label");
+    // if (element) {
+    //   if (this.disabled) {
+    //     element.setAttribute("disabled", "");
+    //   } else {
+    //     element.removeAttribute("disabled");
+    //   }
+    // }
   }
   _changeValue(e) {
     // const element = this.shadowRoot.querySelector("select")

@@ -14,7 +14,8 @@ import "../../components/my-input/my-input";
 import "../../components/my-input/my-textarea";
 import "../../components/my-input/my-dropdown";
 import "../../components/my-input/my-checkbox";
-import "../../components/my-input/my-radio-group"
+import "../../components/my-input/my-radio-group";
+import "../../components/elements/my-button";
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
 class PageIndex extends Composable(LitElement).compose(
   MyMixin,
@@ -88,6 +89,7 @@ class PageIndex extends Composable(LitElement).compose(
             page-index
             ลองเพิ่มหน้าเองแล้ว
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
+            <my-button classnylon=" is-primary"> เพิ่ม ปุ่ม</my-button>
             <my-breadcrumb value=${brk}></my-breadcrumb>
             <br>
             ${seletedTab} <-ค่า
@@ -130,12 +132,14 @@ class PageIndex extends Composable(LitElement).compose(
               <!-- <option>กรุณาเลือกเพศ</option>
               <option>ชาย</option>
               <option>หญิง</option> -->
-            </my-dropdown>   
+            </my-dropdown>  
             <my-checkbox classnylon="is-primary" 
                       checked="${contract.remember}"
                       disabled="${btn}"
                       name-value="contract remember" 
-                      on-value-changed="${this._setValueProps}" >Remember me</my-checkbox>    
+                      on-value-changed="${
+                        this._setValueProps
+                      }" >Remember me</my-checkbox>    
             <my-radio-group
                       checked="${contract.radio}"
                       disabled="${btn}"

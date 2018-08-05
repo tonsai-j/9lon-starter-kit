@@ -25,6 +25,12 @@ class MyRadioGroup extends LitElement {
     ${bulmaStyles()}
     <div class="control" id$="${id}">
     </div>
+    <!-- <div class="field">
+  <input class="is-checkradio" id="exampleRadioInline1" type="radio" name="exampleRadioInline" checked="checked">
+  <label for="exampleRadioInline1">Option 1</label>
+  <input class="is-checkradio" id="exampleRadioInline2" type="radio" name="exampleRadioInline">
+  <label for="exampleRadioInline2">Option 2</label>
+</div> -->
     `;
   }
   _firstRendered() {
