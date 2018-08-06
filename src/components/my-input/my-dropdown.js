@@ -40,16 +40,17 @@ class Dropdown extends LitElement {
     ${bulmaStyles()}
     <div class$="select ${classnylon}"
         id$="${id}"
+        
+        >
+        <select value$="${seleted}" 
+        disabled="${disabled}" 
         aria-labelledby$="${ariaLabelledBy}"
         aria-describedby$="${ariaDescribedBy}"
-        disabled$="${disabled}"
         placeholder$="${placeholder}"
         name$="${name}"
         readonly$="${readonly}"
         required$="${required}"
-        oninput="${this._changeValue}"
-        >
-        <select value$="${seleted}">
+        oninput="${this._changeValue}">
             <!-- ${seletevalue.map(({ label, value }) => {
               return html`<option value="${value}">${label}</option>`;
             })} -->

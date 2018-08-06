@@ -20,45 +20,48 @@ class MyRadioGroup extends LitElement {
     super();
     this._activeRadio = this._activeRadio.bind(this);
   }
-  _render({ id }) {
+  _render({ id  }) {
     return html`
     ${bulmaStyles()}
-    <div class="control" id$="${id}">
+    
+    <div class="field">
+      <!-- <input class="is-checkradio" id="exampleRadioInline1" type="radio" name="exampleRadioInline" checked="checked">
+      <label for="exampleRadioInline1">Option 1</label>
+      <input class="is-checkradio" id="exampleRadioInline2" type="radio" name="exampleRadioInline">
+      <label for="exampleRadioInline2">Option 2</label> -->
     </div>
-    <!-- <div class="field">
-  <input class="is-checkradio" id="exampleRadioInline1" type="radio" name="exampleRadioInline" checked="checked">
-  <label for="exampleRadioInline1">Option 1</label>
-  <input class="is-checkradio" id="exampleRadioInline2" type="radio" name="exampleRadioInline">
-  <label for="exampleRadioInline2">Option 2</label>
-</div> -->
     `;
   }
+  // <div class="control" id$="${id}">
+  //   </div>
   _firstRendered() {
-    let control = this.shadowRoot.querySelector(".control");
+    let control = this.shadowRoot.querySelector(".field");
     this.element = control;
     const children = this.children;
     let label = "";
     let input = "";
     let text = "";
-    // console.log(control,children);
+    // // console.log(control,children);
     for (const key in children) {
       if (children.hasOwnProperty(key)) {
         const element = children[key];
         // console.log(element);
         let attributes = element.attributes;
-        // สร้าง
+    //     // สร้าง
         label = document.createElement("label");
         input = document.createElement("input");
         text = document.createTextNode(element.innerText);
-        // console.log(text);
-
-        // ใส่ attribute เข้าไป
+    //     // console.log(text);
+    //     // ใส่ attribute เข้าไป
         if (attributes.length > 0) {
           for (const key in attributes) {
             if (attributes.hasOwnProperty(key)) {
               const { nodeName, nodeValue } = attributes[key];
-              label.setAttribute([nodeName.replace("nylon", "")], nodeValue);
+              console.log(nodeName, nodeValue );
+              // label.setAttribute([nodeName.replace("nylon", "")], nodeValue);
               input.setAttribute([nodeName.replace("nylon", "")], nodeValue);
+              input.setAttribute('id', nodeValue);
+              label.setAttribute('for', nodeValue);
               if (nodeName === "value" && nodeValue === this.checked) {
                 input.setAttribute("checked", "");
               } else {
@@ -67,18 +70,21 @@ class MyRadioGroup extends LitElement {
             }
           }
         }
-        label.setAttribute("class", "radio");
         input.setAttribute("type", "radio");
+        input.setAttribute("class", "is-checkradio");
         input.setAttribute("name", this.name);
-        // เอาฝั่งเข้าไป
-        label.appendChild(input);
+    //     // เอาฝั่งเข้าไป
+        // input.appendChild(label);
         label.appendChild(text);
+        // console.log(input);
+        // console.log(label);
+        control.appendChild(input);
         control.appendChild(label);
-        // เพิ่ม event
+    // //     // เพิ่ม event
         input.addEventListener("click", this._activeRadio);
-        // disabled
+    // //     // disabled
         if (this.disabled) {
-          label.setAttribute("disabled", this.disabled);
+          // label.setAttribute("disabled", this.disabled);
           input.setAttribute("disabled", this.disabled);
         }
       }
@@ -92,10 +98,10 @@ class MyRadioGroup extends LitElement {
           const element = children[key];
           if (this.disabled) {
             element.setAttribute("disabled", "");
-            element.children[0].setAttribute("disabled", "");
+            // element.children[0].setAttribute("disabled", "");
           } else {
             element.removeAttribute("disabled");
-            element.children[0].removeAttribute("disabled");
+            // element.children[0].removeAttribute("disabled");
           }
         }
       }
