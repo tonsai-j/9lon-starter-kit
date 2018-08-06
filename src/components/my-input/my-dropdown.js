@@ -5,6 +5,7 @@ class Dropdown extends LitElement {
   static get properties() {
     return {
       classnylon: String,
+      element:String,
       seleted: "",
       id: "",
       ariaLabelledBy: String,
@@ -49,13 +50,47 @@ class Dropdown extends LitElement {
         oninput="${this._changeValue}"
         >
         <select value$="${seleted}">
-            ${seletevalue.map(({ label, value }) => {
+            <!-- ${seletevalue.map(({ label, value }) => {
               return html`<option value="${value}">${label}</option>`;
-            })}
+            })} -->
         </select>
     </div>
 
     `;
+  }
+  _firstRendered(){
+    const elements = this.shadowRoot.querySelector("select")
+    // console.log(element);
+    this.element = elements;
+    const children = this.children;
+    let option = "";
+    let text = "";
+    // console.log(children);
+    for (const key in children) {
+      if (children.hasOwnProperty(key)) {
+        const element = children[key];
+        let attributes = element.attributes;
+        option = document.createElement("option");
+        text = document.createTextNode(element.innerText);
+        // console.log(element);
+        // ใส่ attribute เข้าไป
+        if (attributes.length > 0) {
+          for (const key in attributes) {
+            if (attributes.hasOwnProperty(key)) {
+              const { nodeName, nodeValue } = attributes[key];
+              option.setAttribute([nodeName.replace("nylon", "")], nodeValue)
+            }
+          }
+        }
+        option.appendChild(text);
+        // console.log(option);
+        
+        elements.appendChild(option);
+        // console.log(element);
+        
+      }
+    }
+    
   }
   _changeValue(e) {
     // const element = this.shadowRoot.querySelector("select")

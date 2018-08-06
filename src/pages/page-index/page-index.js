@@ -43,20 +43,6 @@ class PageIndex extends Composable(LitElement).compose(
       remember: false,
       radio: "3"
     };
-    this.option = [
-      {
-        label: "กรุณาเลือกเพศ",
-        value: ""
-      },
-      {
-        label: "ชาย",
-        value: "male"
-      },
-      {
-        label: "หญิง",
-        value: "female"
-      }
-    ];
     this.btn = false;
     this.brk = [
       {
@@ -129,17 +115,15 @@ class PageIndex extends Composable(LitElement).compose(
                       name-value="contract gender"
                       seletevalue="${option}"
                       on-value-changed="${this._setValueProps}" >
-              <!-- <option>กรุณาเลือกเพศ</option>
-              <option>ชาย</option>
-              <option>หญิง</option> -->
+              <option value="">กรุณาเลือกเพศ</option>
+              <option value="male">ชาย</option>
+              <option value="female">หญิง</option>
             </my-dropdown>  
             <my-checkbox classnylon="is-primary" 
                       checked="${contract.remember}"
                       disabled="${btn}"
                       name-value="contract remember" 
-                      on-value-changed="${
-                        this._setValueProps
-                      }" >Remember me</my-checkbox>    
+                      on-value-changed="${this._setValueProps }" >Remember me</my-checkbox>    
             <my-radio-group
                       checked="${contract.radio}"
                       disabled="${btn}"
