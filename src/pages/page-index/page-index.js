@@ -108,12 +108,14 @@ class PageIndex extends Composable(LitElement).compose(
                       value$="${contract.last_name}"
                       type="text" 
                       placeholder="Text input"
+                      disabled="${btn}"
                       name-value="contract last_name" 
                       on-value-changed="${this._setValueProps}" ></my-textarea>
             <my-dropdown id="tests" classnylon="is-primary" 
                       seleted="${contract.gender}"
                       name-value="contract gender"
                       seletevalue="${option}"
+                      disabled="${btn}"
                       on-value-changed="${this._setValueProps}" >
               <option value="">กรุณาเลือกเพศ</option>
               <option value="male">ชาย</option>
@@ -127,7 +129,7 @@ class PageIndex extends Composable(LitElement).compose(
             <my-radio-group
                       checked="${contract.radio}"
                       disabled="${btn}"
-                      name="radio"
+                      name="gender"
                       name-value="contract radio" 
                       on-value-changed="${this._setValueProps}" >
                 <my-radio value="1"> 1 </my-radio>

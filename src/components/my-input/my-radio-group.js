@@ -47,17 +47,17 @@ class MyRadioGroup extends LitElement {
         const element = children[key];
         // console.log(element);
         let attributes = element.attributes;
-    //     // สร้าง
+        // สร้าง
         label = document.createElement("label");
         input = document.createElement("input");
         text = document.createTextNode(element.innerText);
-    //     // console.log(text);
-    //     // ใส่ attribute เข้าไป
+        // console.log(text);
+        // ใส่ attribute เข้าไป
         if (attributes.length > 0) {
           for (const key in attributes) {
             if (attributes.hasOwnProperty(key)) {
               const { nodeName, nodeValue } = attributes[key];
-              console.log(nodeName, nodeValue );
+              // console.log(nodeName, nodeValue );
               // label.setAttribute([nodeName.replace("nylon", "")], nodeValue);
               input.setAttribute([nodeName.replace("nylon", "")], nodeValue);
               input.setAttribute('id', nodeValue);
@@ -73,16 +73,16 @@ class MyRadioGroup extends LitElement {
         input.setAttribute("type", "radio");
         input.setAttribute("class", "is-checkradio");
         input.setAttribute("name", this.name);
-    //     // เอาฝั่งเข้าไป
+        // เอาฝั่งเข้าไป
         // input.appendChild(label);
         label.appendChild(text);
         // console.log(input);
         // console.log(label);
         control.appendChild(input);
         control.appendChild(label);
-    // //     // เพิ่ม event
+        // เพิ่ม event
         input.addEventListener("click", this._activeRadio);
-    // //     // disabled
+        // disabled
         if (this.disabled) {
           // label.setAttribute("disabled", this.disabled);
           input.setAttribute("disabled", this.disabled);
@@ -98,10 +98,8 @@ class MyRadioGroup extends LitElement {
           const element = children[key];
           if (this.disabled) {
             element.setAttribute("disabled", "");
-            // element.children[0].setAttribute("disabled", "");
           } else {
             element.removeAttribute("disabled");
-            // element.children[0].removeAttribute("disabled");
           }
         }
       }
