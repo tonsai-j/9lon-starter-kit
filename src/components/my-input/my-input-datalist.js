@@ -209,7 +209,7 @@ class MyInputDatalist extends LitElement {
 
     this._dropdown();
     this.value = itemSeleted.name;
-    console.log(value);
+    // console.log(value);
 
     // console.log(value);
     this.dispatchEvent(
