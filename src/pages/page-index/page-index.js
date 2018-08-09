@@ -7,6 +7,8 @@ import {
 } from "../../function/my-mixin";
 import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
+import "../../components/my-quill/my-quill";
+
 import "../../components/my-breadcrumb";
 // import "../../components/my-tabs/my-tab";
 import "../../components/my-tabs/my-tabs";
@@ -16,6 +18,7 @@ import "../../components/my-input/my-dropdown";
 import "../../components/my-input/my-checkbox";
 import "../../components/my-input/my-radio-group";
 import "../../components/elements/my-button";
+import "../../components/my-input/my-input-datalist";
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
 class PageIndex extends Composable(LitElement).compose(
   MyMixin,
@@ -41,24 +44,29 @@ class PageIndex extends Composable(LitElement).compose(
       age: 0,
       gender: "",
       remember: false,
-      radio: "3"
+      radio: "3",
+      dropdown: "/index"
     };
     this.btn = false;
     this.brk = [
       {
         href: "/",
+        value: "/",
         name: "Home"
       },
       {
         href: "/renew",
+        value: "/renew",
         name: "Renew"
       },
       {
         href: "/index",
+        value: "/index",
         name: "index"
       },
       {
-        href: "/",
+        href: "/one",
+        value: "/one",
         name: "คนเดียว"
       }
     ];
@@ -73,9 +81,14 @@ class PageIndex extends Composable(LitElement).compose(
     return html`
          ${bulmaStyles()}
             page-index
-            ลองเพิ่มหน้าเองแล้ว
+            ลองเพิ่มหน้าเองแล้ว 
+            ข้างล่าง
+           
+            <my-quill id="quill" value="" on-value-changed="${el =>
+              this.resiveContent(el)}"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
-            <my-button classnylon=" is-primary"> เพิ่ม ปุ่ม</my-button>
+            <my-button classnylon=" is-primary" on-click="${el =>
+              this.getContent(el)}"> เพิ่ม ปุ่ม</my-button>
             <my-breadcrumb value=${brk}></my-breadcrumb>
             <br>
             ${seletedTab} <-ค่า
@@ -125,7 +138,9 @@ class PageIndex extends Composable(LitElement).compose(
                       checked="${contract.remember}"
                       disabled="${btn}"
                       name-value="contract remember" 
-                      on-value-changed="${this._setValueProps }" >Remember me</my-checkbox>    
+                      on-value-changed="${
+                        this._setValueProps
+                      }" >Remember me</my-checkbox>    
             <my-radio-group
                       checked="${contract.radio}"
                       disabled="${btn}"
@@ -136,7 +151,9 @@ class PageIndex extends Composable(LitElement).compose(
                 <my-radio value="2"> 2 </my-radio>
                 <my-radio value="3"> 3 </my-radio>
             </my-radio-group>             
-                      
+            <my-input-datalist classnylon="is-primary" 
+            items="${brk}" 
+            selected="${contract.dropdown}"></my-input-datalist>          
 
                       
             
@@ -149,6 +166,13 @@ class PageIndex extends Composable(LitElement).compose(
     });
     this.brk = this.brk.slice(0);
     // console.log(this.brk);
+  }
+  resiveContent(e) {
+    console.log(e.detail);
+  }
+  getContent() {
+    let quill = this.shadowRoot.querySelector("#quill");
+    console.log(quill);
   }
   toggle() {
     this.btn = !this.btn;

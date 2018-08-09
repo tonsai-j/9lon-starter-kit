@@ -15,7 +15,8 @@
   ],
   "extraDependencies": [
     "node_modules/@webcomponents/webcomponentsjs/**",
-    "node_modules/axios/dist/**"
+    "node_modules/axios/dist/**",
+    "node_modules/quill/dist/**"
   ],
   "builds": [
     { 
@@ -25,6 +26,7 @@
         "minify": {
           "exclude": [
             "/style/bulma-new-style/bulma.min.css",
+            "/node_modules/quill/dist/quill.snow.css",
             "/style/fontawesome/all.css"
           ]
         }
@@ -43,6 +45,7 @@
         "minify": {
           "exclude": [
             "/style/bulma-new-style/bulma.min.css",
+            "/node_modules/quill/dist/quill.snow.css",
             "/style/fontawesome/all.css"
           ]
         }
