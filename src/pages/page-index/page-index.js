@@ -12,13 +12,13 @@ import "../../components/my-quill/my-quill";
 import "../../components/my-breadcrumb";
 // import "../../components/my-tabs/my-tab";
 import "../../components/my-tabs/my-tabs";
-import "../../components/my-input/my-input";
-import "../../components/my-input/my-textarea";
-import "../../components/my-input/my-dropdown";
-import "../../components/my-input/my-checkbox";
-import "../../components/my-input/my-radio-group";
+import "../../components/my-form/my-input";
+import "../../components/my-form/my-textarea";
+import "../../components/my-form/my-dropdown";
+import "../../components/my-form/my-checkbox";
+import "../../components/my-form/my-radio-group";
 import "../../components/elements/my-button";
-import "../../components/my-input/my-input-datalist";
+import "../../components/my-form/my-input-datalist";
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
 class PageIndex extends Composable(LitElement).compose(
   MyMixin,
