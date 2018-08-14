@@ -10,7 +10,6 @@ import bulmaStyles from "../../style/bulma-styles";
 import "../../components/my-quill/my-quill";
 
 import "../../components/my-breadcrumb";
-// import "../../components/my-tabs/my-tab";
 import "../../components/my-tabs/my-tabs";
 import "../../components/my-form/my-input";
 import "../../components/my-form/my-textarea";

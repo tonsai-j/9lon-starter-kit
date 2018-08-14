@@ -7,16 +7,18 @@
     "src/pages/page-dashboard/page-dashboard.js",
     "src/pages/page-exporter/page-exporter.js",
     "src/pages/page-form/page-form.js",
+    "src/pages/page-index/page-index.js",
+    "src/pages/page-index-default/page-index-default.js",
     "src/pages/page-list-file/page-list-file.js",
     "src/pages/page-register/page-register.js",
     "src/pages/page-renew/page-renew.js",
-    "src/pages/page-index/page-index.js",
     "src/pages/page-login/page-login.js"
   ],
   "extraDependencies": [
     "node_modules/@webcomponents/webcomponentsjs/**",
     "node_modules/axios/dist/**",
-    "node_modules/quill/dist/**"
+    "node_modules/quill/dist/**",
+    "script/quill.1.2.4.js"
   ],
   "builds": [
     { 

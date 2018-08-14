@@ -36,7 +36,7 @@ class MyQuill extends LitElement {
     // console.log(document.body);
     // console.log(this.shadowRoot);
     var quill = new Quill(element, {
-        bounds: this.shadowRoot,
+        // bounds: this.shadowRoot,
       theme: "snow"
     });
     // let contents = {
@@ -53,35 +53,35 @@ class MyQuill extends LitElement {
     // });
 
     // this.quill = quill;
-    // let _this = this;
+    let _this = this;
     // quill.setContents(contents.ops);
-    // quill.on("text-change", function(deltas, oldDelta, source) {
-    //     var delta = quill.getContents();
-    //   //   var text = quill.getText();
-    //   //   var justHtml = quill.root.innerHTML;
-    //     console.log("delta=>", delta);
-    //   //   console.log("oldDelta=>", oldDelta);
-    //   //   console.log("source=>", source);
-    // //   console.log("quill=>", JSON.stringify(quill.getContents()));
+    quill.on("text-change", function(deltas, oldDelta, source) {
+        var delta = quill.getContents();
+        var text = quill.getText();
+        var justHtml = quill.root.innerHTML;
+      //   console.log("delta=>", delta);
+      //   console.log("oldDelta=>", oldDelta);
+      //   console.log("source=>", source);
+      // console.log("quill=>", JSON.stringify(quill.getContents()));
 
-    //   //   console.log("text=>", text);
-    //   //   console.log("justHtml=>", justHtml);
-    //   //   _this.value = {
-    //   //     delta: delta,
-    //   //     text: text,
-    //   //     justHtml: justHtml
-    //   //   };
-    //   //   _this.dispatchEvent(
-    //   //     new CustomEvent("value-changed", {
-    //   //       bubbles: true,
-    //   //       composed: true,
-    //   //       detail: { value: _this.value }
-    //   //     })
-    //   //   );
-    //   // preciousContent.innerHTML = JSON.stringify(delta);
-    //   // justTextContent.innerHTML = text;
-    //   // justHtmlContent.innerHTML = justHtml;
-    // });
+        // console.log("text=>", text);
+        // console.log("justHtml=>", justHtml);
+        _this.value = {
+          delta: delta,
+          text: text,
+          justHtml: justHtml
+        };
+        _this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            bubbles: true,
+            composed: true,
+            detail: { value: _this.value }
+          })
+        );
+      // preciousContent.innerHTML = JSON.stringify(delta);
+      // justTextContent.innerHTML = text;
+      // justHtmlContent.innerHTML = justHtml;
+    });
   }
 }
 customElements.define("my-quill", MyQuill);
