@@ -1,4 +1,7 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {
+  LitElement,
+  html
+} from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 
 class MyRadioGroup extends LitElement {
@@ -20,8 +23,10 @@ class MyRadioGroup extends LitElement {
     super();
     this._activeRadio = this._activeRadio.bind(this);
   }
-  _render({ id  }) {
-    return html`
+  _render({
+    id
+  }) {
+    return html `
     ${bulmaStyles()}
     
     <div class="field">
@@ -53,39 +58,45 @@ class MyRadioGroup extends LitElement {
         text = document.createTextNode(element.innerText);
         // console.log(text);
         // ใส่ attribute เข้าไป
-        if (attributes.length > 0) {
-          for (const key in attributes) {
-            if (attributes.hasOwnProperty(key)) {
-              const { nodeName, nodeValue } = attributes[key];
-              // console.log(nodeName, nodeValue );
-              // label.setAttribute([nodeName.replace("nylon", "")], nodeValue);
-              input.setAttribute([nodeName.replace("nylon", "")], nodeValue);
-              input.setAttribute('id', nodeValue);
-              label.setAttribute('for', nodeValue);
-              if (nodeName === "value" && nodeValue === this.checked) {
-                input.setAttribute("checked", "");
-              } else {
-                input.removeAttribute("checked");
+        if (attributes) {
+          if (attributes.length > 0) {
+            for (const key in attributes) {
+              if (attributes.hasOwnProperty(key)) {
+                const {
+                  nodeName,
+                  nodeValue
+                } = attributes[key];
+                // console.log(nodeName, nodeValue );
+                // label.setAttribute([nodeName.replace("nylon", "")], nodeValue);
+                input.setAttribute([nodeName.replace("nylon", "")], nodeValue);
+                input.setAttribute('id', nodeValue);
+                label.setAttribute('for', nodeValue);
+                if (nodeName === "value" && nodeValue === this.checked) {
+                  input.setAttribute("checked", "");
+                } else {
+                  input.removeAttribute("checked");
+                }
               }
             }
           }
-        }
-        input.setAttribute("type", "radio");
-        input.setAttribute("class", "is-checkradio");
-        input.setAttribute("name", this.name);
-        // เอาฝั่งเข้าไป
-        // input.appendChild(label);
-        label.appendChild(text);
-        // console.log(input);
-        // console.log(label);
-        control.appendChild(input);
-        control.appendChild(label);
-        // เพิ่ม event
-        input.addEventListener("click", this._activeRadio);
-        // disabled
-        if (this.disabled) {
-          // label.setAttribute("disabled", this.disabled);
-          input.setAttribute("disabled", this.disabled);
+
+          input.setAttribute("type", "radio");
+          input.setAttribute("class", "is-checkradio");
+          input.setAttribute("name", this.name);
+          // เอาฝั่งเข้าไป
+          // input.appendChild(label);
+          label.appendChild(text);
+          // console.log(input);
+          // console.log(label);
+          control.appendChild(input);
+          control.appendChild(label);
+          // เพิ่ม event
+          input.addEventListener("click", this._activeRadio);
+          // disabled
+          if (this.disabled) {
+            // label.setAttribute("disabled", this.disabled);
+            input.setAttribute("disabled", this.disabled);
+          }
         }
       }
     }
@@ -96,10 +107,13 @@ class MyRadioGroup extends LitElement {
       for (const key in children) {
         if (children.hasOwnProperty(key)) {
           const element = children[key];
-          if (this.disabled) {
-            element.setAttribute("disabled", "");
-          } else {
-            element.removeAttribute("disabled");
+          // เช็คว่าไม่ใช่ฟั่งชั่น firefox
+          if (typeof element !== 'function') {
+            if (this.disabled) {
+              element.setAttribute("disabled", "");
+            } else {
+              element.removeAttribute("disabled");
+            }
           }
         }
       }
@@ -122,7 +136,9 @@ class MyRadioGroup extends LitElement {
       new CustomEvent("value-changed", {
         bubbles: true,
         composed: true,
-        detail: { value: value }
+        detail: {
+          value: value
+        }
       })
     );
   }

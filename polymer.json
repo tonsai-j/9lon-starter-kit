@@ -15,6 +15,7 @@
     "src/pages/page-login/page-login.js"
   ],
   "extraDependencies": [
+    "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js",
     "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
@@ -22,48 +23,60 @@
     "node_modules/quill/dist/quill.min.js",
     "node_modules/@fortawesome/fontawesome-free/**",
     "script/quill.1.2.4.js"
-    
   ],
-  "builds": [
-    { 
+  "builds": [{
       "name": "es6-prod",
       "preset": "es6-unbundled",
+      "autoBasePath": true,
+      "insertPrefetchLinks": true,
       "html": {
-        "minify": {
-          "exclude": [
-            "/style/bulma-new-style/bulma.min.css",
-            "/node_modules/quill/dist/quill.snow.css",
-            "/node_modules/@fortawesome/fontawesome-free/css/all.css"
-          ]
-        }
-      },
-      "basePath": true,  
-      "addServiceWorker": true
-    },
-    {
-      "name": "es5-bundled",
-      "browserCapabilities": ["es2015", "push"],
-      "preset": "es5-bundled",
-      "css": {
         "minify": true
       },
-      "html": {
+      "css": {
         "minify": {
           "exclude": [
-            "/style/bulma-new-style/bulma.min.css",
-            "/node_modules/quill/dist/quill.snow.css",
-            "/node_modules/@fortawesome/fontawesome-free/css/all.css"
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
           ]
         }
       },
+      "js": {"minify": true, "compile": false},
+      "addServiceWorker": true,
       "bundle": {             
         "inlineCss": true,          
         "inlineScripts": true,      
         "rewriteUrlsInTemplates": true, 
         "sourcemaps": true,     
-        "stripComments": true  
+        "stripComments": true 
+      }
+    },
+    {
+      "name": "es5-bundled",
+      "browserCapabilities": ["es2015", "push"],
+      "preset": "es5-bundled",
+      "autoBasePath": true,
+      "insertPrefetchLinks": true,
+      "html": {
+        "minify": true
       },
-      "basePath": true,  
+      "css": {
+        "minify": {
+          "exclude": [
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+          ]
+        }
+      },
+      "js": {"minify": true, "compile": true},
+      "bundle": {
+        "inlineCss": true,
+        "inlineScripts": true,
+        "rewriteUrlsInTemplates": true,
+        "sourcemaps": true,
+        "stripComments": true
+      },
       "addServiceWorker": true
     }
   ],

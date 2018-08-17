@@ -1,11 +1,14 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {
+  LitElement,
+  html
+} from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 
 class Dropdown extends LitElement {
   static get properties() {
     return {
       classnylon: String,
-      element:String,
+      element: String,
       seleted: "",
       id: "",
       ariaLabelledBy: String,
@@ -20,7 +23,7 @@ class Dropdown extends LitElement {
   }
   constructor() {
     super();
-    this.seletevalue =[]
+    this.seletevalue = []
     this._changeValue = this._changeValue.bind(this);
   }
   _render({
@@ -36,7 +39,7 @@ class Dropdown extends LitElement {
     seleted,
     seletevalue
   }) {
-    return html`
+    return html `
     ${bulmaStyles()}
     <div class$="select ${classnylon}"
         id$="${id}"
@@ -52,12 +55,16 @@ class Dropdown extends LitElement {
         required$="${required}"
         oninput="${this._changeValue}">
             <!-- ${seletevalue.map(({ label, value }) => {
-              return html`<option value="${value}">${label}</option>`;
-            })} -->
-        </select>
-    </div>
+              return html` < option value = "${value}" > $ {
+      label
+    } < /option>`;
+  })
+}-- >
+<
+/select> < /
+div >
 
-    `;
+  `;
   }
   _firstRendered(){
     const elements = this.shadowRoot.querySelector("select")
@@ -75,20 +82,22 @@ class Dropdown extends LitElement {
         text = document.createTextNode(element.innerText);
         // console.log(element);
         // ใส่ attribute เข้าไป
-        if (attributes.length > 0) {
-          for (const key in attributes) {
-            if (attributes.hasOwnProperty(key)) {
-              const { nodeName, nodeValue } = attributes[key];
-              option.setAttribute([nodeName.replace("nylon", "")], nodeValue)
+        if (attributes) {
+          if (attributes.length > 0) {
+            for (const key in attributes) {
+              if (attributes.hasOwnProperty(key)) {
+                const { nodeName, nodeValue } = attributes[key];
+                option.setAttribute([nodeName.replace("nylon", "")], nodeValue)
+              }
             }
           }
-        }
+       
         option.appendChild(text);
         // console.log(option);
         
         elements.appendChild(option);
         // console.log(element);
-        
+      }
       }
     }
     

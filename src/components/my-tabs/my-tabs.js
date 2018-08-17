@@ -1,4 +1,7 @@
-import { html, LitElement } from "@polymer/lit-element";
+import {
+  html,
+  LitElement
+} from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 
 class MyTabs extends LitElement {
@@ -29,7 +32,7 @@ class MyTabs extends LitElement {
     this.activeTab = this.activeTab.bind(this);
   }
   _render() {
-    return html`
+    return html `
       ${bulmaStyles()}
       
       <div class="tabs is-boxed">
@@ -56,25 +59,35 @@ class MyTabs extends LitElement {
         spanText = document.createElement("span");
         text = document.createTextNode(element.innerText);
 
-        // ใส่ attribute เข้าไป
-        if (attributes.length > 0) {
-          for (const key in attributes) {
-            if (attributes.hasOwnProperty(key)) {
-              const {nodeName,nodeValue} = attributes[key];
-              spanText.setAttribute([nodeName.replace("nylon", "")], nodeValue);
+        // ใส่ attribute เข้าไป เช็คว่ามีค่าไหม
+        if (attributes) {
+          if (attributes.length > 0) {
+            for (const key in attributes) {
+              if (attributes.hasOwnProperty(key)) {
+                const {
+                  nodeName,
+                  nodeValue
+                } = attributes[key];
+
+                // เช็คว่ามี attribute
+                spanText.setAttribute([nodeName.replace("nylon", "")], nodeValue)
+
+              }
             }
           }
-        }
-        // เอาฝั่งเข้าไป
-        spanText.appendChild(text);
-        aHref.appendChild(spanText);
-        li.appendChild(aHref);
-        ul.appendChild(li);
-        // // เพิ่ม event
-        li.addEventListener("click", this.activeTab);
-        li.setAttribute("id", key);
-        if (this.selected === key) {
-          li.setAttribute("class", "is-active");
+
+
+          // เอาฝั่งเข้าไป
+          spanText.appendChild(text);
+          aHref.appendChild(spanText);
+          li.appendChild(aHref);
+          ul.appendChild(li);
+          // // เพิ่ม event
+          li.addEventListener("click", this.activeTab);
+          li.setAttribute("id", key);
+          if (this.selected === key) {
+            li.setAttribute("class", "is-active");
+          }
         }
       }
     }
@@ -96,10 +109,14 @@ class MyTabs extends LitElement {
     for (const key in children) {
       if (children.hasOwnProperty(key)) {
         const element = children[key];
-        if (id === key) {
-          element.setAttribute("class", "is-active");
-        } else {
-          element.removeAttribute("class");
+        // console.log(typeof element === 'function');
+        // เช็คว่าไม่ใช่ฟั่งชั่น firefox
+        if (typeof element !== 'function') {
+          if (id === key) {
+            element.setAttribute("class", "is-active");
+          } else {
+            element.removeAttribute("class");
+          }
         }
       }
     }
@@ -107,7 +124,9 @@ class MyTabs extends LitElement {
       new CustomEvent("tab-selected", {
         bubbles: true,
         composed: true,
-        detail: { value: id }
+        detail: {
+          value: id
+        }
       })
     );
   }
