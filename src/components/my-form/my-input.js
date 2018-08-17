@@ -1,6 +1,7 @@
 import { LitElement, html } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
-
+// import "@polymer/iron-icon";
+// import "../my-icons/my-icons";
 class MyInput extends LitElement {
   static get properties() {
     return {
@@ -84,6 +85,7 @@ class MyInput extends LitElement {
   }) {
     return html`
     ${bulmaStyles()}
+    <p class="control has-icons-left has-icons-right">
     <input 
         class$="input ${classnylon}"
         id$="${id}"
@@ -120,6 +122,13 @@ class MyInput extends LitElement {
         results$="${results}"
         accept$="${accept}"
         multiple$="${multiple}">
+        <span class="icon is-small is-left">
+          <iron-icon icon="my-icons:polymer"></iron-icon> 
+        </span>
+        <span class="icon is-small is-right">
+          <iron-icon icon="my-icons:android"></iron-icon> 
+        </span>
+  </p>
     `;
   }
   // _firstRendered() {

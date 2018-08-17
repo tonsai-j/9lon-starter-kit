@@ -18,7 +18,8 @@
     "node_modules/@webcomponents/webcomponentsjs/**",
     "node_modules/axios/dist/**",
     "node_modules/quill/dist/**",
-    "script/quill.1.2.4.js"
+    "script/quill.1.2.4.js",
+    "node_modules/@fortawesome/fontawesome-free/**"
   ],
   "builds": [
     { 
@@ -29,7 +30,7 @@
           "exclude": [
             "/style/bulma-new-style/bulma.min.css",
             "/node_modules/quill/dist/quill.snow.css",
-            "/style/fontawesome/all.css"
+            "/node_modules/@fortawesome/fontawesome-free/css/all.css"
           ]
         }
       },
@@ -48,7 +49,7 @@
           "exclude": [
             "/style/bulma-new-style/bulma.min.css",
             "/node_modules/quill/dist/quill.snow.css",
-            "/style/fontawesome/all.css"
+            "/node_modules/@fortawesome/fontawesome-free/css/all.css"
           ]
         }
       },

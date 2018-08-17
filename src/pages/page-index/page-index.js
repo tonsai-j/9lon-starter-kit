@@ -7,7 +7,11 @@ import {
 } from "../../function/my-mixin";
 import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
+import fontawesomeStyle from "../../style/fontawesome-style";
 import "../../components/my-quill/my-quill";
+
+import '@polymer/iron-icon'
+import '../../components/my-icons/my-icons'
 
 import "../../components/my-breadcrumb";
 import "../../components/my-tabs/my-tabs";
@@ -79,10 +83,7 @@ class PageIndex extends Composable(LitElement).compose(
   _render({ brk, seletedTab, contract, btn, option }) {
     return html`
          ${bulmaStyles()}
-            page-index
-            ลองเพิ่มหน้าเองแล้ว 
-            ข้างล่าง
-           
+
             <my-quill id="quill" value="" on-value-changed="${el =>
               this.resiveContent(el)}"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
