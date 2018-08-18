@@ -46,7 +46,7 @@ class PageIndex extends Composable(LitElement).compose(
       last_name: "ไม่มี",
       age: 0,
       gender: "",
-      remember: false,
+      remember: true,
       radio: "3",
       dropdown: "/index"
     };
@@ -83,7 +83,17 @@ class PageIndex extends Composable(LitElement).compose(
   _render({ brk, seletedTab, contract, btn, option }) {
     return html`
          ${bulmaStyles()}
-
+         <div class="field">
+  <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"
+  disabled="${btn}">
+  <label for="exampleCheckbox">Check me</label>
+</div>
+<!-- <div class="field">
+  <input class="is-checkradio" id="exampleRadioInline1" type="radio" name="exampleRadioInline" checked="checked">
+  <label for="exampleRadioInline1">Option 1</label>
+  <input class="is-checkradio" id="exampleRadioInline2" type="radio" name="exampleRadioInline">
+  <label for="exampleRadioInline2">Option 2</label>
+</div> -->
             <my-quill id="quill" value="" on-value-changed="${el =>
               this.resiveContent(el)}"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
@@ -108,27 +118,27 @@ class PageIndex extends Composable(LitElement).compose(
                       type="Number" 
                       placeholder="Text input"
                       name-value="contract age" 
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       on-value-changed="${this._setValueProps}" ></my-input>
             <my-input id="tests" classnylon="is-primary" 
                       value$="${contract.first_name}"
                       type="text" 
                       placeholder="Text input"
                       name-value="contract first_name" 
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       on-value-changed="${this._setValueProps}" ></my-input>
             <my-textarea id="tests" classnylon="is-primary" 
                       value$="${contract.last_name}"
                       type="text" 
                       placeholder="Text input"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       name-value="contract last_name" 
                       on-value-changed="${this._setValueProps}" ></my-textarea>
             <my-dropdown id="tests" classnylon="is-primary" 
                       seleted="${contract.gender}"
                       name-value="contract gender"
                       seletevalue="${option}"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       on-value-changed="${this._setValueProps}" >
               <option value="">กรุณาเลือกเพศ</option>
               <option value="male">ชาย</option>
@@ -136,14 +146,15 @@ class PageIndex extends Composable(LitElement).compose(
             </my-dropdown>  
             <my-checkbox classnylon="is-primary" 
                       checked="${contract.remember}"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
+                      name="remember"
                       name-value="contract remember" 
                       on-value-changed="${
                         this._setValueProps
                       }" >Remember me</my-checkbox>    
             <my-radio-group
                       checked="${contract.radio}"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       name="gender"
                       name-value="contract radio" 
                       on-value-changed="${this._setValueProps}" >
@@ -153,6 +164,7 @@ class PageIndex extends Composable(LitElement).compose(
             </my-radio-group>             
             <my-input-datalist classnylon="is-primary" 
             items="${brk}" 
+            disablednylon="${btn}"
             selected="${contract.dropdown}"></my-input-datalist>          
 
                       
@@ -198,7 +210,7 @@ class PageIndex extends Composable(LitElement).compose(
     // this._test();
   }
   _shouldRender(props, changedProps, prevProps) {
-    console.log(props, changedProps, prevProps);
+    // console.log(props, changedProps, prevProps);
 
     return true;
   }

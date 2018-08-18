@@ -13,7 +13,7 @@ class Dropdown extends LitElement {
       id: "",
       ariaLabelledBy: String,
       ariaDescribedBy: String,
-      disabled: Boolean,
+      disablednylon: Boolean,
       name: String,
       placeholder: String,
       readonly: Boolean,
@@ -31,7 +31,7 @@ class Dropdown extends LitElement {
     id,
     ariaLabelledBy,
     ariaDescribedBy,
-    disabled,
+    disablednylon,
     name,
     placeholder,
     readonly,
@@ -46,7 +46,7 @@ class Dropdown extends LitElement {
         
         >
         <select value$="${seleted}" 
-        disabled="${disabled}" 
+        disabled="${disablednylon}" 
         aria-labelledby$="${ariaLabelledBy}"
         aria-describedby$="${ariaDescribedBy}"
         placeholder$="${placeholder}"
@@ -60,9 +60,8 @@ class Dropdown extends LitElement {
     } < /option>`;
   })
 }-- >
-<
-/select> < /
-div >
+</select> 
+</div>
 
   `;
   }

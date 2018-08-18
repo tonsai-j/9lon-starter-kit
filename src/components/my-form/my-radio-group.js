@@ -13,7 +13,7 @@ class MyRadioGroup extends LitElement {
       id: "",
       ariaLabelledBy: String,
       ariaDescribedBy: String,
-      disabled: Boolean,
+      disablednylon: Boolean,
       name: String,
       readonly: Boolean,
       required: Boolean
@@ -93,9 +93,9 @@ class MyRadioGroup extends LitElement {
           // เพิ่ม event
           input.addEventListener("click", this._activeRadio);
           // disabled
-          if (this.disabled) {
+          if (this.disablednylon) {
             // label.setAttribute("disabled", this.disabled);
-            input.setAttribute("disabled", this.disabled);
+            input.setAttribute("disabled", this.disablednylon);
           }
         }
       }
@@ -104,23 +104,39 @@ class MyRadioGroup extends LitElement {
   _setRenderRadio() {
     if (this.element) {
       let children = this.element.children;
-      for (const key in children) {
-        if (children.hasOwnProperty(key)) {
-          const element = children[key];
-          // เช็คว่าไม่ใช่ฟั่งชั่น firefox
-          if (typeof element !== 'function') {
-            if (this.disabled) {
-              element.setAttribute("disabled", "");
-            } else {
-              element.removeAttribute("disabled");
-            }
+      // ใช้ for ธรรมดาแก้ปัญหา edgs และ ie วน for in ได้ไม่ครบ
+      for (let index = 0; index < children.length; index++) {
+        const element = children[index];
+        // typeof element เช็คว่าไม่ใช่ฟั่งชั่น firefox
+        if (element.nodeName === 'INPUT' && typeof element !== 'function') {
+          if (this.disablednylon) {
+            element.setAttribute("disabled", "");
+          } else {
+            element.removeAttribute("disabled");
           }
         }
       }
+      // for (const key in children) {
+      //   console.log('key',key);
+
+      // //   if (children.hasOwnProperty(key)) {
+      //     const element = children[key];
+      //     console.log('element',element);
+      // //     // เช็คว่าไม่ใช่ฟั่งชั่น firefox
+      // //     if (typeof element !== 'function') {
+      // //       if (this.disablednylon) {
+      // //         element.setAttribute("disabled", "");
+      // //       } else {
+      // //         element.removeAttribute("disabled");
+      // //       }
+      // //     }
+      // //   }
+      // }
     }
   }
   _shouldRender(props, changedProps, prevProps) {
-    if ("disabled" in changedProps) {
+    // console.log(props, changedProps, prevProps);
+    if ("disablednylon" in changedProps) {
       // console.log(props, changedProps, prevProps);
       this._setRenderRadio();
       return true;
@@ -131,7 +147,30 @@ class MyRadioGroup extends LitElement {
   async _activeRadio(e) {
     const value = e.currentTarget.getAttribute("value");
     this.checked = value;
+    const elements = this.element
+    const children = elements.children
+    // console.log(element);
+    for (const key in children) {
+      if (children.hasOwnProperty(key)) {
+        const element = children[key];
+        // เช็คว่าเป็น INPUT เพื่อเปลี่ยนค่า checked
+        if (typeof element !== 'function') {
+          if (element.nodeName === 'INPUT') {
+            if (element.getAttribute("value") === this.checked) {
+              element.setAttribute("checked", "");
+            } else {
+              element.removeAttribute("checked");
+            }
+          }
+        }
+
+      }
+    }
+    // console.log(children);
+
+
     // console.log(value);
+    await this.requestRender();
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,

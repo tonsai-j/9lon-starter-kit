@@ -4,9 +4,10 @@ import ownStyle from "../../style/own-style";
 class footerOne extends LitElement {
   _render() {
     return html`
+    ${BulmaStyle()}
              ${ownStyle} 
         
-        ${BulmaStyle()}
+        
         <footer class="footer is-nav-black">
             <div class="content has-text-centered">
                 <p>

@@ -11,7 +11,7 @@ class MyInput extends LitElement {
       id: "",
       ariaLabelledBy: String,
       ariaDescribedBy: String,
-      disabled: Boolean,
+      disablednylon: Boolean,
       title: String,
       value: "",
       invalid: "",
@@ -52,7 +52,7 @@ class MyInput extends LitElement {
     id,
     ariaLabelledBy,
     ariaDescribedBy,
-    disabled,
+    disablednylon,
     title,
     value,
     invalid,
@@ -91,7 +91,7 @@ class MyInput extends LitElement {
         id$="${id}"
         aria-labelledby$="${ariaLabelledBy}"
         aria-describedby$="${ariaDescribedBy}"
-        disabled="${disabled}"
+        disabled="${disablednylon}"
         title$="${title}"
         value="${value}"
         invalid="${invalid}"
