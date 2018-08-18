@@ -90,7 +90,7 @@ class MyApp extends connect(store)(LitElement) {
           href: route.MyBreadcrumb.href.replace(/:user/, params.user),
         };
       });
-      console.log('Breadcrumbs', Breadcrumbs);
+      // console.log('Breadcrumbs', Breadcrumbs);
       // console.log(myBreadcrumbs(Breadcrumbs));
       
       store.dispatch(myBreadcrumbPush(Breadcrumbs))

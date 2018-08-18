@@ -92,16 +92,16 @@ class PageIndex extends Composable(LitElement).compose(
   }) {
     return html `
          ${bulmaStyles()}
-         1111
+         
           <my-quill-render data="${contract.content}" data-type="delta"></my-quill-render>
-          2222  <my-quill id="quill" value="" name-value="contract content" 
+            <my-quill id="quill" value="" name-value="contract content" 
                       on-value-changed="${
                         this._setValueProps
                       }"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-button classnylon=" is-primary" on-click="${el =>
               this.getContent(el)}" disablednylon="${btn}"> เพิ่ม ปุ่ม</my-button>
-            <my-breadcrumb value=${brk}></my-breadcrumb>
+            <my-breadcrumb></my-breadcrumb>
             <br>
             ${seletedTab} <-ค่า
             <hr>

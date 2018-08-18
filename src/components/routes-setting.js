@@ -64,7 +64,7 @@ const RouterConfig = (store, navigate) => [
   },
   {
     path: "/index",
-    MyBreadcrumb: {title: 'index', href: '/index'},
+    MyBreadcrumb: {title: 'หน้าทดสอบ', href: '/index'},
     action: ctx => {
       // console.log(ctx);
 
