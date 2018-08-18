@@ -1,6 +1,6 @@
 import { LitElement, html } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
-
+import fontawesomeStyle from "../../style/fontawesome-style";
 class MyInputDatalist extends LitElement {
   static get properties() {
     return {
@@ -97,10 +97,11 @@ class MyInputDatalist extends LitElement {
   }) {
     return html`
     ${bulmaStyles()}
+    ${fontawesomeStyle()}
     <!-- is-active -->
    
     <div class$="dropdown ${classActive}">
-    <div class="dropdown-trigger">
+    <div class="dropdown-trigger control has-icons-right">
     <input 
         class$="input ${classnylon}"
         id$="${id}"
@@ -141,9 +142,9 @@ class MyInputDatalist extends LitElement {
         oninput="${this._filterItems}"
         aria-haspopup="true" aria-controls="dropdown-menu"
         >
-        <!-- <span class="icon is-small">
-        <i class="fas fa-angle-down">0</i>
-      </span> -->
+        <span class="icon is-small is-right is-small">
+        <i class="fas fa-angle-down"></i>
+      </span>
   </input>
   </div>
         

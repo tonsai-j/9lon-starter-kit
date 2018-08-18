@@ -83,17 +83,6 @@ class PageIndex extends Composable(LitElement).compose(
   _render({ brk, seletedTab, contract, btn, option }) {
     return html`
          ${bulmaStyles()}
-         <div class="field">
-  <input class="is-checkradio" id="exampleCheckbox" type="checkbox" name="exampleCheckbox" checked="checked"
-  disabled="${btn}">
-  <label for="exampleCheckbox">Check me</label>
-</div>
-<!-- <div class="field">
-  <input class="is-checkradio" id="exampleRadioInline1" type="radio" name="exampleRadioInline" checked="checked">
-  <label for="exampleRadioInline1">Option 1</label>
-  <input class="is-checkradio" id="exampleRadioInline2" type="radio" name="exampleRadioInline">
-  <label for="exampleRadioInline2">Option 2</label>
-</div> -->
             <my-quill id="quill" value="" on-value-changed="${el =>
               this.resiveContent(el)}"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
