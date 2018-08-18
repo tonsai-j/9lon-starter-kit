@@ -1,4 +1,7 @@
-import { html, LitElement } from "@polymer/lit-element";
+import {
+  html,
+  LitElement
+} from "@polymer/lit-element";
 import {
   Mixin,
   MyMixin,
@@ -9,7 +12,7 @@ import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
 import fontawesomeStyle from "../../style/fontawesome-style";
 import "../../components/my-quill/my-quill";
-
+import "../../components/my-quill/my-quill-render"
 import '@polymer/iron-icon'
 import '../../components/my-icons/my-icons'
 
@@ -42,6 +45,7 @@ class PageIndex extends Composable(LitElement).compose(
     super();
     this.seletedTab = 1;
     this.contract = {
+      content:'',
       first_name: "ตั้งต้น",
       last_name: "ไม่มี",
       age: 0,
@@ -51,8 +55,7 @@ class PageIndex extends Composable(LitElement).compose(
       dropdown: "/index"
     };
     this.btn = false;
-    this.brk = [
-      {
+    this.brk = [{
         href: "/",
         value: "/",
         name: "Home"
@@ -80,11 +83,21 @@ class PageIndex extends Composable(LitElement).compose(
     this._setValueProps = this._setValueProps.bind(this);
     this.toggle = this.toggle.bind(this);
   }
-  _render({ brk, seletedTab, contract, btn, option }) {
-    return html`
+  _render({
+    brk,
+    seletedTab,
+    contract,
+    btn,
+    option
+  }) {
+    return html `
          ${bulmaStyles()}
-            <my-quill id="quill" value="" on-value-changed="${el =>
-              this.resiveContent(el)}"></my-quill>
+         1111
+          <my-quill-render data="${contract.content}" data-type="delta"></my-quill-render>
+          2222  <my-quill id="quill" value="" name-value="contract content" 
+                      on-value-changed="${
+                        this._setValueProps
+                      }"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-button classnylon=" is-primary" on-click="${el =>
               this.getContent(el)}" disablednylon="${btn}"> เพิ่ม ปุ่ม</my-button>
@@ -199,7 +212,7 @@ class PageIndex extends Composable(LitElement).compose(
     // this._test();
   }
   _shouldRender(props, changedProps, prevProps) {
-    // console.log(props, changedProps, prevProps);
+    console.log(props, changedProps, prevProps);
 
     return true;
   }
