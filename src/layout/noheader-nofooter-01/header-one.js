@@ -49,7 +49,7 @@ class headerOne extends LitElement {
                       <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
                         Elements
                       </a>
-                      <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
+                      <a class="navbar-item is-active" href="/">
                         ออกจากระบบ
                       </a>
                     </div>

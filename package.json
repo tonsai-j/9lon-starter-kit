@@ -29,8 +29,6 @@
     "@polymer/iron-iconset-svg": "^3.0.0-pre.21",
     "@polymer/iron-pages": "^3.0.0-pre.21",
     "@polymer/lit-element": "^0.5.1",
-    "@polymer/paper-material": "^3.0.0-pre.19",
-    "@polymer/paper-tabs": "^3.0.0-pre.21",
     "@vaadin/router": "^1.0.0-rc.1",
     "@vaadin/vaadin-grid": "^5.0.0-pre.5",
     "@webcomponents/webcomponentsjs": "^2.0.0",

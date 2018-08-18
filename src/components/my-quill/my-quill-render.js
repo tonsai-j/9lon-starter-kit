@@ -19,12 +19,12 @@ class MyQuillRender extends LitElement {
         // 3 text
     }
     _render({}) {
-        return html `99999
+        return html `
         <div id="content"><div>
         `
     }
     _shouldRender(props, changedProps, prevProps) {
-        console.log(props, changedProps, prevProps);
+        // console.log(props, changedProps, prevProps);
         let element = this.shadowRoot.querySelector("#content");
         // console.log(element);
         // console.log(changedProps.data.justHtml);
