@@ -87,7 +87,7 @@ class PageIndex extends Composable(LitElement).compose(
               this.resiveContent(el)}"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-button classnylon=" is-primary" on-click="${el =>
-              this.getContent(el)}"> เพิ่ม ปุ่ม</my-button>
+              this.getContent(el)}" disablednylon="${btn}"> เพิ่ม ปุ่ม</my-button>
             <my-breadcrumb value=${brk}></my-breadcrumb>
             <br>
             ${seletedTab} <-ค่า
