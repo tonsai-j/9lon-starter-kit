@@ -99,7 +99,7 @@ class MyInputDatalist extends LitElement {
     ${bulmaStyles()}
     ${fontawesomeStyle()}
     <!-- is-active -->
-   
+    ${value} *****
     <div class$="dropdown ${classActive}">
     <div class="dropdown-trigger control has-icons-right">
     <input 
@@ -194,6 +194,7 @@ class MyInputDatalist extends LitElement {
         item = Object.assign(item, { itemActive: false });
       }
     });
+    
     //   console.log(this.items);
     this.items = this.items.slice(0);
     // }
@@ -209,6 +210,9 @@ class MyInputDatalist extends LitElement {
     // console.log(itemSeleted);
 
     this._dropdown();
+    let control = this.shadowRoot.querySelector("input");
+    // console.log(control.value);
+    control.value = itemSeleted.name
     this.value = itemSeleted.name;
     // console.log(value);
 
