@@ -23,7 +23,8 @@ class MyQuill extends LitElement {
   }
   _render() {
     return html `
-        <link rel="stylesheet" href="../../../node_modules/quill/dist/quill.snow.css">
+    ${console.log(this.baseURI)}
+        <link rel="stylesheet" href$="${this.baseURI}node_modules/quill/dist/quill.snow.css">
         <!-- Create the editor container -->
         <div id="editor">
         <p>Hello World!</p>

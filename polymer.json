@@ -20,9 +20,11 @@
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js",
     "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
     "node_modules/axios/dist/axios.min.js",
-    "node_modules/quill/dist/quill.min.js",
     "node_modules/@fortawesome/fontawesome-free/**",
-    "script/quill.1.2.4.js"
+    "script/quill.1.2.4.js",
+    "node_modules/quill/dist/quill.snow.css",
+    "node_modules/@fortawesome/fontawesome-free/css/all.css",
+    "style/bulma-new-style/bulma.min.css"
   ],
   "builds": [
     {
