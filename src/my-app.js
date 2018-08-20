@@ -1,40 +1,25 @@
-import {
-  LitElement,
-  html
-} from "@polymer/lit-element";
-import {
-  connect
-} from "pwa-helpers/connect-mixin.js";
+import { LitElement, html } from "@polymer/lit-element";
+import { connect } from "pwa-helpers/connect-mixin.js";
 // import { installRouter } from "pwa-helpers/router.js";
 // import { updateMetadata } from "pwa-helpers/metadata.js";
-import {
-  store
-} from "./store/store.js";
+import { store } from "./store/store.js";
 // These are the actions needed by this element.
-import {
-  myBreadcrumbPush
-} from "./actions/my-breadcrumbs-action";
+import { myBreadcrumbPush } from "./actions/my-breadcrumbs-action";
 
 // We are lazy loading its reducer.
 import myBreadcrumbs from "./reducers/my-breadcrumbs-reducer";
 store.addReducers({
   myBreadcrumbs
 });
-import {
-  navigate
-} from "./actions/my-app-action.js";
-import {
-  Router
-} from "@vaadin/router";
+import { navigate } from "./actions/my-app-action.js";
+import { Router } from "@vaadin/router";
 // เอาข้อมูลจาก tag form  เอาข้อมูลกับมาเป้น object
 // http://jsfiddle.net/g7zp5sbL/1/
 // สอนการใช้ slot
 // https://www.youtube.com/watch?v=easo9fuIQuM
 import "./layout/noheader-nofooter-01/content-one";
 import BulmaStyle from "./style/bulma-styles";
-import {
-  RouterConfig
-} from "./components/routes-setting";
+import { RouterConfig } from "./components/routes-setting";
 
 class MyApp extends connect(store)(LitElement) {
   static get properties() {
@@ -51,10 +36,8 @@ class MyApp extends connect(store)(LitElement) {
     this.appTitle = "ระบบพื้นฐาน";
   }
 
-  _render({
-    _page
-  }) {
-    return html `
+  _render({ _page }) {
+    return html`
      ${BulmaStyle()}
     <content-one>
       <div id="outlet" slot="content"></div>
@@ -79,21 +62,24 @@ class MyApp extends connect(store)(LitElement) {
       link.click();
     });
     const router = new Router(this.shadowRoot.querySelector("#outlet"));
-
+    console.log(111);
+    
     router.setRoutes(RouterConfig(store, navigate));
-    window.addEventListener('vaadin-router-location-changed', (event) => {
+    window.addEventListener("vaadin-router-location-changed", event => {
       const router = event.detail.router;
       const params = event.detail.location.params;
-      let Breadcrumbs = router.location.routes.filter(route => !!route.MyBreadcrumb).map(route => {
-        return {
-          title: route.MyBreadcrumb.title.replace(/:user/, params.user),
-          href: route.MyBreadcrumb.href.replace(/:user/, params.user),
-        };
-      });
+      let Breadcrumbs = router.location.routes
+        .filter(route => !!route.MyBreadcrumb)
+        .map(route => {
+          return {
+            title: route.MyBreadcrumb.title.replace(/:user/, params.user),
+            href: route.MyBreadcrumb.href.replace(/:user/, params.user)
+          };
+        });
       // console.log('Breadcrumbs', Breadcrumbs);
       // console.log(myBreadcrumbs(Breadcrumbs));
-      
-      store.dispatch(myBreadcrumbPush(Breadcrumbs))
+
+      store.dispatch(myBreadcrumbPush(Breadcrumbs));
       // const breadcrumbs = document.querySelector('x-breadcrumbs');
       // breadcrumbs.items = router.location.routes
       //   .filter(route => !!route.xBreadcrumb)

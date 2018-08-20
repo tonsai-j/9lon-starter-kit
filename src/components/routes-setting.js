@@ -1,92 +1,109 @@
 const ROUTERDEFAULT = "page-dashboard";
-const RouterConfig = (store, navigate) => [
-  {
-    path: "/",
-    MyBreadcrumb: {title: 'home', href: '/'},
-    action: store.dispatch(navigate("page-dashboard")),
-    component: "page-dashboard"
-  },
-  {
-    path: "/exporter",
-    MyBreadcrumb: {title: 'Exporter', href: '/exporter'},
-    action: store.dispatch(navigate("page-exporter")),
-    component: "page-exporter"
-  },
-  {
-    path: "/form",
-    MyBreadcrumb: {title: 'form', href: '/form'},
-    action: store.dispatch(navigate("page-form")),
-    component: "page-form"
-  },
-  {
-    path: "/index-default",
-    MyBreadcrumb: {title: 'index-default', href: '/index-default'},
-    action: store.dispatch(navigate("page-index-default")),
-    component: "page-index-default"
-  },
-  {
-    path: "/register",
-    MyBreadcrumb: {title: 'register', href: '/register'},
-    action: store.dispatch(navigate("page-register")),
-    component: "page-register"
-  },
-  {
-    path: "/renew",
-    MyBreadcrumb: {title: 'renew', href: '/renew'},
-    action: store.dispatch(navigate("page-renew")),
-    component: "page-renew"
-  },
-  // {
-  //   path: '/index',
-  //     children: [
-  //       // {
-  //       //   path: '/x',
-  //       //   action: store.dispatch(navigate("page-index")),
-  //       //   component: 'page-index'
-  //       // },
-  //       {
-  //         path: '/:user/:to',
-  //         // action: store.dispatch(navigate("page-index")),
-  //         action : (ctx)=>{
-  //           console.log(ctx);
+const RouterConfig = (store, navigate) => {
+  // console.log(store, navigate);
 
-  //           store.dispatch(navigate("page-index"))
-  //         },
-  //         component: 'page-index'
-  //       },
-  //     ]
-  //   },
-  {
-    path: "/login",
-    MyBreadcrumb: {title: 'login', href: '/login'},
-    action: store.dispatch(navigate("page-login")),
-    component: "page-login"
-  },
-  {
-    path: "/index",
-    MyBreadcrumb: {title: 'หน้าทดสอบ', href: '/index'},
-    action: ctx => {
-      // console.log(ctx);
-
-      store.dispatch(navigate("page-index"));
+  return [
+    {
+      path: "/",
+      MyBreadcrumb: { title: "home", href: "/" },
+      action: () => {
+        store.dispatch(navigate("page-dashboard"));
+      },
+      component: "page-dashboard"
     },
-    component: "page-index"
-  },
-  {
-    path: "/regist",
-    MyBreadcrumb: {title: 'regist', href: '/regist'},
-    action: store.dispatch(navigate("page-regist")),
-    component: "page-regist"
-  },
-  {
-    path: "(.*)",
-    action: ctx => store.dispatch(navigate("page-404")),
-    component: "page-404"
-  }
-];
+    {
+      path: "/exporter",
+      MyBreadcrumb: { title: "Exporter", href: "/exporter" },
+      action: () => {
+        store.dispatch(navigate("page-exporter"));
+      },
+      component: "page-exporter"
+    },
+    {
+      path: "/form",
+      MyBreadcrumb: { title: "form", href: "/form" },
+      action: () => {
+        store.dispatch(navigate("page-form"));
+      },
+      component: "page-form"
+    },
+    {
+      path: "/index-default",
+      MyBreadcrumb: { title: "index-default", href: "/index-default" },
+      action: () => {
+        store.dispatch(navigate("page-index-default"));
+      },
+      component: "page-index-default"
+    },
+    {
+      path: "/register",
+      MyBreadcrumb: { title: "register", href: "/register" },
+      action: () => {
+        store.dispatch(navigate("page-register"));
+      },
+      component: "page-register"
+    },
+    {
+      path: "/renew",
+      MyBreadcrumb: { title: "renew", href: "/renew" },
+      action: () => {
+        store.dispatch(navigate("page-renew"));
+      },
+      component: "page-renew"
+    },
+    // {
+    //   path: '/index',
+    //     children: [
+    //       // {
+    //       //   path: '/x',
+    //       //   action: store.dispatch(navigate("page-index")),
+    //       //   component: 'page-index'
+    //       // },
+    //       {
+    //         path: '/:user/:to',
+    //         // action: store.dispatch(navigate("page-index")),
+    //         action : (ctx)=>{
+    //           console.log(ctx);
 
+    //           store.dispatch(navigate("page-index"))
+    //         },
+    //         component: 'page-index'
+    //       },
+    //     ]
+    //   },
+    {
+      path: "/login",
+      MyBreadcrumb: { title: "login", href: "/login" },
+      action: () => {
+        store.dispatch(navigate("page-login"));
+      },
+      component: "page-login"
+    },
+    {
+      path: "/index",
+      MyBreadcrumb: { title: "หน้าทดสอบ", href: "/index" },
+      action: ctx => {
+        store.dispatch(navigate("page-index"));
+      },
+      component: "page-index"
+    },
+    {
+      path: "/regist",
+      MyBreadcrumb: { title: "regist", href: "/regist" },
+      action: () => {
+        store.dispatch(navigate("page-regist"));
+      },
+      component: "page-regist"
+    },
+    {
+      path: "(.*)",
+      action: ctx => store.dispatch(navigate("page-404")),
+      component: "page-404"
+    }
+  ];
+};
 const RouterPage = async page => {
-  // console.log(page);
+  console.log(page);
   // console.log(__dirname);
   switch (page) {
     case "page-dashboard":
