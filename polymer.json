@@ -24,12 +24,14 @@
     "node_modules/@fortawesome/fontawesome-free/**",
     "script/quill.1.2.4.js"
   ],
-  "builds": [{
-      "name": "es6-prod",
-      "preset": "es6-unbundled",
-      "autoBasePath": true,
-      "insertPrefetchLinks": true,
-      "html": {
+  "builds": [
+    {
+      "name": "esm-bundled",
+      "browserCapabilities": [
+        "es2015",
+        "modules"
+      ],
+      "js": {
         "minify": true
       },
       "css": {
@@ -41,24 +43,43 @@
           ]
         }
       },
-      "js": {"minify": true, "compile": false},
-      "addServiceWorker": true,
-      "bundle": {             
-        "inlineCss": true,          
-        "inlineScripts": true,      
-        "rewriteUrlsInTemplates": true, 
-        "sourcemaps": true,     
-        "stripComments": true 
-      }
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es6-bundled",
+      "browserCapabilities": [
+        "es2015"
+      ],
+      "js": {
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": {
+          "exclude": [
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+          ]
+        }
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
     },
     {
       "name": "es5-bundled",
-      "browserCapabilities": ["es2015", "push"],
-      "preset": "es5-bundled",
-      "autoBasePath": true,
-      "insertPrefetchLinks": true,
-      "html": {
-        "minify": true
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
       },
       "css": {
         "minify": {
@@ -69,14 +90,10 @@
           ]
         }
       },
-      "js": {"minify": true, "compile": true},
-      "bundle": {
-        "inlineCss": true,
-        "inlineScripts": true,
-        "rewriteUrlsInTemplates": true,
-        "sourcemaps": true,
-        "stripComments": true
+      "html": {
+        "minify": true
       },
+      "bundle": true,
       "addServiceWorker": true
     }
   ],

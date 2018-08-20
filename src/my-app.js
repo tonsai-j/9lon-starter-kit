@@ -50,6 +50,7 @@ class MyApp extends connect(store)(LitElement) {
   // ทำงานครั้งแรก
   _firstRendered() {
     // ตั่งค่า route
+    // this.removeAttribute('unresolved');
     this.addEventListener("change-page", e => {
       var link = this.shadowRoot.querySelector("#link");
       let path = e.detail.path;
