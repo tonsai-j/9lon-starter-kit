@@ -1,7 +1,7 @@
 import { LitElement, html } from "@polymer/lit-element";
 // import "@polymer/iron-icon";
 // //import "@polymer/iron-icons/iron-icons";
-import BulmaStyle from "../../style/bulma-styles";
+import bulmaStyles from "../../style/bulma-styles";
 class navTwo extends LitElement {
   static get properties() {
     return {
@@ -17,7 +17,7 @@ class navTwo extends LitElement {
     <!-- <style>
       
     </style> -->
-    ${BulmaStyle()}
+    ${bulmaStyles(this)}
     <aside class="menu">
         <p class="menu-label">General</p>
         <ul class="menu-list">

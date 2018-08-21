@@ -1,13 +1,13 @@
 import { LitElement, html } from "@polymer/lit-element";
 
-import BulmaStyle from "../../style/bulma-styles";
+import bulmaStyles from "../../style/bulma-styles";
 import ownStyle from "../../style/own-style";
 class headerOne extends LitElement {
   _render() {
     return html`
      ${ownStyle} 
         
-         ${BulmaStyle()}
+         ${bulmaStyles(this)}
             <nav
           class="navbar is-light"
           role="navigation"
@@ -18,7 +18,7 @@ class headerOne extends LitElement {
             <div class="navbar-brand ">
               <a class="navbar-item" href="#">
                 <img
-                  src="./../../../images/logo/logo.png"
+                  src$="${this.baseURI}images/logo/logo.png"
                   alt="DFT"
                   width="66"
                   height="53"

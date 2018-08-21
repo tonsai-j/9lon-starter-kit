@@ -33,7 +33,7 @@ class MyTabs extends LitElement {
   }
   _render() {
     return html `
-      ${bulmaStyles()}
+      ${bulmaStyles(this)}
       
       <div class="tabs is-boxed">
         <ul>

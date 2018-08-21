@@ -3,7 +3,7 @@ import "./layout/noheader-nofooter-01/content-one";
 import "./layout/onheader-nofooter-02/content-two";
 // import "./layout/onheader-nofooter-03/content-three";
 
-import BulmaStyle from "./style/bulma-styles";
+import bulmaStyles from "./style/bulma-styles";
 class MyRoutes extends LitElement {
   static get properties() {
     return {
@@ -24,7 +24,7 @@ class MyRoutes extends LitElement {
                 display: block;
             }
         </style>
-        ${BulmaStyle()}
+        ${bulmaStyles(this)}
         <!-- <link rel="stylesheet" href="../style/reset.css"> -->
         
         

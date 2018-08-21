@@ -27,7 +27,7 @@ class MyBreadcrumb extends connect(store)(LitElement) {
   }
   _render({ value }) {
     return html`
-     ${bulmaStyles()}
+     ${bulmaStyles(this)}
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
                 ${value.map(({ href, title ,last}) => {

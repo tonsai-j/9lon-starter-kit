@@ -4,7 +4,7 @@ import ownStyle from "../../style/own-style";
 class PageLogin extends LitElement {
   _render() {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
          ${ownStyle}
         <style>
             #main {

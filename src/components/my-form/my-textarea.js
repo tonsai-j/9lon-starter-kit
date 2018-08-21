@@ -53,7 +53,7 @@ class MyTextArea extends LitElement {
     maxRows
   }) {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
     <textarea 
         class$="textarea ${classnylon}"
         id$="${id}"

@@ -84,7 +84,7 @@ class MyInput extends LitElement {
     multiple
   }) {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
     <p class="control has-icons-left has-icons-right">
     <input 
         class$="input ${classnylon}"

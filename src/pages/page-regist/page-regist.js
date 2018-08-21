@@ -6,7 +6,7 @@ import bulmaStyles from '../../style/bulma-styles'
 class PageRegist extends LitElement {
     _render() {
         return html`
-             ${bulmaStyles()}
+             ${bulmaStyles(this)}
 
              <nav class="breadcrumb" aria-label="breadcrumbs">
                 <ul>

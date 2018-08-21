@@ -1,11 +1,11 @@
 import { html,LitElement } from '@polymer/lit-element';
 
-import BulmaStyle from '../../style/bulma-styles'
+import bulmaStyles from '../../style/bulma-styles'
 
 class PageExporter extends LitElement {
     _render() {
         return html`
-        ${BulmaStyle()}
+        ${bulmaStyles(this)}
              PageExporter
             <div class="card">
                 <h1 on-click="${ e => this.test(e)}">go to dashboard</h1>

@@ -3,7 +3,7 @@ import bulmaStyles from "../../style/bulma-styles";
 class Page404 extends LitElement {
   _render() {
     return html`
-         ${bulmaStyles()}
+         ${bulmaStyles(this)}
            404 <br>
             ขอโทษ <br>
             เราหาหน้าเว็บที่ท่านต้องการไม่เจอ

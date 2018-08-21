@@ -40,7 +40,7 @@ class Dropdown extends LitElement {
     seletevalue
   }) {
     return html `
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
     <div class$="select ${classnylon}"
         id$="${id}"
         

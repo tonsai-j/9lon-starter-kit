@@ -96,8 +96,8 @@ class MyInputDatalist extends LitElement {
     selected
   }) {
     return html`
-    ${bulmaStyles()}
-    ${fontawesomeStyle()}
+    ${bulmaStyles(this)}
+    ${fontawesomeStyle(this)}
     <!-- is-active -->
     ${value} *****
     <div class$="dropdown ${classActive}">

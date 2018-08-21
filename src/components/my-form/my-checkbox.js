@@ -41,7 +41,7 @@ class MyCheckbox extends LitElement {
     checked
   }) {
     return html `
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
     <div id="${id}" class="field">
   <input class$="is-checkradio ${classnylon}" id="exampleCheckbox" type="checkbox" name$="${name}" 
                 checked="${checked}"

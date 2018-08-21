@@ -18,7 +18,7 @@ import { Router } from "@vaadin/router";
 // สอนการใช้ slot
 // https://www.youtube.com/watch?v=easo9fuIQuM
 import "./layout/noheader-nofooter-01/content-one";
-import BulmaStyle from "./style/bulma-styles";
+import bulmaStyles from "./style/bulma-styles";
 import { RouterConfig } from "./components/routes-setting";
 
 class MyApp extends connect(store)(LitElement) {
@@ -38,7 +38,7 @@ class MyApp extends connect(store)(LitElement) {
 
   _render({ _page }) {
     return html`
-     ${BulmaStyle()}
+     ${bulmaStyles(this)}
     <content-one>
       <div id="outlet" slot="content"></div>
     </content-one>

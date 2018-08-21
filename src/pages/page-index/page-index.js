@@ -91,7 +91,7 @@ class PageIndex extends Composable(LitElement).compose(
     option
   }) {
     return html `
-         ${bulmaStyles()}
+         ${bulmaStyles(this)}
          
           <my-quill-render data="${contract.content}" data-type="delta"></my-quill-render>
             <my-quill id="quill" value="" name-value="contract content" 

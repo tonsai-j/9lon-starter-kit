@@ -23,7 +23,7 @@ class contentTwo extends LitElement {
         <style>
            
         </style>
-        ${bulmaStyles()}
+        ${bulmaStyles(this)}
         <div class="wrapper">
             <header>
                 <!-- <app-header condenses effects="waterfall" > -->

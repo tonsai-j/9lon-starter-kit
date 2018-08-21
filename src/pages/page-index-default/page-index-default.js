@@ -5,7 +5,7 @@ import bulmaStyles from '../../style/bulma-styles'
 class PageIndexDefault extends LitElement {
     _render() {
         return html`
-             ${bulmaStyles()}
+             ${bulmaStyles(this)}
             
              page-index-default
         `;

@@ -3,7 +3,7 @@ import bulmaStyles from "../../style/bulma-styles";
 class footerTwo extends LitElement {
   _render() {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
         <footer class="footer">
             <div class="content has-text-centered">
                 <p>

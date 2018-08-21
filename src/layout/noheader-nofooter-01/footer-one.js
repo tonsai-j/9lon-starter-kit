@@ -1,10 +1,10 @@
 import { LitElement, html } from "@polymer/lit-element";
-import BulmaStyle from "../../style/bulma-styles";
+import bulmaStyles from "../../style/bulma-styles";
 import ownStyle from "../../style/own-style";
 class footerOne extends LitElement {
   _render() {
     return html`
-    ${BulmaStyle()}
+    ${bulmaStyles(this)}
              ${ownStyle} 
         
         

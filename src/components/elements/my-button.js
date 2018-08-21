@@ -10,7 +10,7 @@ class MyButton extends LitElement {
   }
   _render({ classnylon, disablednylon }) {
     return html`
-        ${bulmaStyles()}
+        ${bulmaStyles(this)}
         <button class$="button ${classnylon}" disabled="${disablednylon}">
             <slot></slot>
         </button>

@@ -31,7 +31,7 @@ class PageDashboard extends LitElement {
     }
     _render({name}) {
         return html`
-        ${bulmaStyles()}
+        ${bulmaStyles(this)}
         <!-- <exporter-slide></exporter-slide> -->
         <!-- <exporter-manage></exporter-manage>
         <exporter-card></exporter-card> -->

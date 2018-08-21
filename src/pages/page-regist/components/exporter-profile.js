@@ -5,7 +5,7 @@ import bulmaStyles from '../../style/bulma-styles'
 class ExporterProfile extends LitElement {
     _render() {
         return html`
-             ${bulmaStyles()}
+             ${bulmaStyles(this)}
              
              
         <div class="tabs is-boxed">
