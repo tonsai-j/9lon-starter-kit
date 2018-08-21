@@ -81,17 +81,19 @@
             }
         };
         window.params = null;
+
     </script>
+
     <style>
         * {
             margin: 0;
             padding: 0;
         }
+
         body {
             margin: 0;
             min-height: 100vh;
         }
-        
     </style>
 </head>
 
@@ -101,7 +103,30 @@
         Please enable JavaScript to view this website.
     </noscript>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script defer src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- <script>
+            console.log('-11');
+            let doCu = document//(document.currentScript || document._currentScript).ownerDocument;
+    
+            console.log(doCu);
+            console.log(document);
+            
+    
+            var refScript = document.getElementsByTagName("script")[0];
+            window.addEventListener('WebComponentsReady', function componentsReady(e) {
+                window.removeEventListener("WebComponentsReady", componentsReady, false);
+                // imports are loaded and elements have been registered
+                const script = document.createElement("script");
+                script.setAttribute('src','src/my-app.js')
+                script.setAttribute('type','module')
+                script.setAttribute('crossorigin','')
+                script.setAttribute('defer','')
+                // console.log(script);
+                // console.log(refScript);
+    
+                refScript.parentNode.insertBefore(script, refScript);
+            });
+        </script> -->
     <script defer type="module" src="src/my-app.js" crossorigin></script>
 </body>
 

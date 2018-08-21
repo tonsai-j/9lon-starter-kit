@@ -16,9 +16,7 @@
   ],
   "extraDependencies": [
     "manifest.json",
-    "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
-    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js",
-    "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+    "node_modules/@webcomponents/webcomponentsjs/**",
     "node_modules/axios/dist/axios.min.js",
     "node_modules/@fortawesome/fontawesome-free/**",
     "script/quill.1.2.4.js",

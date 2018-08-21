@@ -23,7 +23,6 @@ class MyQuill extends LitElement {
   }
   _render() {
     return html `
-    ${console.log(this.baseURI)}
         <link rel="stylesheet" href$="${this.baseURI}node_modules/quill/dist/quill.snow.css">
         <!-- Create the editor container -->
         <div id="editor">
@@ -37,8 +36,7 @@ class MyQuill extends LitElement {
   }
   _firstRendered() {
     let element = this.shadowRoot.querySelector("#editor");
-    // console.log(document.body);
-    // console.log(this.shadowRoot);
+
     var toolbarOptions = [
       ['bold', 'italic', 'underline', 'strike'], // toggled buttons
       ['blockquote', 'code-block'],
@@ -91,22 +89,11 @@ class MyQuill extends LitElement {
     var quill = new Quill(element, {
       // bounds: this.shadowRoot,
       theme: "snow",
+      placeholder: "Waiting for your precious content",
       modules: {
         toolbar: toolbarOptions
       },
     });
-    // let contents = {
-    //   ops: [
-    //     { insert: "Hello World!\nSome initial " },
-    //     { attributes: { bold: true }, insert: "bold" },
-    //     { insert: " text\nไม่มีอะไรนะปกติ\n\n\nอะไรอีก\n\n" }
-    //   ]
-    // };
-
-    // var quill = new Quill(element, {
-    //   placeholder: "Waiting for your precious content",
-    //   theme: "snow"
-    // });
 
     // this.quill = quill;
     let _this = this;

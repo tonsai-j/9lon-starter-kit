@@ -1,7 +1,4 @@
-import {
-  html,
-  LitElement
-} from "@polymer/lit-element";
+import { html, LitElement } from "@polymer/lit-element";
 import {
   Mixin,
   MyMixin,
@@ -12,9 +9,9 @@ import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
 import fontawesomeStyle from "../../style/fontawesome-style";
 import "../../components/my-quill/my-quill";
-import "../../components/my-quill/my-quill-render"
-import '@polymer/iron-icon'
-import '../../components/my-icons/my-icons'
+import "../../components/my-quill/my-quill-render";
+import "@polymer/iron-icon";
+import "../../components/my-icons/my-icons";
 
 import "../../components/my-breadcrumb";
 import "../../components/my-tabs/my-tabs";
@@ -45,7 +42,7 @@ class PageIndex extends Composable(LitElement).compose(
     super();
     this.seletedTab = 1;
     this.contract = {
-      content:'',
+      content: "",
       first_name: "ตั้งต้น",
       last_name: "ไม่มี",
       age: 0,
@@ -55,7 +52,8 @@ class PageIndex extends Composable(LitElement).compose(
       dropdown: "/index"
     };
     this.btn = false;
-    this.brk = [{
+    this.brk = [
+      {
         href: "/",
         value: "/",
         name: "Home"
@@ -83,24 +81,20 @@ class PageIndex extends Composable(LitElement).compose(
     this._setValueProps = this._setValueProps.bind(this);
     this.toggle = this.toggle.bind(this);
   }
-  _render({
-    brk,
-    seletedTab,
-    contract,
-    btn,
-    option
-  }) {
-    return html `
+  _render({ brk, seletedTab, contract, btn, option }) {
+    return html`
          ${bulmaStyles(this)}
          
-          <my-quill-render data="${contract.content}" data-type="delta"></my-quill-render>
+          <my-quill-render data="${
+            contract.content
+          }" data-type="delta"></my-quill-render>
             <my-quill id="quill" value="" name-value="contract content" 
-                      on-value-changed="${
-                        this._setValueProps
-                      }"></my-quill>
+                      on-value-changed="${this._setValueProps}"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-button classnylon=" is-primary" on-click="${el =>
-              this.getContent(el)}" disablednylon="${btn}"> เพิ่ม ปุ่ม</my-button>
+              this.getContent(
+                el
+              )}" disablednylon="${btn}"> เพิ่ม ปุ่ม</my-button>
             <my-breadcrumb></my-breadcrumb>
             <br>
             ${seletedTab} <-ค่า
@@ -199,15 +193,23 @@ class PageIndex extends Composable(LitElement).compose(
     // เช่น name-value="contract first_name"
     let valueName = e.currentTarget.getAttribute("name-value");
     let valueNameArray = valueName.split(" ");
+    // console.log(valueNameArray);
+
     // สติงเริ่มต้น
-    let strTOEval = `this`;
+    let strTOEval = `this.`;
     // วนเพิ่มสติง
-    valueNameArray.forEach(
-      (element, index) => (strTOEval += `[valueNameArray[${index}]]`)
-    );
+    strTOEval += valueNameArray.join('.')
+    // valueNameArray.forEach(element => (strTOEval += `.${element}`));
+    // console.log('value',value);
+    
     strTOEval += ` = value`;
+    // console.log("strTOEval=>", strTOEval);
+    // this[valueNameArray[0]][valueNameArray[1]] = value
     // แปลงสติงเป็นคำสั่ง javascript
+    // console.log('this.contract 1',this.contract);
     eval(strTOEval);
+    // console.log('this.contract 2',this.contract);
+    
     await this.requestRender();
     // this._test();
   }
