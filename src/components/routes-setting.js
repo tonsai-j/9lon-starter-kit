@@ -30,6 +30,11 @@ const RouterConfig = (store, navigate) => [
     action: store.dispatch(navigate("page-renew")),
     component: "page-renew"
   },
+  {
+    path: "/search",
+    action: store.dispatch(navigate("page-search")),
+    component: "page-search"
+  },
   // {
   //   path: '/index',
   //     children: [
@@ -111,6 +116,9 @@ const RouterPage = async page => {
       break;
     case "page-regist":
       await import("../pages/page-regist/page-regist.js");
+      break;
+    case "page-search":
+      await import("../pages/page-search/page-search.js");
       break;
     case "page-login":
       await import("../pages/page-login/page-login.js");

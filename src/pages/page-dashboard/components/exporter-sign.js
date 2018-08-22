@@ -124,7 +124,7 @@ class ExporterSign extends LitElement {
                     </div>
                     <div class="column  is-2 "> 
                         <div class="own-text-middle " >
-                        <a class="button is-link is-hovered own-flex-middle">ลงทะเบียนที่นี่</a>
+                        <slot name="btn"></slot>
                         </div>
                     </div>
                     <div class="column  is-3 d">

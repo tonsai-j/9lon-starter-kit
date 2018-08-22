@@ -1,10 +1,10 @@
 import { html,LitElement } from '@polymer/lit-element';
 // import { PageViewElement } from './../../components/page-view-element.js';
 import bulmaStyles from '../../style/bulma-styles'
-import './components/exporter-profile'
+import './exporter-search'
 import '../../components/my-breadcrumb'
 
-class PageRegist extends LitElement {
+class PageSearch extends LitElement {
     static get properties() {
         return {
           brk: Array,
@@ -39,8 +39,7 @@ class PageRegist extends LitElement {
 
         <!-- <div class="box">
             <div class="panel"> -->
-
-                <exporter-profile></exporter-profile>
+                <exporter-search></exporter-search>
                 <!-- <sign-table></sign-table> -->
 
             <!-- </div>
@@ -54,4 +53,4 @@ class PageRegist extends LitElement {
 
 }
 
-customElements.define('page-regist', PageRegist);
+customElements.define('page-search', PageSearch);

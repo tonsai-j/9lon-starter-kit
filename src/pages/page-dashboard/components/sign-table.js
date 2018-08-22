@@ -72,7 +72,7 @@ class SignTable extends LitElement {
         </tr> -->
         <tr>
             <td colspan="4" style="text-align:center" >
-               <a href=""><u> ลงทะเบียนที่นี่ </u></a>
+               <a href="/regist"><u> ลงทะเบียนที่นี่ </u></a>
                
             </td>
             <!-- <td>Christina Berglund</td>

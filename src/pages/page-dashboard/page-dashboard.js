@@ -9,6 +9,7 @@ import './components/exporter-card'
 
 import './components/exporter-sign'
 import './components/sign-table'
+import './components/exporter-manage'
 
 class PageDashboard extends LitElement {
     static get properties() {
@@ -45,9 +46,16 @@ class PageDashboard extends LitElement {
         <div class="box">
             <div class="panel">
 
-                <exporter-sign></exporter-sign>
+                <exporter-sign>
+                    <div slot="btn">
+                    <a class="button is-link is-hovered " href="/regist">ลงทะเบียนที่นี่</a>
+                    <!-- <a class="button is-link is-hovered " href="/regist">ต่ออายุ</a>
+                    <a class="button is-link is-hovered " href="/regist">เปลี่ยนประเภท</a> -->
+                    </div>
+                </exporter-sign>
+               
                 <sign-table></sign-table>
-
+                <!-- <exporter-manage></exporter-manage> -->
             </div>
         </div>
         `;
