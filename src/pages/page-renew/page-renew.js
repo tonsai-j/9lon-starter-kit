@@ -5,7 +5,7 @@ import "./components/exporter-renew";
 class PageRenew extends LitElement {
   _render() {
     return html`
-             ${bulmaStyles()}
+             ${bulmaStyles(this)}
             
             ลานา
         `;

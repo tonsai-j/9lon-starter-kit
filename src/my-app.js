@@ -3,6 +3,14 @@ import { connect } from "pwa-helpers/connect-mixin.js";
 // import { installRouter } from "pwa-helpers/router.js";
 // import { updateMetadata } from "pwa-helpers/metadata.js";
 import { store } from "./store/store.js";
+// These are the actions needed by this element.
+import { myBreadcrumbPush } from "./actions/my-breadcrumbs-action";
+
+// We are lazy loading its reducer.
+import myBreadcrumbs from "./reducers/my-breadcrumbs-reducer";
+store.addReducers({
+  myBreadcrumbs
+});
 import { navigate } from "./actions/my-app-action.js";
 import { Router } from "@vaadin/router";
 // เอาข้อมูลจาก tag form  เอาข้อมูลกับมาเป้น object
@@ -10,7 +18,7 @@ import { Router } from "@vaadin/router";
 // สอนการใช้ slot
 // https://www.youtube.com/watch?v=easo9fuIQuM
 import "./layout/noheader-nofooter-01/content-one";
-import BulmaStyle from "./style/bulma-styles";
+import bulmaStyles from "./style/bulma-styles";
 import { RouterConfig } from "./components/routes-setting";
 
 class MyApp extends connect(store)(LitElement) {
@@ -30,7 +38,7 @@ class MyApp extends connect(store)(LitElement) {
 
   _render({ _page }) {
     return html`
-     ${BulmaStyle()}
+     ${bulmaStyles(this)}
     <content-one>
       <div id="outlet" slot="content"></div>
     </content-one>
@@ -42,6 +50,7 @@ class MyApp extends connect(store)(LitElement) {
   // ทำงานครั้งแรก
   _firstRendered() {
     // ตั่งค่า route
+    // this.removeAttribute('unresolved');
     this.addEventListener("change-page", e => {
       var link = this.shadowRoot.querySelector("#link");
       let path = e.detail.path;
@@ -54,8 +63,34 @@ class MyApp extends connect(store)(LitElement) {
       link.click();
     });
     const router = new Router(this.shadowRoot.querySelector("#outlet"));
-
+    console.log(111);
+    
     router.setRoutes(RouterConfig(store, navigate));
+    window.addEventListener("vaadin-router-location-changed", event => {
+      const router = event.detail.router;
+      const params = event.detail.location.params;
+      let Breadcrumbs = router.location.routes
+        .filter(route => !!route.MyBreadcrumb)
+        .map(route => {
+          return {
+            title: route.MyBreadcrumb.title.replace(/:user/, params.user),
+            href: route.MyBreadcrumb.href.replace(/:user/, params.user)
+          };
+        });
+      // console.log('Breadcrumbs', Breadcrumbs);
+      // console.log(myBreadcrumbs(Breadcrumbs));
+
+      store.dispatch(myBreadcrumbPush(Breadcrumbs));
+      // const breadcrumbs = document.querySelector('x-breadcrumbs');
+      // breadcrumbs.items = router.location.routes
+      //   .filter(route => !!route.xBreadcrumb)
+      //   .map(route => {
+      //     return {
+      //       title: route.xBreadcrumb.title.replace(/:user/, params.user),
+      //       href: route.xBreadcrumb.href.replace(/:user/, params.user),
+      //     };
+      //   });
+    });
   }
   // _firstRendered() {
   // this.addEventListener("change-page", e => {

@@ -15,51 +15,85 @@
     "src/pages/page-login/page-login.js"
   ],
   "extraDependencies": [
+    "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**",
-    "node_modules/axios/dist/**",
-    "node_modules/quill/dist/**",
-    "script/quill.1.2.4.js"
+    "node_modules/axios/dist/axios.min.js",
+    "node_modules/@fortawesome/fontawesome-free/**",
+    "script/quill.1.2.4.js",
+    "node_modules/quill/dist/quill.snow.css",
+    "node_modules/@fortawesome/fontawesome-free/css/all.css",
+    "style/bulma-new-style/bulma.min.css"
   ],
   "builds": [
-    { 
-      "name": "es6-prod",
-      "preset": "es6-unbundled",
-      "html": {
+    {
+      "name": "esm-bundled",
+      "browserCapabilities": [
+        "es2015",
+        "modules"
+      ],
+      "js": {
+        "minify": true
+      },
+      "css": {
         "minify": {
           "exclude": [
-            "/style/bulma-new-style/bulma.min.css",
-            "/node_modules/quill/dist/quill.snow.css",
-            "/style/fontawesome/all.css"
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
           ]
         }
       },
-      "basePath": true,  
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es6-bundled",
+      "browserCapabilities": [
+        "es2015"
+      ],
+      "js": {
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": {
+          "exclude": [
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+          ]
+        }
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
       "addServiceWorker": true
     },
     {
       "name": "es5-bundled",
-      "browserCapabilities": ["es2015", "push"],
-      "preset": "es5-bundled",
-      "css": {
-        "minify": true
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
       },
-      "html": {
+      "css": {
         "minify": {
           "exclude": [
-            "/style/bulma-new-style/bulma.min.css",
-            "/node_modules/quill/dist/quill.snow.css",
-            "/style/fontawesome/all.css"
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
           ]
         }
       },
-      "bundle": {             
-        "inlineCss": true,          
-        "inlineScripts": true,      
-        "rewriteUrlsInTemplates": true, 
-        "sourcemaps": true,     
-        "stripComments": true  
+      "html": {
+        "minify": true
       },
-      "basePath": true,  
+      "bundle": true,
       "addServiceWorker": true
     }
   ],

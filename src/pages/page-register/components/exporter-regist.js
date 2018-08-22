@@ -19,7 +19,7 @@ class ExporterRegist extends LitElement {
     }
     _render({ name }) {
         return html`
-         ${bulmaStyles()} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
+         ${bulmaStyles(this)} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
         <style>
         </style>
         <section>

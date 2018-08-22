@@ -33,7 +33,7 @@ class PageRegist extends LitElement {
       }
     _render({brk}) {
         return html`
-             ${bulmaStyles()}
+             ${bulmaStyles(this)}
 
             <my-breadcrumb value=${brk}></my-breadcrumb>
 

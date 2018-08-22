@@ -1,5 +1,5 @@
 import { LitElement, html } from "@polymer/lit-element";
-import BulmaStyle from "../../style/bulma-styles";
+import bulmaStyles from "../../style/bulma-styles";
 class headerTwo extends LitElement {
   _firstRendered() {
     // Get all "navbar-burger" elements
@@ -26,7 +26,7 @@ class headerTwo extends LitElement {
   }
   _render() {
     return html`
-    ${BulmaStyle()}
+    ${bulmaStyles(this)}
     <style>
     nav{
         height:64px;

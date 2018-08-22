@@ -7,7 +7,11 @@ import {
 } from "../../function/my-mixin";
 import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
+import fontawesomeStyle from "../../style/fontawesome-style";
 import "../../components/my-quill/my-quill";
+import "../../components/my-quill/my-quill-render";
+import "@polymer/iron-icon";
+import "../../components/my-icons/my-icons";
 
 import "../../components/my-breadcrumb";
 import "../../components/my-tabs/my-tabs";
@@ -38,11 +42,12 @@ class PageIndex extends Composable(LitElement).compose(
     super();
     this.seletedTab = 1;
     this.contract = {
+      content: "",
       first_name: "ตั้งต้น",
       last_name: "ไม่มี",
       age: 0,
       gender: "",
-      remember: false,
+      remember: true,
       radio: "3",
       dropdown: "/index"
     };
@@ -78,17 +83,19 @@ class PageIndex extends Composable(LitElement).compose(
   }
   _render({ brk, seletedTab, contract, btn, option }) {
     return html`
-         ${bulmaStyles()}
-            page-index
-            ลองเพิ่มหน้าเองแล้ว 
-            ข้างล่าง
-           
-            <my-quill id="quill" value="" on-value-changed="${el =>
-              this.resiveContent(el)}"></my-quill>
+         ${bulmaStyles(this)}
+         
+          <my-quill-render data="${
+            contract.content
+          }" data-type="delta"></my-quill-render>
+            <my-quill id="quill" value="" name-value="contract content" 
+                      on-value-changed="${this._setValueProps}"></my-quill>
             <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-button classnylon=" is-primary" on-click="${el =>
-              this.getContent(el)}"> เพิ่ม ปุ่ม</my-button>
-            <my-breadcrumb value=${brk}></my-breadcrumb>
+              this.getContent(
+                el
+              )}" disablednylon="${btn}"> เพิ่ม ปุ่ม</my-button>
+            <my-breadcrumb></my-breadcrumb>
             <br>
             ${seletedTab} <-ค่า
             <hr>
@@ -107,27 +114,27 @@ class PageIndex extends Composable(LitElement).compose(
                       type="Number" 
                       placeholder="Text input"
                       name-value="contract age" 
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       on-value-changed="${this._setValueProps}" ></my-input>
             <my-input id="tests" classnylon="is-primary" 
                       value$="${contract.first_name}"
                       type="text" 
                       placeholder="Text input"
                       name-value="contract first_name" 
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       on-value-changed="${this._setValueProps}" ></my-input>
             <my-textarea id="tests" classnylon="is-primary" 
                       value$="${contract.last_name}"
                       type="text" 
                       placeholder="Text input"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       name-value="contract last_name" 
                       on-value-changed="${this._setValueProps}" ></my-textarea>
             <my-dropdown id="tests" classnylon="is-primary" 
                       seleted="${contract.gender}"
                       name-value="contract gender"
                       seletevalue="${option}"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       on-value-changed="${this._setValueProps}" >
               <option value="">กรุณาเลือกเพศ</option>
               <option value="male">ชาย</option>
@@ -135,14 +142,15 @@ class PageIndex extends Composable(LitElement).compose(
             </my-dropdown>  
             <my-checkbox classnylon="is-primary" 
                       checked="${contract.remember}"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
+                      name="remember"
                       name-value="contract remember" 
                       on-value-changed="${
                         this._setValueProps
                       }" >Remember me</my-checkbox>    
             <my-radio-group
                       checked="${contract.radio}"
-                      disabled="${btn}"
+                      disablednylon="${btn}"
                       name="gender"
                       name-value="contract radio" 
                       on-value-changed="${this._setValueProps}" >
@@ -152,6 +160,7 @@ class PageIndex extends Composable(LitElement).compose(
             </my-radio-group>             
             <my-input-datalist classnylon="is-primary" 
             items="${brk}" 
+            disablednylon="${btn}"
             selected="${contract.dropdown}"></my-input-datalist>          
 
                       
@@ -184,15 +193,23 @@ class PageIndex extends Composable(LitElement).compose(
     // เช่น name-value="contract first_name"
     let valueName = e.currentTarget.getAttribute("name-value");
     let valueNameArray = valueName.split(" ");
+    // console.log(valueNameArray);
+
     // สติงเริ่มต้น
-    let strTOEval = `this`;
+    let strTOEval = `this.`;
     // วนเพิ่มสติง
-    valueNameArray.forEach(
-      (element, index) => (strTOEval += `[valueNameArray[${index}]]`)
-    );
+    strTOEval += valueNameArray.join('.')
+    // valueNameArray.forEach(element => (strTOEval += `.${element}`));
+    // console.log('value',value);
+    
     strTOEval += ` = value`;
+    // console.log("strTOEval=>", strTOEval);
+    // this[valueNameArray[0]][valueNameArray[1]] = value
     // แปลงสติงเป็นคำสั่ง javascript
+    // console.log('this.contract 1',this.contract);
     eval(strTOEval);
+    // console.log('this.contract 2',this.contract);
+    
     await this.requestRender();
     // this._test();
   }

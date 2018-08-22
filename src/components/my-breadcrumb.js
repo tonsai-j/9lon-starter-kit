@@ -1,5 +1,8 @@
 import { html, LitElement } from "@polymer/lit-element";
 import bulmaStyles from "../style/bulma-styles";
+import { connect } from "pwa-helpers/connect-mixin.js";
+// This element is connected to the Redux store.
+import { store } from "../store/store";
 /*
 วิธีใช้ 
 <my-breadcrumb value=${brk}></my-breadcrumb>
@@ -11,7 +14,7 @@ this.brk.push({
   this.brk = this.brk.slice(0)
 */
 
-class MyBreadcrumb extends LitElement {
+class MyBreadcrumb extends connect(store)(LitElement) {
   static get properties() {
     return {
       value: Array
@@ -24,13 +27,13 @@ class MyBreadcrumb extends LitElement {
   }
   _render({ value }) {
     return html`
-     ${bulmaStyles()}
+     ${bulmaStyles(this)}
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
-                ${value.map(({ href, name ,last}) => {
+                ${value.map(({ href, title ,last}) => {
                   return html`
                     <li class$=${(last ? 'is-active' : '')}>
-                        <a href$=${href} aria-current$=${(last ? 'page' : '')}>${name}</a>
+                        <a href$=${href} aria-current$=${(last ? 'page' : '')}>${title}</a>
                     </li>
                     `;
                 })}
@@ -41,6 +44,14 @@ class MyBreadcrumb extends LitElement {
             </ul>
         </nav>
         `;
+  }
+  _stateChanged(state) {
+    console.log("state my-breadcrumb", state.myBreadcrumbs.myBreadcrumbs);
+    this.value = state.myBreadcrumbs.myBreadcrumbs
+    this.value = this.value.slice(0)
+    // this.count = state.data.count;
+    // console.log('this.value',this.value);
+    
   }
   _shouldRender(props, changedProps, prevProps) {
     let lengthValue = this.value.length || 0;

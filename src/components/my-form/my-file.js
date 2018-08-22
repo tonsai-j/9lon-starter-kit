@@ -24,7 +24,7 @@ class MyFile extends LitElement {
   }
   _render() {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
 
 
     `;

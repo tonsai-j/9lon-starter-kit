@@ -11,7 +11,7 @@ class MyTextArea extends LitElement {
       value: "",
       invalid: "",
       validator: "",
-      disabled: "",
+      disablednylon: "",
       autocomplete: "",
       autofocus: "",
       inputmode: "",
@@ -38,7 +38,7 @@ class MyTextArea extends LitElement {
     value,
     invalid,
     validator,
-    disabled,
+    disablednylon,
     autocomplete,
     autofocus,
     inputmode,
@@ -53,7 +53,7 @@ class MyTextArea extends LitElement {
     maxRows
   }) {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
     <textarea 
         class$="textarea ${classnylon}"
         id$="${id}"
@@ -62,7 +62,7 @@ class MyTextArea extends LitElement {
         value="${value}"
         invalid="${invalid}"
         validator$="${validator}"
-        disabled="${disabled}"
+        disabled="${disablednylon}"
         autocomplete$="${autocomplete}"
         autofocus$="${autofocus}"
         inputmode$="${inputmode}"

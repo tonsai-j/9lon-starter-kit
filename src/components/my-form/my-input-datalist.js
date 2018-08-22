@@ -1,6 +1,6 @@
 import { LitElement, html } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
-
+import fontawesomeStyle from "../../style/fontawesome-style";
 class MyInputDatalist extends LitElement {
   static get properties() {
     return {
@@ -10,7 +10,7 @@ class MyInputDatalist extends LitElement {
       id: "",
       ariaLabelledBy: String,
       ariaDescribedBy: String,
-      disabled: Boolean,
+      disablednylon: Boolean,
       title: String,
       value: "",
       invalid: "",
@@ -61,7 +61,7 @@ class MyInputDatalist extends LitElement {
     id,
     ariaLabelledBy,
     ariaDescribedBy,
-    disabled,
+    disablednylon,
     title,
     value,
     invalid,
@@ -96,17 +96,18 @@ class MyInputDatalist extends LitElement {
     selected
   }) {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
+    ${fontawesomeStyle(this)}
     <!-- is-active -->
-   
+    ${value} *****
     <div class$="dropdown ${classActive}">
-    <div class="dropdown-trigger">
+    <div class="dropdown-trigger control has-icons-right">
     <input 
         class$="input ${classnylon}"
         id$="${id}"
         aria-labelledby$="${ariaLabelledBy}"
         aria-describedby$="${ariaDescribedBy}"
-        disabled="${disabled}"
+        disabled="${disablednylon}"
         title$="${title}"
         value="${value}"
         invalid="${invalid}"
@@ -141,9 +142,9 @@ class MyInputDatalist extends LitElement {
         oninput="${this._filterItems}"
         aria-haspopup="true" aria-controls="dropdown-menu"
         >
-        <!-- <span class="icon is-small">
-        <i class="fas fa-angle-down">0</i>
-      </span> -->
+        <span class="icon is-small is-right is-small">
+        <i class="fas fa-angle-down"></i>
+      </span>
   </input>
   </div>
         
@@ -193,6 +194,7 @@ class MyInputDatalist extends LitElement {
         item = Object.assign(item, { itemActive: false });
       }
     });
+    
     //   console.log(this.items);
     this.items = this.items.slice(0);
     // }
@@ -208,6 +210,9 @@ class MyInputDatalist extends LitElement {
     // console.log(itemSeleted);
 
     this._dropdown();
+    let control = this.shadowRoot.querySelector("input");
+    // console.log(control.value);
+    control.value = itemSeleted.name
     this.value = itemSeleted.name;
     // console.log(value);
 

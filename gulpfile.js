@@ -36,19 +36,19 @@ gulp.task('build:prpl-server', (cb) => {
     // Move the CLI output to `server/`
     move('build', 'server/build');
 
-    // Rename all the `node_modules` folders to `node_assets`
+    // Rename all the `node_modules` folders to `node_modules`
     const results = renamer.replace({
       find: 'node_modules',
-      replace: 'node_assets',
+      replace: 'node_modules',
       files: renamer.expand('server/build/**').filesAndDirs,
     });
     const resultsTokens = renamer.replaceIndexToken(results);
     renamer.rename(resultsTokens);
 
-    // Replace all the occurrencies of `node_modules` to `node_assets` in files
+    // Replace all the occurrencies of `node_modules` to `node_modules` in files
     replace({
       regex: 'node_modules',
-      replacement: 'node_assets',
+      replacement: 'node_modules',
       paths: ['server/build'],
       recursive: true,
       silent: true,

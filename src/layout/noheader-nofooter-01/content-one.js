@@ -7,7 +7,7 @@ import "./footer-one";
 class contentOne extends LitElement {
   _render() {
     return html`
-          ${bulmaStyles()}
+          ${bulmaStyles(this)}
           <style>
           /* .warpx{
             position: relative;

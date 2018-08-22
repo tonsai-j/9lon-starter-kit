@@ -14,12 +14,12 @@
       a) Add a `basePath` property to the build configuration in your `polymer.json`.
       b) Use the `--base-path` command-line option for `polymer build`.
     -->
-    <!-- <base href="/"> -->
+    <base href="/">
 
-    <link rel="icon" href="/images/favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
 
     <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <!-- See https://goo.gl/qRE0vM -->
     <meta name="theme-color" content="#3f51b5">
@@ -34,14 +34,14 @@
     <meta name="apple-mobile-web-app-title" content="My App">
 
     <!-- Homescreen icons -->
-    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
 
     <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#3f51b5">
     <meta name="msapplication-tap-highlight" content="no">
 
@@ -50,18 +50,20 @@
     <meta name="twitter:site" content="@username">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="my-app">
-    <meta property="og:image" content="/images/manifest/icon-144x144.png" />
+    <meta property="og:image" content="images/manifest/icon-144x144.png" />
 
-    <script defer src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script defer src="/node_modules/axios/dist/axios.min.js"></script>
+    <script defer src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script defer src="node_modules/axios/dist/axios.min.js"></script>
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/quill-render@1.0.5/index.min.js"></script> -->
     <!-- Include the Quill library -->
-    <script src="/script/quill.1.2.4.js"></script>
-    <!-- <script defer type="module" src="/node_modules/quill/quill.js" crossorigin ></script> -->
-    <!-- <script defer src="/node_modules/quill/dist/quill.js"></script> -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"> -->
+    <!-- แก้ object.assign ใน ie 11 ใช้ไม่ได้ -->
+    <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="script/quill.1.2.4.js"></script>
+    <!-- <script defer src="/node_modules/@fortawesome/fontawesome-free/js/all.js"></script> -->
+    <!-- <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> -->
 
     <!-- <link rel="stylesheet" type="text/css" href="./style/bulma.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="/style/bulma-new-style/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="style/bulma-new-style/bulma.min.css">
     <title>My App</title>
     <script>
         // Load and register pre-caching Service Worker
@@ -75,25 +77,58 @@
 
         // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
         // https://github.com/reactjs/redux/issues/2907
-        window.process = { env: { NODE_ENV: 'dev' } };
+        window.process = {
+            env: {
+                NODE_ENV: 'dev'
+            }
+        };
         window.params = null;
     </script>
+
     <style>
         * {
             margin: 0;
             padding: 0;
         }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+        }
     </style>
 </head>
 
 <body>
-    <my-app></my-app>
+    <my-app unresolved></my-app>
     <noscript>
         Please enable JavaScript to view this website.
     </noscript>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-    <script defer src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script defer type="module" src="/src/my-app.js" crossorigin></script>
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- <script>
+            console.log('-11');
+            let doCu = document//(document.currentScript || document._currentScript).ownerDocument;
+    
+            console.log(doCu);
+            console.log(document);
+            
+    
+            var refScript = document.getElementsByTagName("script")[0];
+            window.addEventListener('WebComponentsReady', function componentsReady(e) {
+                window.removeEventListener("WebComponentsReady", componentsReady, false);
+                // imports are loaded and elements have been registered
+                const script = document.createElement("script");
+                script.setAttribute('src','src/my-app.js')
+                script.setAttribute('type','module')
+                script.setAttribute('crossorigin','')
+                script.setAttribute('defer','')
+                // console.log(script);
+                // console.log(refScript);
+    
+                refScript.parentNode.insertBefore(script, refScript);
+            });
+        </script> -->
+    <script defer type="module" src="src/my-app.js" crossorigin></script>
 </body>
 
 </html>

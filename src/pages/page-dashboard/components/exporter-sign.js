@@ -22,7 +22,7 @@ class ExporterSign extends LitElement {
   }
   _render({ name }) {
     return html`
-         ${bulmaStyles()} 
+         ${bulmaStyles(this)} 
          ${ownStyle} 
         <style>
         div.a {

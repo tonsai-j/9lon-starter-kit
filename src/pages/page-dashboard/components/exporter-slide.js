@@ -19,7 +19,7 @@ class ExporterSlide extends LitElement {
     }
     _render({ name }) {
         return html`
-         ${bulmaStyles()} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
+         ${bulmaStyles(this)} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
         <style>
             input {
                 width: 100%;

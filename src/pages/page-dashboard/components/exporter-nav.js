@@ -20,7 +20,7 @@ class ExporterNav extends LitElement {
     }
     _render({ name }) {
         return html`
-         ${bulmaStyles()}
+         ${bulmaStyles(this)}
         <style>
         </style>
         

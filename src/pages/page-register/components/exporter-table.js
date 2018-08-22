@@ -19,7 +19,7 @@ class ExporterTable extends LitElement {
     }
     _render({ name }) {
         return html`
-         ${bulmaStyles()} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
+         ${bulmaStyles(this)} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
         <style>
             .pricing__table {
                 width: 100%;

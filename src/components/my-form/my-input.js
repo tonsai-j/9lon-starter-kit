@@ -1,6 +1,7 @@
 import { LitElement, html } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
-
+// import "@polymer/iron-icon";
+// import "../my-icons/my-icons";
 class MyInput extends LitElement {
   static get properties() {
     return {
@@ -10,7 +11,7 @@ class MyInput extends LitElement {
       id: "",
       ariaLabelledBy: String,
       ariaDescribedBy: String,
-      disabled: Boolean,
+      disablednylon: Boolean,
       title: String,
       value: "",
       invalid: "",
@@ -51,7 +52,7 @@ class MyInput extends LitElement {
     id,
     ariaLabelledBy,
     ariaDescribedBy,
-    disabled,
+    disablednylon,
     title,
     value,
     invalid,
@@ -83,13 +84,14 @@ class MyInput extends LitElement {
     multiple
   }) {
     return html`
-    ${bulmaStyles()}
+    ${bulmaStyles(this)}
+    <p class="control has-icons-left has-icons-right">
     <input 
         class$="input ${classnylon}"
         id$="${id}"
         aria-labelledby$="${ariaLabelledBy}"
         aria-describedby$="${ariaDescribedBy}"
-        disabled="${disabled}"
+        disabled="${disablednylon}"
         title$="${title}"
         value="${value}"
         invalid="${invalid}"
@@ -120,6 +122,13 @@ class MyInput extends LitElement {
         results$="${results}"
         accept$="${accept}"
         multiple$="${multiple}">
+        <span class="icon is-small is-left">
+          <iron-icon icon="my-icons:polymer"></iron-icon> 
+        </span>
+        <span class="icon is-small is-right">
+          <iron-icon icon="my-icons:android"></iron-icon> 
+        </span>
+  </p>
     `;
   }
   // _firstRendered() {

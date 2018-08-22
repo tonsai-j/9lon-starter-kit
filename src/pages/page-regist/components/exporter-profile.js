@@ -19,7 +19,7 @@ class ExporterProfile extends LitElement {
       }
     _render({seletedTab}) {
         return html`
-             ${bulmaStyles()}
+             ${bulmaStyles(this)}
              <style>
             input {
                 width: 100%;

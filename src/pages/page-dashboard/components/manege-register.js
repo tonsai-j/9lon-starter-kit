@@ -18,7 +18,7 @@ class ManageRegister extends LitElement {
     }
     _render({ name }) {
         return html`
-         ${bulmaStyles()}
+         ${bulmaStyles(this)}
         <style>
         </style>
         <section>
