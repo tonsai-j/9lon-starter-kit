@@ -111,7 +111,7 @@ const RouterConfig = (store, navigate) => {
   ];
 };
 const RouterPage = async page => {
-  console.log(page);
+  // console.log(page);
   // console.log(__dirname);
   switch (page) {
     case "page-dashboard":

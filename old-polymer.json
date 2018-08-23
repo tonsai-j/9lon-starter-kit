@@ -1,69 +1,102 @@
 {
-    "entrypoint": "index.html",
-    "shell": "src/my-app.js",
-    "sources": [
-      "images/**/*",
-      "style/**/*"
-    ],
-    "extraDependencies": [
-      "node_modules/@webcomponents/webcomponentsjs/**"
-    ],
-    "builds": [
-      {
-        "name": "esm-bundled",
-        "browserCapabilities": [
-          "es2015",
-          "modules"
-        ],
-        "js": {
-          "minify": true
-        },
-        "css": {
-          "minify": true
-        },
-        "html": {
-          "minify": true
-        },
-        "bundle": true,
-        "addServiceWorker": true
+  "entrypoint": "index.html",
+  "shell": "src/my-app.js",
+  "sources": ["images/**/*", "style/**/*"],
+  "fragments": [
+    "src/pages/page-404/page-404.js",
+    "src/pages/page-dashboard/page-dashboard.js",
+    "src/pages/page-exporter/page-exporter.js",
+    "src/pages/page-form/page-form.js",
+    "src/pages/page-index/page-index.js",
+    "src/pages/page-index-default/page-index-default.js",
+    "src/pages/page-list-file/page-list-file.js",
+    "src/pages/page-register/page-register.js",
+    "src/pages/page-renew/page-renew.js",
+    "src/pages/page-login/page-login.js"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/**",
+    "node_modules/axios/dist/axios.min.js",
+    "node_modules/@fortawesome/fontawesome-free/**",
+    "script/quill.1.2.4.js",
+    "node_modules/quill/dist/quill.snow.css",
+    "node_modules/@fortawesome/fontawesome-free/css/all.css",
+    "style/bulma-new-style/bulma.min.css"
+  ],
+  "builds": [
+    {
+      "name": "esm-bundled",
+      "browserCapabilities": [
+        "es2015",
+        "modules"
+      ],
+      "js": {
+        "minify": true
       },
-      {
-        "name": "es6-bundled",
-        "browserCapabilities": [
-          "es2015"
-        ],
-        "js": {
-          "compile": "es2015",
-          "minify": true,
-          "transformModulesToAmd": true
-        },
-        "css": {
-          "minify": true
-        },
-        "html": {
-          "minify": true
-        },
-        "bundle": true,
-        "addServiceWorker": true
+      "css": {
+        "minify": {
+          "exclude": [
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+          ]
+        }
       },
-      {
-        "name": "es5-bundled",
-        "js": {
-          "compile": "es5",
-          "minify": true,
-          "transformModulesToAmd": true
-        },
-        "css": {
-          "minify": true
-        },
-        "html": {
-          "minify": true
-        },
-        "bundle": true,
-        "addServiceWorker": true
-      }
-    ],
-    "moduleResolution": "node",
-    "npm": true
-  }
-  
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es6-bundled",
+      "browserCapabilities": [
+        "es2015"
+      ],
+      "js": {
+        "compile": "es2015",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": {
+          "exclude": [
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+          ]
+        }
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    },
+    {
+      "name": "es5-bundled",
+      "js": {
+        "compile": "es5",
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": {
+          "exclude": [
+            "style/bulma-new-style/bulma.min.css",
+            "node_modules/quill/dist/quill.snow.css",
+            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+          ]
+        }
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    }
+  ],
+  "moduleResolution": "node",
+  "npm": true
+}

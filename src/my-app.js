@@ -63,7 +63,7 @@ class MyApp extends connect(store)(LitElement) {
       link.click();
     });
     const router = new Router(this.shadowRoot.querySelector("#outlet"));
-    console.log(111);
+    // console.log(111);
     
     router.setRoutes(RouterConfig(store, navigate));
     window.addEventListener("vaadin-router-location-changed", event => {

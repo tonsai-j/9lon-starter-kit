@@ -46,7 +46,7 @@ class MyBreadcrumb extends connect(store)(LitElement) {
         `;
   }
   _stateChanged(state) {
-    console.log("state my-breadcrumb", state.myBreadcrumbs.myBreadcrumbs);
+    // console.log("state my-breadcrumb", state.myBreadcrumbs.myBreadcrumbs);
     this.value = state.myBreadcrumbs.myBreadcrumbs
     this.value = this.value.slice(0)
     // this.count = state.data.count;

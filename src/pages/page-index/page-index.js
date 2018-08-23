@@ -1,4 +1,5 @@
 import { html, LitElement } from "@polymer/lit-element";
+import { directive } from "lit-html";
 import {
   Mixin,
   MyMixin,
@@ -8,6 +9,7 @@ import {
 import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
 import fontawesomeStyle from "../../style/fontawesome-style";
+// import combindForm from "../../function/combindForm";
 import "../../components/my-quill/my-quill";
 import "../../components/my-quill/my-quill-render";
 import "@polymer/iron-icon";
@@ -22,6 +24,39 @@ import "../../components/my-form/my-checkbox";
 import "../../components/my-form/my-radio-group";
 import "../../components/elements/my-button";
 import "../../components/my-form/my-input-datalist";
+// const safe = f =>
+//   directive(part => {
+//     console.log("part", part);
+
+//     try {
+//       console.log(f);
+//     } catch (e) {
+//       console.error(e);
+//     }
+//   });
+// let data;
+// data = {
+//   foo: 1
+// };
+// const testForm = ({ c, handleChange }) => html`
+// ${console.log(c)}
+//  <form >
+//   First name:<br>
+//   <input type="text" name="firstname" value="Mickey" oninput="${handleChange}">
+//   <br>
+//   Last name:<br>
+//   <input type="text" name="lastname" value="Mouse" oninput="${handleChange}">
+//   <br><br>
+//   Sai name:<br>
+//   <input type="text" name="sainame" value="saiYp" oninput="${handleChange}">
+//   <br><br>
+//   <input type="submit" value="Submit">
+// </form>
+// `;
+// ${combindForm({
+//   form: "contact",
+//   prop: contract
+// })(testForm)}
 // class PageIndex extends Mixin(LitElement).with(MyMixin,MyMixinTwo,MyMixinThree) {
 class PageIndex extends Composable(LitElement).compose(
   MyMixin,
@@ -81,10 +116,16 @@ class PageIndex extends Composable(LitElement).compose(
     this._setValueProps = this._setValueProps.bind(this);
     this.toggle = this.toggle.bind(this);
   }
+  // foo = ${safe(_=>data.foo)}
+  // <!-- <div>${directive((part) => { console.log(part)})}</div>888
+  // <div>${directive((part) => { part.setValue('Hello')})}</div> -->
+  // <!-- ${directive((part) => part.setValue((part._previousValue + 1) || 0))} -->
   _render({ brk, seletedTab, contract, btn, option }) {
     return html`
          ${bulmaStyles(this)}
-         
+        
+        
+                    
           <my-quill-render data="${
             contract.content
           }" data-type="delta"></my-quill-render>
@@ -162,8 +203,7 @@ class PageIndex extends Composable(LitElement).compose(
             items="${brk}" 
             disablednylon="${btn}"
             selected="${contract.dropdown}"></my-input-datalist>          
-
-                      
+   
             
         `;
   }
@@ -189,28 +229,34 @@ class PageIndex extends Composable(LitElement).compose(
     // input.reflection()
   }
   async _setValueProps(e) {
-    let value = e.detail.value;
-    // เช่น name-value="contract first_name"
-    let valueName = e.currentTarget.getAttribute("name-value");
-    let valueNameArray = valueName.split(" ");
-    // console.log(valueNameArray);
+    try {
+      let value = e.detail.value;
+      // เช่น name-value="contract first_name"
+      let valueName = e.currentTarget.getAttribute("name-value");
+      let valueNameArray = valueName.split(" ");
+      // console.log(valueNameArray);
 
-    // สติงเริ่มต้น
-    let strTOEval = `this.`;
-    // วนเพิ่มสติง
-    strTOEval += valueNameArray.join('.')
-    // valueNameArray.forEach(element => (strTOEval += `.${element}`));
-    // console.log('value',value);
-    
-    strTOEval += ` = value`;
-    // console.log("strTOEval=>", strTOEval);
-    // this[valueNameArray[0]][valueNameArray[1]] = value
-    // แปลงสติงเป็นคำสั่ง javascript
-    // console.log('this.contract 1',this.contract);
-    eval(strTOEval);
-    // console.log('this.contract 2',this.contract);
-    
-    await this.requestRender();
+      // สติงเริ่มต้น
+      let strTOEval = `this.`;
+      // วนเพิ่มสติง
+      strTOEval += valueNameArray.join(".");
+      // valueNameArray.forEach(element => (strTOEval += `.${element}`));
+      // console.log('value',value);
+      console.log(this[valueNameArray[0]][valueNameArray[1]]);
+
+      strTOEval += ` = value`;
+      // console.log("strTOEval=>", strTOEval);
+      // this[valueNameArray[0]][valueNameArray[1]] = value
+      // แปลงสติงเป็นคำสั่ง javascript
+      // eval(`(function () { return ${strTOEval}; })`);
+      eval(strTOEval);
+
+      await this.requestRender();
+    } catch (error) {
+      console.log(error);
+      
+    }
+
     // this._test();
   }
   _shouldRender(props, changedProps, prevProps) {

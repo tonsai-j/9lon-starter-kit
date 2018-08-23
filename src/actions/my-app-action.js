@@ -2,7 +2,7 @@ import { RouterPage , ROUTERDEFAULT } from "../components/routes-setting";
 export const UPDATE_PAGE = "UPDATE_PAGE";
 
 export const navigate = location => dispatch => {
-  console.log("location", location);
+  // console.log("location", location);
 
   // var path = window.decodeURIComponent(location.pathname);
   // var search = location.search.substring(1);
