@@ -52,15 +52,12 @@
     <meta property="og:site_name" content="my-app">
     <meta property="og:image" content="images/manifest/icon-144x144.png" />
 
-    <script defer src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    
     <script defer src="node_modules/axios/dist/axios.min.js"></script>
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/quill-render@1.0.5/index.min.js"></script> -->
     <!-- Include the Quill library -->
-    <!-- แก้ object.assign ใน ie 11 ใช้ไม่ได้ -->
-    <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>
-    <script src="script/quill.1.2.4.js"></script>
-    <!-- <script defer src="/node_modules/@fortawesome/fontawesome-free/js/all.js"></script> -->
-    <!-- <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> -->
+    <!-- แก้ object.assign ใน ie 11 ใช้ไม่ได้  แต่ ถ้าเปิดแล้วบัคเปิดเว็บไม่ได้-->
+    <!-- <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script> -->
+    <script defer src="script/quill.1.2.4.js"></script>
 
     <!-- <link rel="stylesheet" type="text/css" href="./style/bulma.min.css"> -->
     <link rel="stylesheet" type="text/css" href="style/bulma-new-style/bulma.min.css">
@@ -104,6 +101,8 @@
         Please enable JavaScript to view this website.
     </noscript>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <!-- <script>
             console.log('-11');
