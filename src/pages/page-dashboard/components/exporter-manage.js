@@ -18,7 +18,7 @@ class ExporterManage extends LitElement {
         super()
         this.button_tabs = 0
     }
-    _render({ name }) {
+    render() {
         return html`
          ${bulmaStyles(this)}
         <style>
@@ -85,7 +85,7 @@ class ExporterManage extends LitElement {
             <h3 class="title is-4" style="text-align:center">จัดการทะเบียน</h3>
             <div class="tabs is-toggle is-fullwidth is-large" style="margin-bottom: 0rem;">
                 <ul>
-                    <li class$="${this.button_tabs === 0 ? 'is-active' : ''}" on-click="${(e) => this.tab1()}">
+                    <li .class="${this.button_tabs === 0 ? 'is-active' : ''}" on-click="${(e) => this.tab1()}">
                         <a>
                             <span class="icon is-small">
                                 <i class="fas fa-image" aria-hidden="true"></i>
@@ -93,7 +93,7 @@ class ExporterManage extends LitElement {
                             <span>ลงทะเบียน</span>
                         </a>
                     </li>
-                    <li class$="${this.button_tabs === 1 ? 'is-active' : ''}" on-click="${(e) => this.tab2()}">
+                    <li .class="${this.button_tabs === 1 ? 'is-active' : ''}" on-click="${(e) => this.tab2()}">
                         <a>
                             <span class="icon is-small">
                                 <i class="fas fa-music" aria-hidden="true"></i>
@@ -101,7 +101,7 @@ class ExporterManage extends LitElement {
                             <span>ต่ออายุ</span>
                         </a>
                     </li>
-                    <li class$="${this.button_tabs === 2 ? 'is-active' : ''}" on-click="${(e) => this.tab3()}">
+                    <li .class="${this.button_tabs === 2 ? 'is-active' : ''}" on-click="${(e) => this.tab3()}">
                         <a>
                             <span class="icon is-small">
                                 <i class="fas fa-film" aria-hidden="true"></i>
@@ -162,7 +162,7 @@ class ExporterManage extends LitElement {
         // console.log(33333333333333)
         this.button_tabs = 2
     }
-    _firstRendered() {
+    firstRendered() {
         var pages = this.shadowRoot.querySelector("#registerExporter")
         pages.addEventListener('click', this.registerExporter.bind(this));
 

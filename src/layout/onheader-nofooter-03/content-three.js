@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 // import '@polymer/app-layout/app-header/app-header'
 // import '@polymer/app-layout/app-toolbar/app-toolbar'
 
@@ -20,7 +20,7 @@ import './nav-three'
 // เหตุผลที่ต้องเขียนแบบนี้
 // https://stackoverflow.com/questions/42719457/polymer-app-header-not-working-as-intended-without-app-header-layout
 class contentThree extends LitElement {
-    _render() {
+    render() {
         return html`
       
         <style>

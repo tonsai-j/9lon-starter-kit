@@ -31,7 +31,7 @@ class PageSearch extends LitElement {
           }
         ];
       }
-    _render({brk}) {
+    render() {
         return html`
              ${bulmaStyles()}
 

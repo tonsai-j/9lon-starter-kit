@@ -14,7 +14,7 @@ class PageNew extends LitElement {
         super()
 
     }
-    _render({ name }) {
+    render() {
         return html`
         <style>
             .column1_div {

@@ -12,7 +12,7 @@ class ExporterCard extends LitElement {
         super()
 
     }
-    _render({ name }) {
+    render() {
         return html`
          ${bulmaStyles(this)}
         <style>

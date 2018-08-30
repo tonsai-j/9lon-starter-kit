@@ -5,7 +5,7 @@ import './components/exporter-regist.js'
 import './components/exporter-table.js'
 
 class PageRegister extends LitElement {
-    _render() {
+    render() {
         return html`
              ${bulmaStyles(this)}
 

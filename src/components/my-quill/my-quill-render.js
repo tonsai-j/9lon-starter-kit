@@ -18,7 +18,7 @@ class MyQuillRender extends LitElement {
         // 2 justHtml
         // 3 text
     }
-    _render({}) {
+    render() {
         return html `
         <div id="content"><div>
         `

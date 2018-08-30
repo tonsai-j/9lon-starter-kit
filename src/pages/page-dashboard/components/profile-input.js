@@ -17,7 +17,7 @@ class ProfileInput extends LitElement {
         super()
 
     }
-    _render({ name }) {
+    render() {
         return html`
         <style>
             

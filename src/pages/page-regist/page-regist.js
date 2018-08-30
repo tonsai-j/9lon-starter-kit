@@ -31,7 +31,7 @@ class PageRegist extends LitElement {
           }
         ];
       }
-    _render({brk}) {
+    render() {
         return html`
              ${bulmaStyles(this)}
 

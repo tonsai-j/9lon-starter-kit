@@ -1,11 +1,11 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import bulmaStyles from "../../style/bulma-styles";
 import "./header-one";
 import "./header-nav";
 import "./footer-one";
 
 class contentOne extends LitElement {
-  _render() {
+  render() {
     return html`
           ${bulmaStyles(this)}
           <style>

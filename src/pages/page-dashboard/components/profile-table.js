@@ -20,7 +20,7 @@ class ProfileTable extends LitElement {
         super()
 
     }
-    _render({ name }) {
+    render() {
         return html`
         <style>
             .block-1 {

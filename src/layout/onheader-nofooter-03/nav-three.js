@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import '@polymer/iron-icon'
 // import '@polymer/iron-icons/iron-icons'
 
@@ -41,7 +41,7 @@ class navThree extends LitElement {
         // See https://www.polymer-project.org/2.0/docs/devguide/gesture-events#use-passive-gesture-listeners
         //  setPassiveTouchGestures(true);
     }
-    _render({ leftMenu }) {
+    render() {
         return html`
     <style>
         ul {

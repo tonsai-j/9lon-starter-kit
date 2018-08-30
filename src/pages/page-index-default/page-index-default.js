@@ -3,7 +3,7 @@ import bulmaStyles from '../../style/bulma-styles'
 // import './components/exporter-renew'
 
 class PageIndexDefault extends LitElement {
-    _render() {
+    render() {
         return html`
              ${bulmaStyles(this)}
             

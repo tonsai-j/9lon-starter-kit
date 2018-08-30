@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import bulmaStyles from "../../style/bulma-styles";
 
 class MyTextArea extends LitElement {
@@ -30,52 +30,31 @@ class MyTextArea extends LitElement {
     super();
     this._changeValue = this._changeValue.bind(this);
   }
-  _render({
-    classnylon,
-    id,
-    ariaLabelledBy,
-    ariaDescribedBy,
-    value,
-    invalid,
-    validator,
-    disablednylon,
-    autocomplete,
-    autofocus,
-    inputmode,
-    name,
-    placeholder,
-    readonly,
-    required,
-    minlength,
-    maxlength,
-    autocapitalize,
-    rows,
-    maxRows
-  }) {
+  render() {
     return html`
     ${bulmaStyles(this)}
     <textarea 
-        class$="textarea ${classnylon}"
-        id$="${id}"
-        aria-labelledby$="${ariaLabelledBy}"
-        aria-describedby$="${ariaDescribedBy}"
-        value="${value}"
-        invalid="${invalid}"
-        validator$="${validator}"
-        disabled="${disablednylon}"
-        autocomplete$="${autocomplete}"
-        autofocus$="${autofocus}"
-        inputmode$="${inputmode}"
-        name$="${name}"
-        placeholder$="${placeholder}"
-        readonly$="${readonly}"
-        required$="${required}"
-        minlength$="${minlength}"
-        maxlength$="${maxlength}"
-        autocapitalize$="${autocapitalize}"
-        rows$="${rows}"
-        max-rows$="${maxRows}"
-        oninput="${this._changeValue}"
+        class="textarea ${this.classnylon}"
+        id="${this.id}"
+        aria-labelledby="${this.ariaLabelledBy}"
+        aria-describedby="${this.ariaDescribedBy}"
+        .value="${this.value}"
+        invalid="${this.invalid}"
+        validator="${this.validator}"
+        .disabled="${this.disablednylon}"
+        autocomplete="${this.autocomplete}"
+        autofocus="${this.autofocus}"
+        inputmode="${this.inputmode}"
+        name="${this.name}"
+        placeholder="${this.placeholder}"
+        .readonly="${this.readonly}"
+        required="${this.required}"
+        minlength="${this.minlength}"
+        maxlength="${this.maxlength}"
+        autocapitalize="${this.autocapitalize}"
+        rows="${this.rows}"
+        max-rows="${this.maxRows}"
+        @input="${this._changeValue}"
     ></textarea>
 
     `;

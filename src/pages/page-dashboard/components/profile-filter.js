@@ -7,7 +7,7 @@ import '@polymer/paper-material'
 // import './shared-styles.js';
 
 class ProfileFilter extends LitElement {
-    _render() {
+    render() {
         return html`
         <style>
             

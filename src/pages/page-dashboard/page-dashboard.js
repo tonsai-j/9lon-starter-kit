@@ -30,18 +30,13 @@ class PageDashboard extends LitElement {
             },
         ]
     }
-    _render({name}) {
+    render() {
         return html`
         ${bulmaStyles(this)}
         <!-- <exporter-slide></exporter-slide> -->
         <!-- <exporter-manage></exporter-manage>
         <exporter-card></exporter-card> -->
         <!-- <br> -->
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-            <ul>
-                <li class="is-active"><a href="#" >ข้อมูล</a></li>
-            </ul>
-        </nav>
 
         <div class="box">
             <div class="panel">
@@ -61,7 +56,7 @@ class PageDashboard extends LitElement {
         `;
     }
 
-    _firstRendered() {
+    firstRendered() {
         this.addEventListener('page-search-filter', (e) => {
         //   console.log(e.detail.search)
     

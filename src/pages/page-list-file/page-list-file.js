@@ -4,7 +4,7 @@ import './components/list-files.js'
 // import './shared-styles.js';
 
 class PageListFile extends LitElement {
-    _render() {
+    render() {
         return html`
             page-list-file -> <list-files></list-files>
         

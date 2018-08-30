@@ -26,46 +26,35 @@ class Dropdown extends LitElement {
     this.seletevalue = []
     this._changeValue = this._changeValue.bind(this);
   }
-  _render({
-    classnylon,
-    id,
-    ariaLabelledBy,
-    ariaDescribedBy,
-    disablednylon,
-    name,
-    placeholder,
-    readonly,
-    required,
-    seleted,
-    seletevalue
-  }) {
+  render() {
     return html `
     ${bulmaStyles(this)}
-    <div class$="select ${classnylon}"
-        id$="${id}"
+    <div class="select ${this.classnylon}"
+        id="${this.id}"
         
         >
-        <select value$="${seleted}" 
-        disabled="${disablednylon}" 
-        aria-labelledby$="${ariaLabelledBy}"
-        aria-describedby$="${ariaDescribedBy}"
-        placeholder$="${placeholder}"
-        name$="${name}"
-        readonly$="${readonly}"
-        required$="${required}"
-        oninput="${this._changeValue}">
-            <!-- ${seletevalue.map(({ label, value }) => {
-              return html` < option value = "${value}" > $ {
-      label
-    } < /option>`;
-  })
-}-- >
+        <select value="${this.seleted}" 
+        .disabled="${this.disablednylon}" 
+        aria-labelledby="${this.ariaLabelledBy}"
+        aria-describedby="${this.ariaDescribedBy}"
+        placeholder="${this.placeholder}"
+        name="${this.name}"
+        .readonly="${this.readonly}"
+        required="${this.required}"
+        @input="${this._changeValue}">
+            
 </select> 
 </div>
 
   `;
   }
-  _firstRendered(){
+//   <!-- ${seletevalue.map(({ label, value }) => {
+//     return html` < option value = "${value}" > $ {
+// label
+// } < /option>`;
+// })
+// }-- >
+  firstRendered(){
     const elements = this.shadowRoot.querySelector("select")
     // console.log(element);
     this.element = elements;
@@ -114,7 +103,7 @@ class Dropdown extends LitElement {
     //     value = value;
     //     break;
     // }
-
+    // console.log(value)
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,

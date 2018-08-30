@@ -1,7 +1,7 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import bulmaStyles from "../../style/bulma-styles";
 class headerTwo extends LitElement {
-  _firstRendered() {
+  firstRendered() {
     // Get all "navbar-burger" elements
     var $navbarBurgers = Array.prototype.slice.call(
       this.shadowRoot.querySelectorAll(".navbar-burger"),
@@ -24,7 +24,7 @@ class headerTwo extends LitElement {
       });
     }
   }
-  _render() {
+  render() {
     return html`
     ${bulmaStyles(this)}
     <style>

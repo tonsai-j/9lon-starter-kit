@@ -30,7 +30,7 @@ class ExporterSearch extends LitElement {
           }
         ];
       }
-    _render({brk}) {
+    render() {
         return html`
              ${bulmaStyles()}
 <br>

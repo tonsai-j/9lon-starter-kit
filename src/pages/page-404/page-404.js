@@ -1,7 +1,7 @@
 import { html, LitElement } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 class Page404 extends LitElement {
-  _render() {
+  render() {
     return html`
          ${bulmaStyles(this)}
            404 <br>

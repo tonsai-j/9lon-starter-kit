@@ -1,7 +1,7 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 
 class headerThree extends LitElement {
-    _render() {
+    render() {
         return html`
         <style>
         </style>

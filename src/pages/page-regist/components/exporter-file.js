@@ -14,7 +14,7 @@ class ExporterFile extends LitElement {
         super();
 
       }
-    _render() {
+    render() {
         return html`
         ${bulmaStyles()}
         <style>

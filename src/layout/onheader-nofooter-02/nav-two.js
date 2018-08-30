@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 // import "@polymer/iron-icon";
 // //import "@polymer/iron-icons/iron-icons";
 import bulmaStyles from "../../style/bulma-styles";
@@ -12,7 +12,7 @@ class navTwo extends LitElement {
     super();
 
   }
-  _render({ leftMenu }) {
+  render() {
     return html`
     <!-- <style>
       

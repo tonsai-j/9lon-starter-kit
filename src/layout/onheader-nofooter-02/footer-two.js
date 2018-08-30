@@ -1,7 +1,7 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import bulmaStyles from "../../style/bulma-styles";
 class footerTwo extends LitElement {
-  _render() {
+  render() {
     return html`
     ${bulmaStyles(this)}
         <footer class="footer">

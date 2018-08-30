@@ -2,7 +2,7 @@ import { html, LitElement } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 import ownStyle from "../../style/own-style";
 class PageLogin extends LitElement {
-  _render() {
+  render() {
     return html`
     ${bulmaStyles(this)}
          ${ownStyle}

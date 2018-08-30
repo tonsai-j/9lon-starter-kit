@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import { connect } from "pwa-helpers/connect-mixin.js";
 // import { installRouter } from "pwa-helpers/router.js";
 // import { updateMetadata } from "pwa-helpers/metadata.js";
@@ -36,19 +36,19 @@ class MyApp extends connect(store)(LitElement) {
     this.appTitle = "ระบบพื้นฐาน";
   }
 
-  _render({ _page }) {
+    // <!-- <my-routes page="${_page}"></my-routes> -->
+  render() {
     return html`
      ${bulmaStyles(this)}
     <content-one>
       <div id="outlet" slot="content"></div>
     </content-one>
    
-    <!-- <my-routes page="${_page}"></my-routes> -->
     <a id="link" href="/" style="display:none;"></a>
         `;
   }
   // ทำงานครั้งแรก
-  _firstRendered() {
+  firstRendered() {
     // ตั่งค่า route
     // this.removeAttribute('unresolved');
     this.addEventListener("change-page", e => {
@@ -92,7 +92,7 @@ class MyApp extends connect(store)(LitElement) {
       //   });
     });
   }
-  // _firstRendered() {
+  // firstRendered() {
   // this.addEventListener("change-page", e => {
   //   var link = this.shadowRoot.querySelector("#link");
   //   let path = e.detail.path;

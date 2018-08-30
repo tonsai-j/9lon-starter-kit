@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import bulmaStyles from "../../style/bulma-styles";
 
 class MyFile extends LitElement {
@@ -22,7 +22,7 @@ class MyFile extends LitElement {
     this.seletevalue =[]
     this._changeValue = this._changeValue.bind(this);
   }
-  _render() {
+  render() {
     return html`
     ${bulmaStyles(this)}
 

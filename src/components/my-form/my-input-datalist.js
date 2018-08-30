@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import { LitElement, html, property } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 import fontawesomeStyle from "../../style/fontawesome-style";
 class MyInputDatalist extends LitElement {
@@ -6,13 +6,13 @@ class MyInputDatalist extends LitElement {
     return {
       // element: Object,
       // disabled: Boolean
-      classnylon: String,
-      id: "",
-      ariaLabelledBy: String,
-      ariaDescribedBy: String,
+      classnylon: { type: String },
+      id: { type: String },
+      ariaLabelledBy: { type: String },
+      ariaDescribedBy: { type: String },
       disablednylon: Boolean,
-      title: String,
-      value: "",
+      title: { type: String },
+      value: { type: String },
       invalid: "",
       preventInvalidInput: "",
       allowedPattern: "",
@@ -28,7 +28,7 @@ class MyInputDatalist extends LitElement {
       min: Number,
       max: Number,
       step: Number,
-      name: String,
+      name: { type: String },
       placeholder: "",
       readonly: Boolean,
       list: "",
@@ -40,9 +40,10 @@ class MyInputDatalist extends LitElement {
       results: "",
       accept: "",
       multiple: "",
-      items: Array,
-      classActive: String,
-      selected: String
+      items: { type: Array },
+      classActive: { type: String },
+      selected: { type: String },
+      element: { type: Object }
     };
   }
   constructor() {
@@ -55,105 +56,68 @@ class MyInputDatalist extends LitElement {
     this.items = [];
     this.classActive = "";
     this.value = "";
+    this.selected = "";
+    this.element = {};
   }
-  _render({
-    classnylon,
-    id,
-    ariaLabelledBy,
-    ariaDescribedBy,
-    disablednylon,
-    title,
-    value,
-    invalid,
-    preventInvalidInput,
-    allowedPattern,
-    validator,
-    type,
-    pattern,
-    required,
-    autocomplete,
-    autofocus,
-    inputmode,
-    minlength,
-    maxlength,
-    min,
-    max,
-    step,
-    name,
-    placeholder,
-    readonly,
-    list,
-    size,
-    autocapitalize,
-    autocorrect,
-    tabIndex,
-    autosave,
-    results,
-    accept,
-    multiple,
-    items,
-    classActive,
-    selected
-  }) {
+  render() {
     return html`
     ${bulmaStyles(this)}
     ${fontawesomeStyle(this)}
     <!-- is-active -->
-    ${value} *****
-    <div class$="dropdown ${classActive}">
+    ${this.classActive} ฝฝฝฝฝ
+    <div class="dropdown ${this.classActive}">
     <div class="dropdown-trigger control has-icons-right">
     <input 
-        class$="input ${classnylon}"
-        id$="${id}"
-        aria-labelledby$="${ariaLabelledBy}"
-        aria-describedby$="${ariaDescribedBy}"
-        disabled="${disablednylon}"
-        title$="${title}"
-        value="${value}"
-        invalid="${invalid}"
-        prevent-invalid-input="${preventInvalidInput}"
-        allowed-pattern="${allowedPattern}"
-        validator="${validator}"
-        type$="${type}"
-        pattern$="${pattern}"
-        required$="${required}"
-        autocomplete$="${autocomplete}"
-        autofocus$="${autofocus}"
-        inputmode$="${inputmode}"
-        minlength$="${minlength}"
-        maxlength$="${maxlength}"
-        min$="${min}"
-        max$="${max}"
-        step$="${step}"
-        name$="${name}"
-        placeholder$="${placeholder}"
-        readonly$="${readonly}"
-        list$="${list}"
-        size$="${size}"
-        autocapitalize$="${autocapitalize}"
-        autocorrect$="${autocorrect}"
+        class="input ${this.classnylon}"
+        id="${this.id}"
+        aria-labelledby="${this.ariaLabelledBy}"
+        aria-describedby="${this.ariaDescribedBy}"
+        .disabled="${this.disablednylon}"
+        title="${this.title}"
+        value="${this.value}"
+        invalid="${this.invalid}"
+        prevent-invalid-input="${this.preventInvalidInput}"
+        allowed-pattern="${this.allowedPattern}"
+        validator="${this.validator}"
+        type="${this.type}"
+        pattern="${this.pattern}"
+        required="${this.required}"
+        autocomplete="${this.autocomplete}"
+        autofocus="${this.autofocus}"
+        inputmode="${this.inputmode}"
+        minlength="${this.minlength}"
+        maxlength="${this.maxlength}"
+        min="${this.min}"
+        max="${this.max}"
+        step="${this.step}"
+        name="${this.name}"
+        placeholder="${this.placeholder}"
+        .readonly="${this.readonly}"
+        list="${this.list}"
+        size="${this.size}"
+        autocapitalize="${this.autocapitalize}"
+        autocorrect="${this.autocorrect}"
         
-        tabindex$="${tabIndex}"
-        autosave$="${autosave}"
-        results$="${results}"
-        accept$="${accept}"
-        multiple$="${multiple}"
-        on-focus="${this._popUp}"
-        oninput="${this._filterItems}"
+        tabindex="${this.tabIndex}"
+        autosave="${this.autosave}"
+        results="${this.results}"
+        accept="${this.accept}"
+        multiple="${this.multiple}"
+        @click="${this._popUp}"
+        @input="${this._filterItems}"
         aria-haspopup="true" aria-controls="dropdown-menu"
         >
         <span class="icon is-small is-right is-small">
         <i class="fas fa-angle-down"></i>
       </span>
-  </input>
   </div>
         
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
-                    ${items.map(({ value, name, itemActive }) => {
+                    ${this.items.map(({ value, name, itemActive }) => {
                       if (itemActive || itemActive === undefined) {
                         return html`
-                        <a value$="${value}" class="dropdown-item" on-click="${
+                        <a value="${value}" class="dropdown-item" @click="${
                           this._changeValue
                         }">
                             ${name}
@@ -166,19 +130,30 @@ class MyInputDatalist extends LitElement {
   </div>
     `;
   }
+  // firstRendered() {
+  //   // this._inner = this.shadowRoot.querySelector('x-inner');
+  //   // console.log("firstRendered");
+  //   this.element = this.shadowRoot.querySelector("input");
+  //   // console.log(this.shadowRoot.querySelector("input"));
+  // }
   //   on-focusout="${this._dropdown}"
   _popUp(e) {
     this.classActive = "is-active";
+    console.log(111);
+    // await this.updateComplete;
+    console.log(this.classActive);
   }
   _dropdown(e) {
     this.classActive = "";
+    // await this.updateComplete;
+    console.log(this.classActive);
   }
   //   _setValue(e) {
   //     let value = e.currentTarget.getAttribute("value");
   //     this._dropdown();
   //     this.value = value;
   //   }
-  _filterItems(e) {
+  async _filterItems(e) {
     let value = e.currentTarget.value;
     // console.log(value);
     // console.log(this.items);
@@ -194,9 +169,9 @@ class MyInputDatalist extends LitElement {
         item = Object.assign(item, { itemActive: false });
       }
     });
-    
-    //   console.log(this.items);
+
     this.items = this.items.slice(0);
+    // await this.updateComplete;
     // }
   }
   _changeValue(e) {
@@ -212,7 +187,7 @@ class MyInputDatalist extends LitElement {
     this._dropdown();
     let control = this.shadowRoot.querySelector("input");
     // console.log(control.value);
-    control.value = itemSeleted.name
+    control.value = itemSeleted.name;
     this.value = itemSeleted.name;
     // console.log(value);
 
@@ -232,21 +207,86 @@ class MyInputDatalist extends LitElement {
       })
     );
   }
+  // update(changedProps) {
+  //   super.update(changedProps);
 
-  _didRender(props, changedProps, prevProps) {
-    //   console.log(props, changedProps, prevProps);
-    if ("selected" in changedProps) {
-      const value = this.selected;
-      let itemSeleted = this.items.find(item => item.value === value);
-    //   console.log(itemSeleted.name);
-    // ต้องแทนค่าแบบนี้แทนเนึองจากมีปัญหามรการแทนค่าลงตรงๆ
-      let element = this.shadowRoot.querySelector("input");
-    //   console.log(element);
-      element.value = itemSeleted.name;
-      // this.value = itemSeleted.name;
+  //   console.log("updated!", changedProps);
+  //   console.log(this.shadowRoot.querySelector("input"));
+  // }
+  // shouldUpdate(changedProperties) {
+  //   console.log("shouldUpdate", changedProperties);
+  //   console.log(this.shadowRoot.querySelector("input"));
+  //   return true;
+  // }
+  // shouldInvalidate(value, oldValue) {
+  //   console.log("shouldInvalidate", value, oldValue);
+  //   return true;
+  // }
+  // createRenderRoot(){
+  //   console.log('createRenderRoot');
+
+  // }
+  // update(){
+  //   super.update()
+  //   console.log(1234)
+  //   const value = this.selected;
+  //   let itemSeleted = this.items.find(item => item.value === value);
+  //   this.value = itemSeleted.name;
+  //   // this.selected = itemSeleted.value
+  // // ต้องแทนค่าแบบนี้แทนเนึองจากมีปัญหามรการแทนค่าลงตรงๆ
+  //   let element = this.shadowRoot.querySelector("input")
+  //   element.value = itemSeleted.name;
+
+  // }
+  // createRenderRoot(e) {
+  //   console.log("createRenderRoot", e);
+  // }
+  invalidateProperty(name, oldValue) {
+    // console.log("this.selected", this.selected);
+    // if (this.selected) {
+    //   const value = this.selected;
+    //   let itemSeleted = this.items.find(item => item.value === value);
+    //   //   console.log(itemSeleted.name);
+    //   // ต้องแทนค่าแบบนี้แทนเนึองจากมีปัญหามรการแทนค่าลงตรงๆ
+    //   let element = this.shadowRoot.querySelector("input");
+    //     console.log(element);
+    //   element.value = itemSeleted.name;
+    //   this.value = itemSeleted.name;
+    // }
+    // console.log("invalidateProperty", name, oldValue);
+    if (this.selected !== "") {
+      switch (name) {
+        case "selected":
+          console.log("this.selected", this.selected);
+          let element = this.shadowRoot.querySelector("input");
+          console.log("element", element);
+
+          break;
+
+        default:
+          break;
+      }
     }
-    return true;
   }
+  // get updateComplete() {
+  //   return (async () => {
+  //     return (await super.updateComplete) && (await this._inner.updateComplete);
+  //   })();
+  // }
+  // _didRender(props, changedProps, prevProps) {
+  //     console.log(props, changedProps, prevProps);
+  //   if ("selected" in changedProps) {
+  //     const value = this.selected;
+  //     let itemSeleted = this.items.find(item => item.value === value);
+  //   //   console.log(itemSeleted.name);
+  //   // ต้องแทนค่าแบบนี้แทนเนึองจากมีปัญหามรการแทนค่าลงตรงๆ
+  //     let element = this.shadowRoot.querySelector("input");
+  //   //   console.log(element);
+  //     element.value = itemSeleted.name;
+  //     // this.value = itemSeleted.name;
+  //   }
+  //   return true;
+  // }
 }
 
 customElements.define("my-input-datalist", MyInputDatalist);

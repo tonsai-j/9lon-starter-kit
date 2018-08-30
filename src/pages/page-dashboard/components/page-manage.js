@@ -13,7 +13,7 @@ class PageManage extends LitElement {
         super()
 
     }
-    _render({ name }) {
+    render() {
         return html`
         <style>
             .tabs {
@@ -226,7 +226,7 @@ class PageManage extends LitElement {
         `;
     }
 
-    _firstRendered() {
+    firstRendered() {
         // var pages = this.shadowRoot.querySelector("iron-pages")
 
         // console.log(pages)

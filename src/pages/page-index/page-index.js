@@ -120,89 +120,89 @@ class PageIndex extends Composable(LitElement).compose(
   // <!-- <div>${directive((part) => { console.log(part)})}</div>888
   // <div>${directive((part) => { part.setValue('Hello')})}</div> -->
   // <!-- ${directive((part) => part.setValue((part._previousValue + 1) || 0))} -->
-  _render({ brk, seletedTab, contract, btn, option }) {
+  render() {
     return html`
          ${bulmaStyles(this)}
         
         
                     
-          <my-quill-render data="${
-            contract.content
-          }" data-type="delta"></my-quill-render>
+          <my-quill-render .data="${
+            this.contract.content
+          }" .data-type="delta"></my-quill-render>
             <my-quill id="quill" value="" name-value="contract content" 
-                      on-value-changed="${this._setValueProps}"></my-quill>
-            <button on-click="${el => this.addValue(el)}">เพิ่ม</button>
+            @value-changed="${this._setValueProps}"></my-quill>
+            <button @click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-button classnylon=" is-primary" on-click="${el =>
               this.getContent(
                 el
-              )}" disablednylon="${btn}"> เพิ่ม ปุ่ม</my-button>
+              )}" .disablednylon="${this.btn}"> เพิ่ม ปุ่ม</my-button>
             <my-breadcrumb></my-breadcrumb>
             <br>
-            ${seletedTab} <-ค่า
+            ${this.seletedTab} <-ค่า
             <hr>
-            <my-tabs selected$="${seletedTab}" 
+            <my-tabs .selected="${this.seletedTab}" 
                       name-value="seletedTab" 
-                      on-tab-selected="${this._setValueProps}" >
+                      @tab-selected="${this._setValueProps}" >
               <my-tab>ข้อมูลส่วนตัว</my-tab>
               <my-tab>อัพโหลดเอกสาร</my-tab>   
               <my-tab style="color:red">รายงาน</my-tab>       
             </my-tabs>
-            <button on-click="${this.toggle}">เปลี่ยนค่า</button>
-            ${contract.first_name} <- first_name
-            ${contract.last_name} <- last_name
+            <button @click="${this.toggle}">เปลี่ยนค่า</button>
+            ${this.contract.first_name} <- first_name
+            ${this.contract.last_name} <- last_name
             <my-input classnylon="is-primary" 
-                      value$="${contract.age}"
+                      value="${this.contract.age}"
                       type="Number" 
                       placeholder="Text input"
                       name-value="contract age" 
-                      disablednylon="${btn}"
-                      on-value-changed="${this._setValueProps}" ></my-input>
+                      .disablednylon="${this.btn}"
+                      @value-changed="${this._setValueProps}" ></my-input>
             <my-input id="tests" classnylon="is-primary" 
-                      value$="${contract.first_name}"
+                      value="${this.contract.first_name}"
                       type="text" 
                       placeholder="Text input"
                       name-value="contract first_name" 
-                      disablednylon="${btn}"
-                      on-value-changed="${this._setValueProps}" ></my-input>
+                      .disablednylon="${this.btn}"
+                      @value-changed="${this._setValueProps}" ></my-input>
             <my-textarea id="tests" classnylon="is-primary" 
-                      value$="${contract.last_name}"
+                      value="${this.contract.last_name}"
                       type="text" 
                       placeholder="Text input"
-                      disablednylon="${btn}"
+                      .disablednylon="${this.btn}"
                       name-value="contract last_name" 
-                      on-value-changed="${this._setValueProps}" ></my-textarea>
+                      @value-changed="${this._setValueProps}" ></my-textarea>
             <my-dropdown id="tests" classnylon="is-primary" 
-                      seleted="${contract.gender}"
+                      seleted="${this.contract.gender}"
                       name-value="contract gender"
-                      seletevalue="${option}"
-                      disablednylon="${btn}"
-                      on-value-changed="${this._setValueProps}" >
+                      seletevalue="${this.seletedTab}"
+                      .disablednylon="${this.btn}"
+                      @value-changed="${this._setValueProps}" >
               <option value="">กรุณาเลือกเพศ</option>
               <option value="male">ชาย</option>
               <option value="female">หญิง</option>
             </my-dropdown>  
             <my-checkbox classnylon="is-primary" 
-                      checked="${contract.remember}"
-                      disablednylon="${btn}"
-                      name="remember"
+                      .checked="${this.contract.remember}"
+                      .disablednylon="${this.btn}"
+                      .name="remember"
                       name-value="contract remember" 
-                      on-value-changed="${
+                      @value-changed="${
                         this._setValueProps
                       }" >Remember me</my-checkbox>    
             <my-radio-group
-                      checked="${contract.radio}"
-                      disablednylon="${btn}"
-                      name="gender"
+                      .checked="${this.contract.radio}"
+                      .disablednylon="${this.btn}"
+                      .name="gender"
                       name-value="contract radio" 
-                      on-value-changed="${this._setValueProps}" >
+                      @value-changed="${this._setValueProps}" >
                 <my-radio value="1"> 1 </my-radio>
                 <my-radio value="2"> 2 </my-radio>
                 <my-radio value="3"> 3 </my-radio>
             </my-radio-group>             
             <my-input-datalist classnylon="is-primary" 
-            items="${brk}" 
-            disablednylon="${btn}"
-            selected="${contract.dropdown}"></my-input-datalist>          
+            .items="${this.brk}" 
+            .disablednylon="${this.btn}"
+            .selected="${this.contract.dropdown}"></my-input-datalist>          
    
             
         `;
@@ -222,10 +222,11 @@ class PageIndex extends Composable(LitElement).compose(
     let quill = this.shadowRoot.querySelector("#quill");
     console.log(quill);
   }
-  toggle() {
+  async toggle() {
     this.btn = !this.btn;
     // console.log(this.btn)
-    let input = this.shadowRoot.querySelector("#tests");
+    await this.updateComplete;
+    // let input = this.shadowRoot.querySelector("#tests");
     // input.reflection()
   }
   async _setValueProps(e) {
@@ -242,7 +243,7 @@ class PageIndex extends Composable(LitElement).compose(
       strTOEval += valueNameArray.join(".");
       // valueNameArray.forEach(element => (strTOEval += `.${element}`));
       // console.log('value',value);
-      console.log(this[valueNameArray[0]][valueNameArray[1]]);
+      // console.log(this[valueNameArray[0]][valueNameArray[1]]);
 
       strTOEval += ` = value`;
       // console.log("strTOEval=>", strTOEval);
@@ -250,8 +251,8 @@ class PageIndex extends Composable(LitElement).compose(
       // แปลงสติงเป็นคำสั่ง javascript
       // eval(`(function () { return ${strTOEval}; })`);
       eval(strTOEval);
-
-      await this.requestRender();
+      console.log('this.contract',this.contract)
+      await this.updateComplete;
     } catch (error) {
       console.log(error);
       

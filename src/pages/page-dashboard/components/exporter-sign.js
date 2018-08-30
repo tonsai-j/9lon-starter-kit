@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 // import { PageViewElement } from './../../../components/page-view-element';
 import "@polymer/paper-material";
 import "@polymer/iron-pages";
@@ -20,7 +20,7 @@ class ExporterSign extends LitElement {
   constructor() {
     super();
   }
-  _render({ name }) {
+  render() {
     return html`
          ${bulmaStyles(this)} 
          ${ownStyle} 
@@ -145,7 +145,7 @@ class ExporterSign extends LitElement {
         `;
   }
 
-  //   _firstRendered() {
+  //   firstRendered() {
   //     var pages = this.shadowRoot.querySelector("iron-pages");
 
   //     console.log(pages);

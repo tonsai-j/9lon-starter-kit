@@ -25,15 +25,15 @@ class MyBreadcrumb extends connect(store)(LitElement) {
     this.value = [];
     // is-active
   }
-  _render({ value }) {
+  render() {
     return html`
      ${bulmaStyles(this)}
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
-                ${value.map(({ href, title ,last}) => {
+                ${this.value.map(({ href, title ,last}) => {
                   return html`
-                    <li class$=${(last ? 'is-active' : '')}>
-                        <a href$=${href} aria-current$=${(last ? 'page' : '')}>${title}</a>
+                    <li .class="${(last ? 'is-active' : '')}">
+                        <a href="${href}" .aria-current="${(last ? 'page' : '')}">${title}</a>
                     </li>
                     `;
                 })}

@@ -63,7 +63,7 @@ class ListFiles extends LitElement {
             
         }
     }
-    _render({ files }) {
+    render() {
         return html`
          ${FlexboxGridLit} ${FlexboxGridRemovePadding}
          ${StyleFile}

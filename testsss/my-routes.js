@@ -1,4 +1,4 @@
-import { LitElement, html } from "@polymer/lit-element";
+import {LitElement, html, property} from '@polymer/lit-element';
 import "./layout/noheader-nofooter-01/content-one";
 import "./layout/onheader-nofooter-02/content-two";
 // import "./layout/onheader-nofooter-03/content-three";
@@ -13,7 +13,7 @@ class MyRoutes extends LitElement {
   //   static get importPath() {
   //     return import.meta.url;
   //   }
-  _render({ page }) {
+  render() {
     return html`
         <style>
             .page {

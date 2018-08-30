@@ -4,7 +4,7 @@ import { PageViewElement } from './../../components/page-view-element.js';
 // import './shared-styles.js';
 
 class pageSide extends PageViewElement {
-    _render() {
+    render() {
         return html`
          pageSide
         <div class="card">

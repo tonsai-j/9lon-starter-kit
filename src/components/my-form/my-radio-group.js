@@ -23,9 +23,7 @@ class MyRadioGroup extends LitElement {
     super();
     this._activeRadio = this._activeRadio.bind(this);
   }
-  _render({
-    id
-  }) {
+  render() {
     return html `
     ${bulmaStyles(this)}
     
@@ -37,9 +35,9 @@ class MyRadioGroup extends LitElement {
     </div>
     `;
   }
-  // <div class="control" id$="${id}">
+  // <div class="control" .id="${id}">
   //   </div>
-  _firstRendered() {
+  firstRendered() {
     let control = this.shadowRoot.querySelector(".field");
     this.element = control;
     const children = this.children;
@@ -170,7 +168,7 @@ class MyRadioGroup extends LitElement {
 
 
     // console.log(value);
-    await this.requestRender();
+    await this.updateComplete;;
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,

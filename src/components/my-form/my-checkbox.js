@@ -29,35 +29,25 @@ class MyCheckbox extends LitElement {
     this.id = 'checkbox';
     this.name = 'checkbox';
   }
-  _render({
-    classnylon,
-    id,
-    ariaLabelledBy,
-    ariaDescribedBy,
-    disablednylon,
-    name,
-    readonly,
-    required,
-    checked
-  }) {
+  render() {
     return html `
     ${bulmaStyles(this)}
-    <div id="${id}" class="field">
-  <input class$="is-checkradio ${classnylon}" id="exampleCheckbox" type="checkbox" name$="${name}" 
-                checked="${checked}"
-                aria-labelledby$="${ariaLabelledBy}"
-                aria-describedby$="${ariaDescribedBy}"
-                disabled="${disablednylon}"
-                readonly$="${readonly}"
-                required$="${required}"
+    <div id="${this.id}" class="field">
+  <input class="is-checkradio ${this.classnylon}" id="exampleCheckbox" type="checkbox" .name="${this.name}" 
+                checked="${this.checked}"
+                aria-labelledby="${this.ariaLabelledBy}"
+                aria-describedby="${this.ariaDescribedBy}"
+                .disabled="${this.disablednylon}"
+                readonly="${this.readonly}"
+                required="${this.required}"
                 oninput="${this._changeValue}"
   >
-  <label for$="${name}"><slot></slot></label>
+  <label for="${this.name}"><slot></slot></label>
 </div>
  
     `;
   }
-  //   <label class$="checkbox ${classnylon}"
+  //   <label .class="checkbox ${classnylon}"
   //   disabled="${disabled}">
   // <input type="checkbox" 
 

@@ -16,7 +16,7 @@ class ExporterRenew extends LitElement {
     constructor() {
         super()
     }
-    _render({ name }) {
+    render() {
         return html`
          ${bulmaStyles(this)}
         <style>

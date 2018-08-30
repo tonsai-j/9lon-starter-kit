@@ -3,7 +3,7 @@ import bulmaStyles from "../../style/bulma-styles";
 import "./components/exporter-renew";
 
 class PageRenew extends LitElement {
-  _render() {
+  render() {
     return html`
              ${bulmaStyles(this)}
             

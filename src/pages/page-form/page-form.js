@@ -55,7 +55,7 @@ class pageForm extends connect(store)(FormMixin(LitElement)) {
     this.btn = true;
     // this.value = "x"
   }
-  _render({ data, data2, btn }) {
+  render() {
     return html`
     ${bulmaStyles(this)}
     ${ownStyle} ${rsuFont}  ${mahaniyomFont} ${CSChatThaiFont} ${notosansthaiFont}

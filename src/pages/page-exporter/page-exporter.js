@@ -3,7 +3,7 @@ import { html,LitElement } from '@polymer/lit-element';
 import bulmaStyles from '../../style/bulma-styles'
 
 class PageExporter extends LitElement {
-    _render() {
+    render() {
         return html`
         ${bulmaStyles(this)}
              PageExporter

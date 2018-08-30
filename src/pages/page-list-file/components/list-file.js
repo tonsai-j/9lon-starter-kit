@@ -11,7 +11,7 @@ class ListFile extends LitElement {
             dataFile: Object,
         }
     }
-    _render({ dataFile }) {
+    render() {
         return html`
          ${FlexboxGridLit} ${FlexboxGridRemovePadding} ${StyleFile}
         <style>

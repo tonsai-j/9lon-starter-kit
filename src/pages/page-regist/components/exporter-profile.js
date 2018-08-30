@@ -17,7 +17,7 @@ class ExporterProfile extends LitElement {
         this.seletedTab = 0;
         this._setValueProps = this._setValueProps.bind(this);
       }
-    _render({seletedTab}) {
+    render() {
         return html`
              ${bulmaStyles(this)}
              <style>
@@ -77,7 +77,7 @@ class ExporterProfile extends LitElement {
         </style>
         <br>
         <a class="button is-link is-hovered own-flex-middle topnav-right">ลงทะเบียนที่นี่</a>
-        <my-tabs selected$="${seletedTab}" 
+        <my-tabs .selected="${seletedTab}" 
                 name-value="seletedTab" 
                 on-tab-selected="${this._setValueProps}" >
             <my-tab >รายละเอียด</my-tab>

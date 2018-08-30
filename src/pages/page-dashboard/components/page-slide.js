@@ -14,7 +14,7 @@ class PageSlide extends LitElement {
         super()
 
     }
-    _render({ name }) {
+    render() {
         return html`
         <style>
             iron-pages {
@@ -61,7 +61,7 @@ class PageSlide extends LitElement {
         `;
     }
 
-    _firstRendered() {
+    firstRendered() {
         var pages = this.shadowRoot.querySelector("iron-pages")
 
         console.log(pages)

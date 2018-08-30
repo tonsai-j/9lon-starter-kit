@@ -17,7 +17,7 @@ class ExporterSlide extends LitElement {
         super()
 
     }
-    _render({ name }) {
+    render() {
         return html`
          ${bulmaStyles(this)} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
         <style>
@@ -106,7 +106,7 @@ class ExporterSlide extends LitElement {
         `;
     }
 
-    _firstRendered() {
+    firstRendered() {
         var pages = this.shadowRoot.querySelector("iron-pages")
 
         console.log(pages)
