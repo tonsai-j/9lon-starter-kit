@@ -13,37 +13,37 @@ class MyInputDatalist extends LitElement {
       disablednylon: Boolean,
       title: { type: String },
       value: { type: String },
-      invalid: "",
-      preventInvalidInput: "",
-      allowedPattern: "",
-      validator: "",
-      type: "",
-      pattern: "",
-      required: "",
-      autocomplete: "",
-      autofocus: "",
-      inputmode: "",
-      minlength: "",
-      maxlength: "",
+      invalid: { type: String },
+      preventInvalidInput: { type: String },
+      allowedPattern: { type: String },
+      validator: { type: String },
+      type: { type: String },
+      pattern: { type: String },
+      required: { type: Boolean },
+      autocomplete: { type: String },
+      autofocus: { type: String },
+      inputmode: { type: String },
+      minlength: { type: Number },
+      maxlength: { type: Number },
       min: Number,
       max: Number,
       step: Number,
       name: { type: String },
-      placeholder: "",
-      readonly: Boolean,
-      list: "",
-      size: "",
-      autocapitalize: "",
-      autocorrect: "",
-      tabIndex: "",
-      autosave: "",
-      results: "",
-      accept: "",
-      multiple: "",
+      placeholder: { type: String },
+      readonly: { type: Boolean },
+      list: { type: String },
+      size: { type: String },
+      autocapitalize: { type: String },
+      autocorrect: { type: String },
+      tabIndex: { type: String },
+      autosave: { type: String },
+      results: { type: String },
+      accept: { type: String },
+      multiple: { type: String },
       items: { type: Array },
-      classActive: { type: String },
+      classActive: { type: Boolean },
       selected: { type: String },
-      element: { type: Object }
+      element: { type: Object },
     };
   }
   constructor() {
@@ -54,18 +54,26 @@ class MyInputDatalist extends LitElement {
     // this._setValue = this._setValue.bind(this);
     this._filterItems = this._filterItems.bind(this);
     this.items = [];
-    this.classActive = "";
+    this.classActive = false;
     this.value = "";
     this.selected = "";
     this.element = {};
+    // this.addEventListener("click", async e => {
+    //   this.whales++;
+    //   this._popUp(0);
+    //   await this.updateComplete;
+
+    //   // this.dispatchEvent(new CustomEvent('whales', {detail: {whales: this.whales}}))
+    //   // console.log(this.shadowRoot.querySelector('.count').textContent);
+    //   console.log("this.whales", this.whales);
+    // });
   }
   render() {
     return html`
     ${bulmaStyles(this)}
     ${fontawesomeStyle(this)}
     <!-- is-active -->
-    ${this.classActive} ฝฝฝฝฝ
-    <div class="dropdown ${this.classActive}">
+    <div class="dropdown ${this.classActive ? "is-active" : ""}">
     <div class="dropdown-trigger control has-icons-right">
     <input 
         class="input ${this.classnylon}"
@@ -137,16 +145,15 @@ class MyInputDatalist extends LitElement {
   //   // console.log(this.shadowRoot.querySelector("input"));
   // }
   //   on-focusout="${this._dropdown}"
-  _popUp(e) {
-    this.classActive = "is-active";
-    console.log(111);
+  async _popUp(e) {
+    this.classActive = true;
     // await this.updateComplete;
-    console.log(this.classActive);
+    // console.log(this.classActive);
   }
-  _dropdown(e) {
-    this.classActive = "";
+  async _dropdown(e) {
+    this.classActive = false;
     // await this.updateComplete;
-    console.log(this.classActive);
+    // console.log(this.classActive);
   }
   //   _setValue(e) {
   //     let value = e.currentTarget.getAttribute("value");
@@ -174,7 +181,7 @@ class MyInputDatalist extends LitElement {
     // await this.updateComplete;
     // }
   }
-  _changeValue(e) {
+  async _changeValue(e) {
     let value = e.currentTarget.value || e.currentTarget.getAttribute("value");
     // หาอาเรย์ที่ตรงที่เลือก
 
@@ -182,15 +189,16 @@ class MyInputDatalist extends LitElement {
       JSON.stringify(this.items.find(item => item.value === value))
     );
     delete itemSeleted.itemActive;
-    // console.log(itemSeleted);
-
+    // console.log('itemSeleted',itemSeleted);
+    
     this._dropdown();
     let control = this.shadowRoot.querySelector("input");
     // console.log(control.value);
     control.value = itemSeleted.name;
     this.value = itemSeleted.name;
+    this.selected = itemSeleted.value
     // console.log(value);
-
+    // await this.updateComplete;
     // console.log(value);
     this.dispatchEvent(
       new CustomEvent("value-changed", {
@@ -207,12 +215,18 @@ class MyInputDatalist extends LitElement {
       })
     );
   }
-  // update(changedProps) {
-  //   super.update(changedProps);
-
-  //   console.log("updated!", changedProps);
-  //   console.log(this.shadowRoot.querySelector("input"));
-  // }
+  update(changedProps) {
+    super.update(changedProps);
+    // console.log('this',this)
+    // console.log('selected',this.selected)
+    // console.log("updated!", changedProps);
+      const value = this.selected;
+    let itemSeleted = this.items.find(item => item.value === value);
+    // console.log('itemSeleted',itemSeleted)
+    this.value = itemSeleted.name;
+    this.selected = itemSeleted.value
+    // console.log(this.shadowRoot.querySelector("input"));
+  }
   // shouldUpdate(changedProperties) {
   //   console.log("shouldUpdate", changedProperties);
   //   console.log(this.shadowRoot.querySelector("input"));
@@ -241,33 +255,33 @@ class MyInputDatalist extends LitElement {
   // createRenderRoot(e) {
   //   console.log("createRenderRoot", e);
   // }
-  invalidateProperty(name, oldValue) {
-    // console.log("this.selected", this.selected);
-    // if (this.selected) {
-    //   const value = this.selected;
-    //   let itemSeleted = this.items.find(item => item.value === value);
-    //   //   console.log(itemSeleted.name);
-    //   // ต้องแทนค่าแบบนี้แทนเนึองจากมีปัญหามรการแทนค่าลงตรงๆ
-    //   let element = this.shadowRoot.querySelector("input");
-    //     console.log(element);
-    //   element.value = itemSeleted.name;
-    //   this.value = itemSeleted.name;
-    // }
-    // console.log("invalidateProperty", name, oldValue);
-    if (this.selected !== "") {
-      switch (name) {
-        case "selected":
-          console.log("this.selected", this.selected);
-          let element = this.shadowRoot.querySelector("input");
-          console.log("element", element);
+  // invalidateProperty(name, oldValue) {
+  //   // console.log("this.selected", this.selected);
+  //   // if (this.selected) {
+  //   //   const value = this.selected;
+  //   //   let itemSeleted = this.items.find(item => item.value === value);
+  //   //   //   console.log(itemSeleted.name);
+  //   //   // ต้องแทนค่าแบบนี้แทนเนึองจากมีปัญหามรการแทนค่าลงตรงๆ
+  //   //   let element = this.shadowRoot.querySelector("input");
+  //   //     console.log(element);
+  //   //   element.value = itemSeleted.name;
+  //   //   this.value = itemSeleted.name;
+  //   // }
+  //   // console.log("invalidateProperty", name, oldValue);
+  //   if (this.selected !== "") {
+  //     switch (name) {
+  //       case "selected":
+  //         console.log("this.selected", this.selected);
+  //         let element = this.shadowRoot.querySelector("input");
+  //         console.log("element", element);
 
-          break;
+  //         break;
 
-        default:
-          break;
-      }
-    }
-  }
+  //       default:
+  //         break;
+  //     }
+  //   }
+  // }
   // get updateComplete() {
   //   return (async () => {
   //     return (await super.updateComplete) && (await this._inner.updateComplete);
