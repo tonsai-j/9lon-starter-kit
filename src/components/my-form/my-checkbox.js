@@ -38,11 +38,11 @@ class MyCheckbox extends LitElement {
                 aria-labelledby="${this.ariaLabelledBy}"
                 aria-describedby="${this.ariaDescribedBy}"
                 .disabled="${this.disablednylon}"
-                readonly="${this.readonly}"
+                .readonly="${this.readonly}"
                 required="${this.required}"
-                oninput="${this._changeValue}"
+                @click="${this._changeValue}"
   >
-  <label for="${this.name}"><slot></slot></label>
+  <label for="${this.name}" ><slot @click="${this._changeValue}"></slot></label>
 </div>
  
     `;
@@ -64,10 +64,11 @@ class MyCheckbox extends LitElement {
   //   // }
   // }
   _changeValue(e) {
+    // console.log('value',e)
     // const element = this.shadowRoot.querySelector("select")
     // const children = element.children;
     let value = this.shadowRoot.querySelector("input").checked;
-
+    // console.log('value',value)
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,

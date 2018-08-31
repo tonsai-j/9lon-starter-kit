@@ -81,7 +81,7 @@ class PageIndex extends Composable(LitElement).compose(
       first_name: "ตั้งต้น",
       last_name: "ไม่มี",
       age: 0,
-      gender: "",
+      gender: "male",
       remember: true,
       radio: "3",
       dropdown: "/index"
@@ -174,7 +174,7 @@ class PageIndex extends Composable(LitElement).compose(
             <my-dropdown id="tests" classnylon="is-primary" 
                       seleted="${this.contract.gender}"
                       name-value="contract gender"
-                      seletevalue="${this.seletedTab}"
+                      seletevalue="${this.contract.gender}"
                       .disablednylon="${this.btn}"
                       @value-changed="${this._setValueProps}" >
               <option value="">กรุณาเลือกเพศ</option>
@@ -182,9 +182,9 @@ class PageIndex extends Composable(LitElement).compose(
               <option value="female">หญิง</option>
             </my-dropdown>  
             <my-checkbox classnylon="is-primary" 
-                      .checked="${this.contract.remember}"
+                      checked="${this.contract.remember}"
                       .disablednylon="${this.btn}"
-                      .name="remember"
+                      name="remember"
                       name-value="contract remember" 
                       @value-changed="${
                         this._setValueProps
