@@ -27,6 +27,7 @@ class MyQuill extends LitElement {
         <!-- Create the editor container -->
         <div id="editor">
         <p>Hello World!</p>
+        <p>Hello World! 22</p>
         <p>Some initial <strong>bold</strong> text</p>
         <p><br></p>
         </div>
@@ -34,7 +35,7 @@ class MyQuill extends LitElement {
     
         `;
   }
-  _firstRendered() {
+  firstRendered() {
     let element = this.shadowRoot.querySelector("#editor");
 
     var toolbarOptions = [

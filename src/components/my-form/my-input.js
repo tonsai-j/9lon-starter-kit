@@ -101,7 +101,7 @@ class MyInput extends LitElement {
         pattern="${this.pattern}"
         required="${this.required}"
         autocomplete="${this.autocomplete}"
-        autofocus="${this.autofocus}"
+        .sautofocus="${this.autofocus}"
         inputmode="${this.inputmode}"
         minlength="${this.minlength}"
         maxlength="${this.maxlength}"

@@ -43,7 +43,7 @@ class MyTextArea extends LitElement {
         validator="${this.validator}"
         .disabled="${this.disablednylon}"
         autocomplete="${this.autocomplete}"
-        autofocus="${this.autofocus}"
+        .autofocus="${this.autofocus}"
         inputmode="${this.inputmode}"
         name="${this.name}"
         placeholder="${this.placeholder}"

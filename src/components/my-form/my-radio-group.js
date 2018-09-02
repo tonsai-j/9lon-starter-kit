@@ -132,15 +132,19 @@ class MyRadioGroup extends LitElement {
       // }
     }
   }
-  _shouldRender(props, changedProps, prevProps) {
-    // console.log(props, changedProps, prevProps);
-    if ("disablednylon" in changedProps) {
-      // console.log(props, changedProps, prevProps);
-      this._setRenderRadio();
-      return true;
-    } else {
-      return false;
-    }
+  shouldUpdate(changedProperties){
+    // changedProperties.forEach((value, key)=> {
+    //   // console.log(key + ' = ' + value);
+    //   if(key === 'disablednylon'){
+    //       this._setRenderRadio();
+    //     return true;
+    //   }
+    //   //  else {
+    //   //   return false;
+    //   // }
+    // });
+    this._setRenderRadio();
+    return true;
   }
   async _activeRadio(e) {
     const value = e.currentTarget.getAttribute("value");

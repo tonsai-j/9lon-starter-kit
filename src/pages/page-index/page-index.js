@@ -126,9 +126,7 @@ class PageIndex extends Composable(LitElement).compose(
         
         
                     
-          <my-quill-render .data="${
-            this.contract.content
-          }" .data-type="delta"></my-quill-render>
+          <my-quill-render .data="${this.contract.content}" .data-type="delta"></my-quill-render>
             <my-quill id="quill" value="" name-value="contract content" 
             @value-changed="${this._setValueProps}"></my-quill>
             <button @click="${el => this.addValue(el)}">เพิ่ม</button>
@@ -202,7 +200,9 @@ class PageIndex extends Composable(LitElement).compose(
             <my-input-datalist classnylon="is-primary" 
             .items="${this.brk}" 
             .disablednylon="${this.btn}"
-            .selected="${this.contract.dropdown}"></my-input-datalist>          
+            .selected="${this.contract.dropdown}"
+            name-value="contract dropdown" 
+            @value-changed="${this._setValueProps}" ></my-input-datalist>          
    
             
         `;
@@ -224,35 +224,52 @@ class PageIndex extends Composable(LitElement).compose(
   }
   async toggle() {
     this.btn = !this.btn;
-    // console.log(this.btn)
-    await this.updateComplete;
+    console.log(this.contract)
+    // await this.updateComplete;
     // let input = this.shadowRoot.querySelector("#tests");
     // input.reflection()
   }
+//   requestUpdate(e){
+// console.log('requestUpdate',e)
+//   }
   async _setValueProps(e) {
     try {
       let value = e.detail.value;
       // เช่น name-value="contract first_name"
       let valueName = e.currentTarget.getAttribute("name-value");
       let valueNameArray = valueName.split(" ");
-      // console.log(valueNameArray);
-
+      let rootTHis = ''
+      // if(valueNameArray.length > 0) {
+        // let rootTHis = valueNameArray[0]
+      // }
+      //  console.log('rootTHis',rootTHis)
+      // console.log('valueNameArray',valueNameArray);
+      // console.log(this.props)
       // สติงเริ่มต้น
       let strTOEval = `this.`;
+      // rootTHis = strTOEval+ rootTHis
+      // console.log('rootTHis',rootTHis)
       // วนเพิ่มสติง
       strTOEval += valueNameArray.join(".");
+      // let objAss = strTOEval + ' Object.assign({},'+strTOEval+','+strTOEval+')'
       // valueNameArray.forEach(element => (strTOEval += `.${element}`));
       // console.log('value',value);
       // console.log(this[valueNameArray[0]][valueNameArray[1]]);
-
+//  console.log("objAss=>", objAss);
       strTOEval += ` = value`;
-      // console.log("strTOEval=>", strTOEval);
-      // this[valueNameArray[0]][valueNameArray[1]] = value
+     
+      // [valueNameArray[1]] = value
       // แปลงสติงเป็นคำสั่ง javascript
-      // eval(`(function () { return ${strTOEval}; })`);
       eval(strTOEval);
-      console.log('this.contract',this.contract)
-      await this.updateComplete;
+      // eval(objAss);
+      // this.contract = JSON.parse(JSON.stringify(this.contract))
+      // cons
+      // console.log('this[valueNameArray[0]]',this[valueNameArray[0]])
+      this[valueNameArray[0]] = Object.assign({}, this[valueNameArray[0]])
+      // console.log('this.contract',this.contract)
+      // await this.updateComplete;
+      // this.requestUpdate()
+      // await this.requestUpdate()
     } catch (error) {
       console.log(error);
       
@@ -260,11 +277,21 @@ class PageIndex extends Composable(LitElement).compose(
 
     // this._test();
   }
-  _shouldRender(props, changedProps, prevProps) {
-    console.log(props, changedProps, prevProps);
-
-    return true;
+  update(changedProps) {
+    super.update(changedProps);
+    console.log('updated! bbbb', changedProps);
+    
+    console.log('xxxxx');
   }
+  shouldUpdate(changedProperties){
+    console.log('shouldUpdate',changedProperties)
+    return true
+  }
+  // _shouldRender(props, changedProps, prevProps) {
+  //   console.log(props, changedProps, prevProps);
+
+  //   return true;
+  // }
 }
 
 customElements.define("page-index", PageIndex);

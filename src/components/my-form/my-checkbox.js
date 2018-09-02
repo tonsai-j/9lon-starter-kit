@@ -1,7 +1,4 @@
-import {
-  LitElement,
-  html
-} from "@polymer/lit-element";
+import { LitElement, html } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 // ไม่สามมรถใช้ disabled ธรรมดาได้ เนื่องจากจะทำให้ ie ไม่รู้จัก ต้องใช้คำอื่นแทน
 class MyCheckbox extends LitElement {
@@ -16,7 +13,7 @@ class MyCheckbox extends LitElement {
       name: String,
       placeholder: String,
       readonly: Boolean,
-      required: Boolean,
+      required: Boolean
     };
   }
   constructor() {
@@ -26,14 +23,24 @@ class MyCheckbox extends LitElement {
     this.required = false;
     this.checked = false;
     this.disablednylon = false;
-    this.id = 'checkbox';
-    this.name = 'checkbox';
+    this.id = "checkbox";
+    this.name = "checkbox";
   }
   render() {
-    return html `
+    return html`
+     <style>
+            :host {
+              display: block;
+            }
+            :host([hidden]) {
+              display: none;
+            }
+          </style>
     ${bulmaStyles(this)}
     <div id="${this.id}" class="field">
-  <input class="is-checkradio ${this.classnylon}" id="exampleCheckbox" type="checkbox" .name="${this.name}" 
+  <input class="is-checkradio ${
+    this.classnylon
+  }" id="exampleCheckbox" type="checkbox" .name="${this.name}" 
                 checked="${this.checked}"
                 aria-labelledby="${this.ariaLabelledBy}"
                 aria-describedby="${this.ariaDescribedBy}"
@@ -49,7 +56,7 @@ class MyCheckbox extends LitElement {
   }
   //   <label .class="checkbox ${classnylon}"
   //   disabled="${disabled}">
-  // <input type="checkbox" 
+  // <input type="checkbox"
 
   // >
   // <slot></slot>

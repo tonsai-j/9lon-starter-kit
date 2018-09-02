@@ -90,9 +90,6 @@ class Dropdown extends LitElement {
     }
     
   }
-  update(){
-    
-  }
   _changeValue(e) {
     // const element = this.shadowRoot.querySelector("select")
     // const children = element.children;
