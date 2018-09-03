@@ -29,12 +29,12 @@ class Dropdown extends LitElement {
   render() {
     return html `
     ${bulmaStyles(this)}
+    --${this.seleted} ---
     <div class="select ${this.classnylon}"
         id="${this.id}"
-        
         >
         <select value="${this.seleted}" 
-        .disabled="${this.disablednylon}" 
+        ?disabled="${this.disablednylon}" 
         aria-labelledby="${this.ariaLabelledBy}"
         aria-describedby="${this.ariaDescribedBy}"
         placeholder="${this.placeholder}"
@@ -89,6 +89,13 @@ class Dropdown extends LitElement {
       }
     }
     
+  }
+  shouldUpdate(changedProperties){
+    console.log('shouldUpdate',changedProperties)
+    // for (var [key, value] of changedProperties) {
+    //   console.log(key + ' = ' + value);
+    // }
+    return true
   }
   _changeValue(e) {
     // const element = this.shadowRoot.querySelector("select")

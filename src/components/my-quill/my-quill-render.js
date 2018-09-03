@@ -2,6 +2,7 @@ import {
     LitElement,
     html
 } from "@polymer/lit-element";
+// import { unsafeHTML } from 'lit-html/lib/unsafe-html';
 class MyQuillRender extends LitElement {
     static get properties() {
         return {
@@ -22,7 +23,8 @@ class MyQuillRender extends LitElement {
     }
     render() {
         return html `
-        <div id="content"><div>
+        <div id="content">
+        <div>
         `
     }
     firstRendered(){

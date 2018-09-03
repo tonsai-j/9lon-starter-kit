@@ -81,7 +81,7 @@ class MyInputDatalist extends LitElement {
         id="${this.id}"
         aria-labelledby="${this.ariaLabelledBy}"
         aria-describedby="${this.ariaDescribedBy}"
-        .disabled="${this.disablednylon}"
+        ?disabled="${this.disablednylon}"
         title="${this.title}"
         value="${this.value}"
         invalid="${this.invalid}"

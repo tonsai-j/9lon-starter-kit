@@ -1,5 +1,6 @@
 import { LitElement, html, property } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
+// import { ifDefined } from 'lit-html/directives/if-defined';
 // import "@polymer/iron-icon";
 // import "../my-icons/my-icons";
 class MyInput extends LitElement {
@@ -96,7 +97,7 @@ class MyInput extends LitElement {
         id="${this.id}"
         aria-labelledby="${this.ariaLabelledBy}"
         aria-describedby="${this.ariaDescribedBy}"
-        .disabled="${this.disablednylon}"
+        ?disabled="${this.disablednylon}"
         title="${this.title}"
         .value="${this.value}"
         .invalid="${this.invalid}"
@@ -143,6 +144,13 @@ class MyInput extends LitElement {
   //   let element = this.shadowRoot.querySelector("input");
   //   this.element = element;
   //   this.reflection();
+  // }
+  // shouldUpdate(changedProperties){
+  //   console.log('shouldUpdate',changedProperties)
+  //   for (var [key, value] of changedProperties) {
+  //     console.log(key + ' = ' + value);
+  //   }
+  //   return true
   // }
   _changeValue(e) {
     let value = e.currentTarget.value;

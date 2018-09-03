@@ -178,9 +178,9 @@ class PageIndex extends Composable(LitElement).compose(
                       name-value="contract last_name" 
                       @value-changed="${this._setValueProps}" ></my-textarea>
             <my-dropdown id="tests" classnylon="is-primary" 
-                      seleted="${this.contract.gender}"
+                      .seleted="${this.contract.gender}"
                       name-value="contract gender"
-                      seletevalue="${this.contract.gender}"
+                      .seletevalue="${this.contract.gender}"
                       .disablednylon="${this.btn}"
                       @value-changed="${this._setValueProps}" >
               <option value="">กรุณาเลือกเพศ</option>
@@ -265,16 +265,16 @@ class PageIndex extends Composable(LitElement).compose(
       console.log(error);
     }
   }
-  update(changedProps) {
-    super.update(changedProps);
-    console.log("updated! bbbb", changedProps);
+  // update(changedProps) {
+  //   super.update(changedProps);
+  //   console.log("updated! bbbb", changedProps);
 
-    console.log("xxxxx");
-  }
-  shouldUpdate(changedProperties) {
-    console.log("shouldUpdate", changedProperties);
-    return true;
-  }
+  //   console.log("xxxxx");
+  // }
+  // shouldUpdate(changedProperties) {
+  //   console.log("shouldUpdate", changedProperties);
+  //   return true;
+  // }
   // _shouldRender(props, changedProps, prevProps) {
   //   console.log(props, changedProps, prevProps);
 

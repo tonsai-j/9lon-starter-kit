@@ -42,10 +42,10 @@ class MyCheckbox extends LitElement {
 <label class="checkbox">
   <input type="checkbox"
   .name="${this.name}" 
-                checked="${this.checked}"
+                ?checked="${this.checked}"
                 aria-labelledby="${this.ariaLabelledBy}"
                 aria-describedby="${this.ariaDescribedBy}"
-                .disabled="${this.disablednylon}"
+                ?disabled="${this.disablednylon}"
                 .readonly="${this.readonly}"
                 required="${this.required}"
                 @click="${this._changeValue}">

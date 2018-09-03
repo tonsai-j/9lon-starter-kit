@@ -41,7 +41,7 @@ class MyTextArea extends LitElement {
         .value="${this.value}"
         invalid="${this.invalid}"
         validator="${this.validator}"
-        .disabled="${this.disablednylon}"
+        ?disabled="${this.disablednylon}"
         autocomplete="${this.autocomplete}"
         .autofocus="${this.autofocus}"
         inputmode="${this.inputmode}"
