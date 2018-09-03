@@ -1,6 +1,6 @@
 import { LitElement, html, property } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
-import fontawesomeStyle from "../../style/fontawesome-style";
+// import fontawesomeStyle from "../../style/fontawesome-style";
 class MyInputDatalist extends LitElement {
   static get properties() {
     return {
@@ -68,10 +68,11 @@ class MyInputDatalist extends LitElement {
     //   console.log("this.whales", this.whales);
     // });
   }
+  
+  // <!-- ${fontawesomeStyle(this)} -->
   render() {
     return html`
     ${bulmaStyles(this)}
-    ${fontawesomeStyle(this)}
     <!-- is-active -->
     <div class="dropdown ${this.classActive ? "is-active" : ""}">
     <div class="dropdown-trigger control has-icons-right">

@@ -9,10 +9,11 @@ import {
 import Composable from "../../function/ComposableMixin";
 import bulmaStyles from "../../style/bulma-styles";
 import fontawesomeStyle from "../../style/fontawesome-style";
+// import "../../components/my-icons/FaIcon"
 // import combindForm from "../../function/combindForm";
 import "../../components/my-quill/my-quill";
 import "../../components/my-quill/my-quill-render";
-import "@polymer/iron-icon";
+// import "@polymer/iron-icon";
 import "../../components/my-icons/my-icons";
 
 import "../../components/my-breadcrumb";
@@ -123,17 +124,17 @@ class PageIndex extends Composable(LitElement).compose(
   render() {
     return html`
          ${bulmaStyles(this)}
-        
-        
-                    
-          <my-quill-render .data="${this.contract.content}" .data-type="delta"></my-quill-render>
+                    ss
+          <my-quill-render .data="${
+            this.contract.content
+          }" .data-type="delta"></my-quill-render>
             <my-quill id="quill" value="" name-value="contract content" 
             @value-changed="${this._setValueProps}"></my-quill>
             <button @click="${el => this.addValue(el)}">เพิ่ม</button>
             <my-button classnylon=" is-primary" on-click="${el =>
-              this.getContent(
-                el
-              )}" .disablednylon="${this.btn}"> เพิ่ม ปุ่ม</my-button>
+              this.getContent(el)}" .disablednylon="${
+      this.btn
+    }"> เพิ่ม ปุ่ม</my-button>
             <my-breadcrumb></my-breadcrumb>
             <br>
             ${this.seletedTab} <-ค่า
@@ -154,14 +155,21 @@ class PageIndex extends Composable(LitElement).compose(
                       placeholder="Text input"
                       name-value="contract age" 
                       .disablednylon="${this.btn}"
-                      @value-changed="${this._setValueProps}" ></my-input>
+                      @value-changed="${this._setValueProps}" 
+                      icons="has-icons-left has-icons-right"
+                      iconsLeft="my-icons:polymer"
+                      iconsRight="my-icons:android">
+                      </my-input>
             <my-input id="tests" classnylon="is-primary" 
                       value="${this.contract.first_name}"
                       type="text" 
                       placeholder="Text input"
                       name-value="contract first_name" 
                       .disablednylon="${this.btn}"
-                      @value-changed="${this._setValueProps}" ></my-input>
+                      @value-changed="${this._setValueProps}" 
+                      icons="has-icons-left has-icons-right"
+                      iconsLeft="my-icons:polymer"
+                      iconsRight="my-icons:android"></my-input>
             <my-textarea id="tests" classnylon="is-primary" 
                       value="${this.contract.last_name}"
                       type="text" 
@@ -202,7 +210,9 @@ class PageIndex extends Composable(LitElement).compose(
             .disablednylon="${this.btn}"
             .selected="${this.contract.dropdown}"
             name-value="contract dropdown" 
-            @value-changed="${this._setValueProps}" ></my-input-datalist>          
+            @value-changed="${
+              this._setValueProps
+            }" ></my-input-datalist>          
    
             
         `;
@@ -224,68 +234,46 @@ class PageIndex extends Composable(LitElement).compose(
   }
   async toggle() {
     this.btn = !this.btn;
-    console.log(this.contract)
-    // await this.updateComplete;
-    // let input = this.shadowRoot.querySelector("#tests");
-    // input.reflection()
+    console.log(this.contract);
   }
-//   requestUpdate(e){
-// console.log('requestUpdate',e)
-//   }
   async _setValueProps(e) {
     try {
       let value = e.detail.value;
       // เช่น name-value="contract first_name"
       let valueName = e.currentTarget.getAttribute("name-value");
       let valueNameArray = valueName.split(" ");
-      let rootTHis = ''
-      // if(valueNameArray.length > 0) {
-        // let rootTHis = valueNameArray[0]
-      // }
-      //  console.log('rootTHis',rootTHis)
-      // console.log('valueNameArray',valueNameArray);
-      // console.log(this.props)
+      let valueNameArrayLength = valueNameArray.length
+      // console.log('valueNameArrayLength',valueNameArrayLength)
       // สติงเริ่มต้น
       let strTOEval = `this.`;
-      // rootTHis = strTOEval+ rootTHis
-      // console.log('rootTHis',rootTHis)
       // วนเพิ่มสติง
       strTOEval += valueNameArray.join(".");
       // let objAss = strTOEval + ' Object.assign({},'+strTOEval+','+strTOEval+')'
       // valueNameArray.forEach(element => (strTOEval += `.${element}`));
-      // console.log('value',value);
-      // console.log(this[valueNameArray[0]][valueNameArray[1]]);
-//  console.log("objAss=>", objAss);
       strTOEval += ` = value`;
-     
-      // [valueNameArray[1]] = value
+
       // แปลงสติงเป็นคำสั่ง javascript
       eval(strTOEval);
       // eval(objAss);
       // this.contract = JSON.parse(JSON.stringify(this.contract))
-      // cons
+      // ต้องเป็น Object
+      if(valueNameArrayLength > 1) {
+        this[valueNameArray[0]] = Object.assign({}, this[valueNameArray[0]]);
+      }
       // console.log('this[valueNameArray[0]]',this[valueNameArray[0]])
-      this[valueNameArray[0]] = Object.assign({}, this[valueNameArray[0]])
-      // console.log('this.contract',this.contract)
-      // await this.updateComplete;
-      // this.requestUpdate()
-      // await this.requestUpdate()
     } catch (error) {
       console.log(error);
-      
     }
-
-    // this._test();
   }
   update(changedProps) {
     super.update(changedProps);
-    console.log('updated! bbbb', changedProps);
-    
-    console.log('xxxxx');
+    console.log("updated! bbbb", changedProps);
+
+    console.log("xxxxx");
   }
-  shouldUpdate(changedProperties){
-    console.log('shouldUpdate',changedProperties)
-    return true
+  shouldUpdate(changedProperties) {
+    console.log("shouldUpdate", changedProperties);
+    return true;
   }
   // _shouldRender(props, changedProps, prevProps) {
   //   console.log(props, changedProps, prevProps);
