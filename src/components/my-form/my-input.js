@@ -8,39 +8,42 @@ class MyInput extends LitElement {
       // element: Object,
       // disabled: Boolean
       classnylon: String,
-      id: "",
+      id:{},
       ariaLabelledBy: String,
       ariaDescribedBy: String,
       disablednylon: Boolean,
       title: String,
-      value: "",
-      invalid: "",
-      preventInvalidInput: "",
-      allowedPattern: "",
-      validator: "",
+      value:{},
+      invalid:{},
+      preventInvalidInput:{},
+      allowedPattern:{},
+      validator:{},
       type: { type: String },
-      pattern: "",
-      required: "",
-      autocomplete: "",
-      autofocus: "",
-      inputmode: "",
-      minlength: "",
-      maxlength: "",
+      pattern:{},
+      required:{},
+      autocomplete:{},
+      autofocus:{},
+      inputmode:{},
+      minlength:{},
+      maxlength:{},
       min: Number,
       max: Number,
       step: Number,
       name: String,
-      placeholder: "",
+      placeholder:{},
       readonly: Boolean,
-      list: "",
-      size: "",
-      autocapitalize: "",
-      autocorrect: "",
-      tabIndex: "",
-      autosave: "",
-      results: "",
-      accept: "",
-      multiple: ""
+      list:{},
+      size:{},
+      autocapitalize:{},
+      autocorrect:{},
+      tabIndex:{},
+      autosave:{},
+      results:{},
+      accept:{},
+      multiple:{},
+      icons:{},
+      iconsLeft:{},
+      iconsRight:{},
     };
   }
   constructor() {
@@ -80,11 +83,14 @@ class MyInput extends LitElement {
     this.results = "";
     this.accept = "";
     this.multiple = "";
+    this.icons = '';
+    this.iconsLeft = '';
+    this.iconsRight = '';
   }
   render() {
     return html`
     ${bulmaStyles(this)}
-    <p class="control has-icons-left has-icons-right">
+    <p class="control ${this.icons} ">
     <input 
         class="input ${this.classnylon}"
         id="${this.id}"
@@ -93,15 +99,15 @@ class MyInput extends LitElement {
         .disabled="${this.disablednylon}"
         title="${this.title}"
         .value="${this.value}"
-        invalid="${this.invalid}"
-        prevent-invalid-input="${this.preventInvalidInput}"
-        allowed-pattern="${this.allowedPattern}"
-        validator="${this.validator}"
+        .invalid="${this.invalid}"
+        .prevent-invalid-input="${this.preventInvalidInput}"
+        .allowed-pattern="${this.allowedPattern}"
+        .validator="${this.validator}"
         .type="${this.type}"
         pattern="${this.pattern}"
         required="${this.required}"
         autocomplete="${this.autocomplete}"
-        .sautofocus="${this.autofocus}"
+        autofocus="${this.autofocus}"
         inputmode="${this.inputmode}"
         minlength="${this.minlength}"
         maxlength="${this.maxlength}"
@@ -122,10 +128,10 @@ class MyInput extends LitElement {
         accept="${this.accept}"
         multiple="${this.multiple}">
         <span class="icon is-small is-left">
-          <iron-icon icon="my-icons:polymer"></iron-icon> 
+          <iron-icon icon="${this.iconsLeft}"></iron-icon> 
         </span>
         <span class="icon is-small is-right">
-          <iron-icon icon="my-icons:android"></iron-icon> 
+          <iron-icon icon="${this.iconsRight}"></iron-icon> 
         </span>
   </p>
     `;

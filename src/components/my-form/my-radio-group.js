@@ -1,7 +1,4 @@
-import {
-  LitElement,
-  html
-} from "@polymer/lit-element";
+import { LitElement, html } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
 
 class MyRadioGroup extends LitElement {
@@ -24,7 +21,7 @@ class MyRadioGroup extends LitElement {
     this._activeRadio = this._activeRadio.bind(this);
   }
   render() {
-    return html `
+    return html`
     ${bulmaStyles(this)}
     
     <div class="field">
@@ -33,6 +30,16 @@ class MyRadioGroup extends LitElement {
       <input class="is-checkradio" id="exampleRadioInline2" type="radio" name="exampleRadioInline">
       <label for="exampleRadioInline2">Option 2</label> -->
     </div>
+    <!-- <div class="control">
+  <label class="radio">
+    <input type="radio" name="answer">
+    Yes
+  </label>
+  <label class="radio">
+    <input type="radio" name="answer">
+    No
+  </label>
+</div>s -->
     `;
   }
   // <div class="control" .id="${id}">
@@ -60,15 +67,12 @@ class MyRadioGroup extends LitElement {
           if (attributes.length > 0) {
             for (const key in attributes) {
               if (attributes.hasOwnProperty(key)) {
-                const {
-                  nodeName,
-                  nodeValue
-                } = attributes[key];
+                const { nodeName, nodeValue } = attributes[key];
                 // console.log(nodeName, nodeValue );
                 // label.setAttribute([nodeName.replace("nylon", "")], nodeValue);
                 input.setAttribute([nodeName.replace("nylon", "")], nodeValue);
-                input.setAttribute('id', nodeValue);
-                label.setAttribute('for', nodeValue);
+                input.setAttribute("id", nodeValue);
+                label.setAttribute("for", nodeValue);
                 if (nodeName === "value" && nodeValue === this.checked) {
                   input.setAttribute("checked", "");
                 } else {
@@ -106,7 +110,7 @@ class MyRadioGroup extends LitElement {
       for (let index = 0; index < children.length; index++) {
         const element = children[index];
         // typeof element เช็คว่าไม่ใช่ฟั่งชั่น firefox
-        if (element.nodeName === 'INPUT' && typeof element !== 'function') {
+        if (element.nodeName === "INPUT" && typeof element !== "function") {
           if (this.disablednylon) {
             element.setAttribute("disabled", "");
           } else {
@@ -132,7 +136,7 @@ class MyRadioGroup extends LitElement {
       // }
     }
   }
-  shouldUpdate(changedProperties){
+  shouldUpdate(changedProperties) {
     // changedProperties.forEach((value, key)=> {
     //   // console.log(key + ' = ' + value);
     //   if(key === 'disablednylon'){
@@ -149,15 +153,15 @@ class MyRadioGroup extends LitElement {
   async _activeRadio(e) {
     const value = e.currentTarget.getAttribute("value");
     this.checked = value;
-    const elements = this.element
-    const children = elements.children
+    const elements = this.element;
+    const children = elements.children;
     // console.log(element);
     for (const key in children) {
       if (children.hasOwnProperty(key)) {
         const element = children[key];
         // เช็คว่าเป็น INPUT เพื่อเปลี่ยนค่า checked
-        if (typeof element !== 'function') {
-          if (element.nodeName === 'INPUT') {
+        if (typeof element !== "function") {
+          if (element.nodeName === "INPUT") {
             if (element.getAttribute("value") === this.checked) {
               element.setAttribute("checked", "");
             } else {
@@ -165,14 +169,12 @@ class MyRadioGroup extends LitElement {
             }
           }
         }
-
       }
     }
     // console.log(children);
 
-
     // console.log(value);
-    await this.updateComplete;;
+    await this.updateComplete;
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,

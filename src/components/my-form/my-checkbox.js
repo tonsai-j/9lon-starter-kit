@@ -37,43 +37,39 @@ class MyCheckbox extends LitElement {
             }
           </style>
     ${bulmaStyles(this)}
-    <div id="${this.id}" class="field">
-  <input class="is-checkradio ${
-    this.classnylon
-  }" id="exampleCheckbox" type="checkbox" .name="${this.name}" 
+
+ 
+<label class="checkbox">
+  <input type="checkbox"
+  .name="${this.name}" 
                 checked="${this.checked}"
                 aria-labelledby="${this.ariaLabelledBy}"
                 aria-describedby="${this.ariaDescribedBy}"
                 .disabled="${this.disablednylon}"
                 .readonly="${this.readonly}"
                 required="${this.required}"
-                @click="${this._changeValue}"
-  >
-  <label for="${this.name}" ><slot @click="${this._changeValue}"></slot></label>
-</div>
- 
+                @click="${this._changeValue}">
+                <slot @click="${this._changeValue}"></slot>
+</label>
     `;
   }
-  //   <label .class="checkbox ${classnylon}"
-  //   disabled="${disabled}">
-  // <input type="checkbox"
-
-  // >
-  // <slot></slot>
-  // </label>
-  // _shouldRender(props, changedProps, prevProps) {
-  //   // if ("disabled" in changedProps) {
-  //     console.log(props, changedProps, prevProps);
-  //     // this._setRenderRadio();
-  //     return true;
-  //   // } else {
-  //   //   return false;
-  //   // }
-  // }
+  // แบบสวย
+  //   <div id="${this.id}" class="field">
+  //   <input class="is-checkradio ${
+  //     this.classnylon
+  //   }" id="exampleCheckbox" type="checkbox"
+  //  .name="${this.name}"
+  //                 checked="${this.checked}"
+  //                 aria-labelledby="${this.ariaLabelledBy}"
+  //                 aria-describedby="${this.ariaDescribedBy}"
+  //                 .disabled="${this.disablednylon}"
+  //                 .readonly="${this.readonly}"
+  //                 required="${this.required}"
+  //                 @click="${this._changeValue}"
+  //   >
+  //   <label for="${this.name}" ><slot @click="${this._changeValue}"></slot></label>
+  // </div>
   _changeValue(e) {
-    // console.log('value',e)
-    // const element = this.shadowRoot.querySelector("select")
-    // const children = element.children;
     let value = this.shadowRoot.querySelector("input").checked;
     // console.log('value',value)
     this.dispatchEvent(
