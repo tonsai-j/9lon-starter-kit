@@ -1,9 +1,6 @@
-import {
-  LitElement,
-  html
-} from "@polymer/lit-element";
+import { LitElement, html } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
-
+// import {ifDefined} from 'lit-html/directives/'
 class Dropdown extends LitElement {
   static get properties() {
     return {
@@ -23,11 +20,11 @@ class Dropdown extends LitElement {
   }
   constructor() {
     super();
-    this.seletevalue = []
+    this.seletevalue = [];
     this._changeValue = this._changeValue.bind(this);
   }
   render() {
-    return html `
+    return html`
     ${bulmaStyles(this)}
     --${this.seleted} ---
     <div class="select ${this.classnylon}"
@@ -48,14 +45,14 @@ class Dropdown extends LitElement {
 
   `;
   }
-//   <!-- ${seletevalue.map(({ label, value }) => {
-//     return html` < option value = "${value}" > $ {
-// label
-// } < /option>`;
-// })
-// }-- >
-  firstRendered(){
-    const elements = this.shadowRoot.querySelector("select")
+  //   <!-- ${seletevalue.map(({ label, value }) => {
+  //     return html` < option value = "${value}" > $ {
+  // label
+  // } < /option>`;
+  // })
+  // }-- >
+  firstRendered() {
+    const elements = this.shadowRoot.querySelector("select");
     // console.log(element);
     this.element = elements;
     const children = this.children;
@@ -75,27 +72,26 @@ class Dropdown extends LitElement {
             for (const key in attributes) {
               if (attributes.hasOwnProperty(key)) {
                 const { nodeName, nodeValue } = attributes[key];
-                option.setAttribute([nodeName.replace("nylon", "")], nodeValue)
+                option.setAttribute([nodeName.replace("nylon", "")], nodeValue);
               }
             }
           }
-       
-        option.appendChild(text);
-        // console.log(option);
-        
-        elements.appendChild(option);
-        // console.log(element);
-      }
+
+          option.appendChild(text);
+          // console.log(option);
+
+          elements.appendChild(option);
+          // console.log(element);
+        }
       }
     }
-    
   }
-  shouldUpdate(changedProperties){
-    console.log('shouldUpdate',changedProperties)
+  shouldUpdate(changedProperties) {
+    console.log("shouldUpdate", changedProperties);
     // for (var [key, value] of changedProperties) {
     //   console.log(key + ' = ' + value);
     // }
-    return true
+    return true;
   }
   _changeValue(e) {
     // const element = this.shadowRoot.querySelector("select")

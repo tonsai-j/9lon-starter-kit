@@ -1,5 +1,7 @@
 import { LitElement, html, property } from "@polymer/lit-element";
 import bulmaStyles from "../../style/bulma-styles";
+import "../my-icons/my-icons";
+import '@polymer/iron-icon';
 // import fontawesomeStyle from "../../style/fontawesome-style";
 class MyInputDatalist extends LitElement {
   static get properties() {
@@ -117,7 +119,7 @@ class MyInputDatalist extends LitElement {
         aria-haspopup="true" aria-controls="dropdown-menu"
         >
         <span class="icon is-small is-right is-small">
-        <i class="fas fa-angle-down"></i>
+        <iron-icon icon="my-icons:arrow-drop-down"></iron-icon> 
       </span>
   </div>
         
