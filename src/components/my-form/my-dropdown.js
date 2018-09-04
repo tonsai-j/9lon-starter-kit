@@ -86,13 +86,13 @@ class Dropdown extends LitElement {
       }
     }
   }
-  shouldUpdate(changedProperties) {
-    console.log("shouldUpdate", changedProperties);
-    // for (var [key, value] of changedProperties) {
-    //   console.log(key + ' = ' + value);
-    // }
-    return true;
-  }
+  // shouldUpdate(changedProperties) {
+  //   console.log("shouldUpdate", changedProperties);
+  //   // for (var [key, value] of changedProperties) {
+  //   //   console.log(key + ' = ' + value);
+  //   // }
+  //   return true;
+  // }
   _changeValue(e) {
     // const element = this.shadowRoot.querySelector("select")
     // const children = element.children;
