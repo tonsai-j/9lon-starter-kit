@@ -4,18 +4,18 @@ import bulmaStyles from "../../style/bulma-styles";
 class Dropdown extends LitElement {
   static get properties() {
     return {
-      classnylon: String,
-      element: String,
-      seleted: "",
-      id: "",
-      ariaLabelledBy: String,
-      ariaDescribedBy: String,
-      disablednylon: Boolean,
-      name: String,
-      placeholder: String,
-      readonly: Boolean,
-      required: Boolean,
-      seletevalue: Array
+      classnylon: { type: String },
+      element: { type: String },
+      seleted: {},
+      id: {},
+      ariaLabelledBy: { type: String },
+      ariaDescribedBy: { type: String },
+      disablednylon: { type: Boolean },
+      name: { type: String },
+      placeholder: { type: String },
+      readonly: { type: String },
+      required: { type: String },
+      seletevalue: { type: Array }
     };
   }
   constructor() {
