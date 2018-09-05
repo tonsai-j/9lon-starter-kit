@@ -1,0 +1,2 @@
+สอนวิธ๊แก้ 
+https://github.com/quilljs/quill/issues/1916
