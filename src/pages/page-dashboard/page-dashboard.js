@@ -56,7 +56,7 @@ class PageDashboard extends LitElement {
         `;
     }
 
-    firstRendered() {
+    firstUpdated() {
         this.addEventListener('page-search-filter', (e) => {
         //   console.log(e.detail.search)
     

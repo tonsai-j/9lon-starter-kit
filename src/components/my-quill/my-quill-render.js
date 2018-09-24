@@ -27,7 +27,7 @@ class MyQuillRender extends LitElement {
         <div>
         `
     }
-    firstRendered(){
+    firstUpdated(){
         this.element = this.shadowRoot.querySelector("#content");
     // console.log(this.element)
     }

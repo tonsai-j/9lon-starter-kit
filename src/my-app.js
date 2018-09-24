@@ -48,7 +48,9 @@ class MyApp extends connect(store)(LitElement) {
         `;
   }
   // ทำงานครั้งแรก
-  firstRendered() {
+  firstUpdated() {
+    console.log('5555555555555555');
+    
     // ตั่งค่า route
     // this.removeAttribute('unresolved');
     this.addEventListener("change-page", e => {
@@ -63,7 +65,7 @@ class MyApp extends connect(store)(LitElement) {
       link.click();
     });
     const router = new Router(this.shadowRoot.querySelector("#outlet"));
-    // console.log(111);
+    console.log(111);
     
     router.setRoutes(RouterConfig(store, navigate));
     window.addEventListener("vaadin-router-location-changed", event => {
@@ -92,7 +94,7 @@ class MyApp extends connect(store)(LitElement) {
       //   });
     });
   }
-  // firstRendered() {
+  // firstUpdated() {
   // this.addEventListener("change-page", e => {
   //   var link = this.shadowRoot.querySelector("#link");
   //   let path = e.detail.path;

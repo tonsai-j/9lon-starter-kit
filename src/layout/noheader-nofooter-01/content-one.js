@@ -8,20 +8,6 @@ class contentOne extends LitElement {
   render() {
     return html`
           ${bulmaStyles(this)}
-          <style>
-          /* .warpx{
-            position: relative;
-            min-height: 100%;
-          }
-          footer {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 100px;
-            width: 100%;
-            overflow: hidden;
-          } */
-          </style>
         <div class="warpx">
             <header>
                 <header-one></header-one>

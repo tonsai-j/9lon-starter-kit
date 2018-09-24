@@ -20,9 +20,6 @@ class contentTwo extends LitElement {
   render() {
     return html`
       
-        <style>
-           
-        </style>
         ${bulmaStyles(this)}
         <div class="wrapper">
             <header>

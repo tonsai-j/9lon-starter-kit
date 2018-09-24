@@ -21,8 +21,7 @@ class PageRegister extends LitElement {
     render() {
         return html`
          ${bulmaStyles(this)}
-        <style>
-        </style>
+     
         
         <nav class="navbar is-warning">
             <div class="navbar-brand">

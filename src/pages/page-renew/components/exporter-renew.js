@@ -19,8 +19,7 @@ class ExporterRenew extends LitElement {
     render() {
         return html`
          ${bulmaStyles(this)}
-        <style>
-        </style>
+   
         <section>
             <div class="hero-body">
                 <div class="container">

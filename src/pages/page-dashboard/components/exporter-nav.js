@@ -21,8 +21,6 @@ class ExporterNav extends LitElement {
     render() {
         return html`
          ${bulmaStyles(this)}
-        <style>
-        </style>
         
         <nav class="navbar is-info">
             <div class="navbar-brand">

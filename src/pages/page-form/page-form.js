@@ -155,15 +155,6 @@ class pageForm extends connect(store)(FormMixin(LitElement)) {
     // this._redirect('/page-exporter', nextParams)
   }
 
-  async _pageActive(params) {
-    console.log("_pageActive=>", params);
-
-    // const { result, error } = await to(
-    //   axios.get("https://httpbin.org/anything")
-    // );
-
-    // console.log("finalResult", result, error);
-  }
 }
 
 customElements.define("page-form", pageForm);

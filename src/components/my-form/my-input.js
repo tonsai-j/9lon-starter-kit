@@ -137,7 +137,7 @@ class MyInput extends LitElement {
   </p>
     `;
   }
-  // firstRendered() {
+  // firstUpdated() {
   //   //
   //   // console.log(this.properties);
 
@@ -174,7 +174,7 @@ class MyInput extends LitElement {
     );
   }
   // _didRender(props, changedProps, prevProps) {
-  //   //   firstRendered() {
+  //   //   firstUpdated() {
   //   // this.reflection();
   //   // console.log("เปลี่ยน");
   // }

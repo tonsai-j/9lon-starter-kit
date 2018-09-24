@@ -20,8 +20,7 @@ class ExporterRegist extends LitElement {
     render() {
         return html`
          ${bulmaStyles(this)} ${FlexboxGridLit} ${FlexboxGridRemovePadding}
-        <style>
-        </style>
+     
         <section>
             <!-- <div class="hero-body"> -->
                 <div class="container">

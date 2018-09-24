@@ -14,9 +14,6 @@ class navTwo extends LitElement {
   }
   render() {
     return html`
-    <!-- <style>
-      
-    </style> -->
     ${bulmaStyles(this)}
     <aside class="menu">
         <p class="menu-label">General</p>

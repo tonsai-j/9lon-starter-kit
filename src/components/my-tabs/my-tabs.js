@@ -37,7 +37,7 @@ class MyTabs extends LitElement {
     </div>
       `;
   }
-  firstRendered() {
+  firstUpdated() {
     let ul = this.shadowRoot.querySelector("ul");
     this.element = ul;
     const children = this.children;

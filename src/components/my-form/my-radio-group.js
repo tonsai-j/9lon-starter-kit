@@ -44,7 +44,7 @@ class MyRadioGroup extends LitElement {
   }
   // <div class="control" .id="${id}">
   //   </div>
-  firstRendered() {
+  firstUpdated() {
     let control = this.shadowRoot.querySelector(".field");
     this.element = control;
     const children = this.children;

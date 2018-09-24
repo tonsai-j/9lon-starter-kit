@@ -162,7 +162,7 @@ class ExporterManage extends LitElement {
         // console.log(33333333333333)
         this.button_tabs = 2
     }
-    firstRendered() {
+    firstUpdated() {
         var pages = this.shadowRoot.querySelector("#registerExporter")
         pages.addEventListener('click', this.registerExporter.bind(this));
 

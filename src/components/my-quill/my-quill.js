@@ -35,7 +35,7 @@ class MyQuill extends LitElement {
     
         `;
   }
-  firstRendered() {
+  firstUpdated() {
     let element = this.shadowRoot.querySelector("#editor");
 
     var toolbarOptions = [

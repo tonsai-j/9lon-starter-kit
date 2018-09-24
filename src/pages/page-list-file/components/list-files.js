@@ -67,8 +67,7 @@ class ListFiles extends LitElement {
         return html`
          ${FlexboxGridLit} ${FlexboxGridRemovePadding}
          ${StyleFile}
-        <style>
-        </style>
+     
         page-list-file LitElement =>
         
         <div class="row line-file">

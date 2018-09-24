@@ -145,7 +145,7 @@ class ExporterSign extends LitElement {
         `;
   }
 
-  //   firstRendered() {
+  //   firstUpdated() {
   //     var pages = this.shadowRoot.querySelector("iron-pages");
 
   //     console.log(pages);

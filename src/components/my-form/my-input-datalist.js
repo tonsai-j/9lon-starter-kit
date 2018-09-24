@@ -141,9 +141,9 @@ class MyInputDatalist extends LitElement {
   </div>
     `;
   }
-  // firstRendered() {
+  // firstUpdated() {
   //   // this._inner = this.shadowRoot.querySelector('x-inner');
-  //   // console.log("firstRendered");
+  //   // console.log("firstUpdated");
   //   this.element = this.shadowRoot.querySelector("input");
   //   // console.log(this.shadowRoot.querySelector("input"));
   // }

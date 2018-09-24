@@ -23,6 +23,8 @@ const RouterConfig = (store, navigate) => {
       path: "/form",
       MyBreadcrumb: { title: "form", href: "/form" },
       action: () => {
+        console.log('1',12121212);
+        
         store.dispatch(navigate("page-form"));
       },
       component: "page-form"

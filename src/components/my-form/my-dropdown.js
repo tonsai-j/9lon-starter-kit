@@ -51,7 +51,7 @@ class Dropdown extends LitElement {
   // } < /option>`;
   // })
   // }-- >
-  firstRendered() {
+  firstUpdated() {
     const elements = this.shadowRoot.querySelector("select");
     // console.log(element);
     this.element = elements;

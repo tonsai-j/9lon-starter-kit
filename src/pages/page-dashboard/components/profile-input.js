@@ -19,11 +19,7 @@ class ProfileInput extends LitElement {
     }
     render() {
         return html`
-        <style>
-            
-        
-        </style>
-        
+ 
         <div style="text-align:center">
             <paper-material elevation="1" style="text-align:left">
                 First name:
